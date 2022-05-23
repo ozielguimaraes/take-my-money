@@ -10,4 +10,6 @@
     <string name="text_coin_model">text_coin_model</string>
     <string name="text_price_coin">text_price_coins</string>
     <string name="btc">btc</string>
+    <string name="coins">coins</string>
+    <string name="Favorites">Favorites</string>
 </resources>
