@@ -16,12 +16,4 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_star_border"
-        tools:layout_editor_absoluteX="193dp"
-        tools:layout_editor_absoluteY="402dp"
-        android:backgroundTint="@color/green" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>
