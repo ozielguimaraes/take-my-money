@@ -26,5 +26,6 @@
         android:id="@+id/btn_navigation"
         app:menu="@menu/btn_nav"
        android:background="@drawable/transparent_background"/>
+
     </com.google.android.material.bottomappbar.BottomAppBar>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
