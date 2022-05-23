@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="56dp"
-        android:text="@string/_3200000"
+        android:text="$3200000"
         android:textColor="#FBF9F9"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
