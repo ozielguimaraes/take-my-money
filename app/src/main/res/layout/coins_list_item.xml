@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/moeda_view"
+    xmlns:tolls="http://schemas.android.com/tools"
+    android:id="@+id/coin_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/black">
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:text="@string/bitcoin"
+        tolls:text="@string/bitcoin"
         android:textColor="#F6F3F3"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -36,7 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
-        android:text="@string/btc"
+        tolls:text="@string/btc"
         android:textColor="#FFFEFE"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/imagem_coin"
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="56dp"
-        android:text="$3200000"
+        tolls:text="$3200000"
         android:textColor="#FBF9F9"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
