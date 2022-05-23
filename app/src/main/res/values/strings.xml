@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">take-my-money</string>
+    <string name="bitcoin">Bitcoin</string>
+    <string name="Btc">btc</string>
+    <string name="_3200000">3200000</string>
+
+
+    <string name="imagem_coin">imagem_view_coin</string>
+    <string name="text_coin">textview_coin</string>
+    <string name="text_coin_model">text_coin_model</string>
+    <string name="text_price_coin">text_price_coins</string>
+    <string name="btc">Btc</string>
 </resources>
