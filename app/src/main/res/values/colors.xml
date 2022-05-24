@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="green">#90945c</color>
+    <color name="btn_nav_selected_item">#8F8E8E</color>
+    <color name="btn_nav_item">#7E7D7C</color>
+    <color name="btn_nav_background">#0E0E0E</color>
 </resources>
