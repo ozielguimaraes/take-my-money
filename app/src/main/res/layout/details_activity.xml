@@ -7,7 +7,8 @@
     android:background="#0075984C"
     android:backgroundTint="#FFFFFF"
     android:visibility="visible"
-    tools:visibility="visible">
+    tools:visibility="visible"
+    >
 
 
     <View
@@ -113,27 +114,6 @@
         app:layout_constraintTop_toBottomOf="@+id/tx_last_day" />
 
     <Button
-        android:id="@+id/btt_return"
-        android:layout_width="88dp"
-        android:layout_height="45dp"
-        android:background="@android:color/transparent"
-        android:text="@string/back"
-        android:textSize="12sp"
-        android:visibility="visible"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
-
-    <ImageView
-        android:id="@+id/im_return"
-        android:layout_width="18dp"
-        android:layout_height="34dp"
-        app:layout_constraintBottom_toBottomOf="@+id/btt_return"
-        app:layout_constraintStart_toStartOf="@+id/btt_return"
-        app:layout_constraintTop_toTopOf="@+id/btt_return"
-        app:srcCompat="@drawable/ic_return" />
-
-    <Button
         android:id="@+id/btt_add_remove"
         android:layout_width="263dp"
         android:layout_height="47dp"
@@ -161,6 +141,7 @@
     <TextView
         android:id="@+id/tx_value"
         android:layout_width="184dp"
+        android:gravity="center_horizontal"
         android:layout_height="49dp"
         android:text="@string/value_coin"
         android:textColor="#FFFFFF"
