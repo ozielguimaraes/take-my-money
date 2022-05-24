@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/roboto_thin"
+        android:fontFamily="@font/roboto"
         android:text="@string/take_my_money"
         android:textColor="@color/white"
         android:textSize="30sp"
