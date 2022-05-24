@@ -10,183 +10,173 @@
     tools:visibility="visible"
     >
 
-    <LinearLayout
-        android:layout_width="411dp"
-        android:layout_height="365dp"
-
-
+    <View
+        android:id="@+id/view_top"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="365dp"
+        android:background="@color/green"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"></LinearLayout>
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:visibility="visible" />
+
+    <View
+        android:id="@+id/view_end"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="365dp"
+        android:background="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <TextView
+        android:id="@+id/tx_value_hour"
+        android:layout_width="141dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/value_hour"
+        android:textColor="#F8F5F5"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="@+id/view_end"
+        app:layout_constraintHorizontal_bias="0.991"
+        app:layout_constraintStart_toEndOf="@+id/tx_last_hour"
+        app:layout_constraintTop_toBottomOf="@+id/view_top" />
+
+    <TextView
+        android:id="@+id/tx_value_day"
+        android:layout_width="141dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/value_day"
+        android:textColor="#F8F5F5"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tx_last_day"
+        app:layout_constraintTop_toBottomOf="@+id/tx_value_hour" />
+
+    <TextView
+        android:id="@+id/tx_value_month"
+        android:layout_width="141dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="116dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/value_month"
+        android:textColor="#F8F5F5"
+        android:textSize="20sp"
+        app:layout_constraintStart_toEndOf="@+id/tx_last_month"
+        app:layout_constraintTop_toBottomOf="@+id/tx_value_day" />
+
+    <TextView
+        android:id="@+id/tx_last_hour"
+        android:layout_width="116dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/last_hour"
+        android:textColor="#F8F5F5"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/view_end"
+        app:layout_constraintTop_toBottomOf="@+id/view_top" />
+
+    <TextView
+        android:id="@+id/tx_last_day"
+        android:layout_width="116dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/last_day"
+        android:textColor="#F8F5F5"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="@+id/view_end"
+        app:layout_constraintTop_toBottomOf="@+id/tx_last_hour" />
+
+    <TextView
+        android:id="@+id/tx_last_month"
+        android:layout_width="116dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/last_month"
+        android:textColor="#F8F5F5"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tx_last_day" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btt_add_remove"
+        android:layout_width="263dp"
+        android:layout_height="47dp"
+        android:layout_marginTop="268dp"
+        android:background="@android:color/transparent"
+        android:text="@string/add"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/view_top"
+        app:layout_constraintTop_toTopOf="@+id/view_top" />
+
+    <ImageView
+        android:id="@+id/im_coin"
+        android:layout_width="69dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="@+id/btt_add_remove"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/btt_add_remove"
+        app:layout_constraintTop_toTopOf="@+id/view_top"
+        app:srcCompat="@drawable/ic_launcher_background" />
+
+    <TextView
+        android:id="@+id/tx_value"
+        android:layout_width="184dp"
+        android:gravity="center_horizontal"
+        android:layout_height="49dp"
+        android:text="@string/value_coin"
+        android:textColor="#FFFFFF"
+        android:textSize="34sp"
+        app:layout_constraintBottom_toTopOf="@+id/btt_add_remove"
+        app:layout_constraintEnd_toEndOf="@+id/im_coin"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="@+id/im_coin"
+        app:layout_constraintTop_toBottomOf="@+id/im_coin"
+        app:layout_constraintVertical_bias="0.304" />
+
+    <TextView
+        android:id="@+id/tx_coin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/coin"
+        android:textColor="#F8F5F5"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/im_coin"
+        app:layout_constraintStart_toStartOf="@+id/im_coin"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tx_v_traded"
+        android:layout_width="232dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="10dp"
+        android:text="@string/v_traded"
+        android:textColor="#F8F5F5"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/view_end"
+        app:layout_constraintTop_toBottomOf="@+id/view_top" />
 
 
 
-
-    
 </androidx.constraintlayout.widget.ConstraintLayout>
 
-<View
-android:id="@+id/view_top"
-android:layout_width="0dp"
-android:layout_height="0dp"
-android:layout_marginBottom="365dp"
-android:background="@color/green"
-android:visibility="visible"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintHorizontal_bias="0.0"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toTopOf="parent"
-app:layout_constraintVertical_bias="1.0"
-tools:visibility="visible" />
-
-<View
-android:id="@+id/view_end"
-android:layout_width="0dp"
-android:layout_height="0dp"
-android:layout_marginTop="365dp"
-android:background="#000000"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintHorizontal_bias="0.0"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toTopOf="parent"
-app:layout_constraintVertical_bias="1.0" />
-
-<TextView
-android:id="@+id/tx_value_hour"
-android:layout_width="141dp"
-android:layout_height="35dp"
-android:layout_marginTop="100dp"
-android:layout_marginEnd="15dp"
-android:text="@string/value_hour"
-android:textColor="#F8F5F5"
-android:textSize="20sp"
-app:layout_constraintEnd_toEndOf="@+id/view_end"
-app:layout_constraintHorizontal_bias="0.991"
-app:layout_constraintStart_toEndOf="@+id/tx_last_hour"
-app:layout_constraintTop_toBottomOf="@+id/view_top" />
-
-<TextView
-android:id="@+id/tx_value_day"
-android:layout_width="141dp"
-android:layout_height="35dp"
-android:layout_marginStart="116dp"
-android:layout_marginTop="24dp"
-android:text="@string/value_day"
-android:textColor="#F8F5F5"
-android:textSize="20sp"
-app:layout_constraintStart_toEndOf="@+id/tx_last_day"
-app:layout_constraintTop_toBottomOf="@+id/tx_value_hour" />
-
-<TextView
-android:id="@+id/tx_value_month"
-android:layout_width="141dp"
-android:layout_height="35dp"
-android:layout_marginStart="116dp"
-android:layout_marginTop="32dp"
-android:text="@string/value_month"
-android:textColor="#F8F5F5"
-android:textSize="20sp"
-app:layout_constraintStart_toEndOf="@+id/tx_last_month"
-app:layout_constraintTop_toBottomOf="@+id/tx_value_day" />
-
-<TextView
-android:id="@+id/tx_last_hour"
-android:layout_width="116dp"
-android:layout_height="35dp"
-android:layout_marginStart="16dp"
-android:layout_marginTop="100dp"
-android:text="@string/last_hour"
-android:textColor="#F8F5F5"
-android:textSize="20sp"
-app:layout_constraintStart_toStartOf="@+id/view_end"
-app:layout_constraintTop_toBottomOf="@+id/view_top" />
-
-<TextView
-android:id="@+id/tx_last_day"
-android:layout_width="116dp"
-android:layout_height="35dp"
-android:layout_marginStart="20dp"
-android:layout_marginTop="28dp"
-android:text="@string/last_day"
-android:textColor="#F8F5F5"
-android:textSize="20sp"
-app:layout_constraintStart_toStartOf="@+id/view_end"
-app:layout_constraintTop_toBottomOf="@+id/tx_last_hour" />
-
-<TextView
-android:id="@+id/tx_last_month"
-android:layout_width="116dp"
-android:layout_height="35dp"
-android:layout_marginStart="20dp"
-android:layout_marginTop="32dp"
-android:text="@string/last_month"
-android:textColor="#F8F5F5"
-android:textSize="20sp"
-app:layout_constraintStart_toStartOf="parent"
-app:layout_constraintTop_toBottomOf="@+id/tx_last_day" />
-
-<com.google.android.material.button.MaterialButton
-android:id="@+id/btt_add_remove"
-android:layout_width="263dp"
-android:layout_height="47dp"
-android:layout_marginTop="268dp"
-android:background="@android:color/transparent"
-android:text="@string/add"
-android:textSize="20sp"
-android:textStyle="bold"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintStart_toStartOf="@+id/view_top"
-app:layout_constraintTop_toTopOf="@+id/view_top" />
-
-<ImageView
-android:id="@+id/im_coin"
-android:layout_width="69dp"
-android:layout_height="70dp"
-android:layout_marginTop="80dp"
-app:layout_constraintEnd_toEndOf="@+id/btt_add_remove"
-app:layout_constraintHorizontal_bias="0.498"
-app:layout_constraintStart_toStartOf="@+id/btt_add_remove"
-app:layout_constraintTop_toTopOf="@+id/view_top"
-app:srcCompat="@drawable/ic_launcher_background" />
-
-<TextView
-android:id="@+id/tx_value"
-android:layout_width="184dp"
-android:gravity="center_horizontal"
-android:layout_height="49dp"
-android:text="@string/value_coin"
-android:textColor="#FFFFFF"
-android:textSize="34sp"
-app:layout_constraintBottom_toTopOf="@+id/btt_add_remove"
-app:layout_constraintEnd_toEndOf="@+id/im_coin"
-app:layout_constraintHorizontal_bias="0.497"
-app:layout_constraintStart_toStartOf="@+id/im_coin"
-app:layout_constraintTop_toBottomOf="@+id/im_coin"
-app:layout_constraintVertical_bias="0.304" />
-
-<TextView
-android:id="@+id/tx_coin"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:layout_marginTop="10dp"
-android:text="@string/coin"
-android:textColor="#F8F5F5"
-android:textSize="20sp"
-android:textStyle="bold"
-app:layout_constraintEnd_toEndOf="@+id/im_coin"
-app:layout_constraintStart_toStartOf="@+id/im_coin"
-app:layout_constraintTop_toTopOf="parent" />
-
-<TextView
-android:id="@+id/tx_v_traded"
-android:layout_width="232dp"
-android:layout_height="48dp"
-android:layout_marginTop="10dp"
-android:text="@string/v_traded"
-android:textColor="#F8F5F5"
-android:textSize="24sp"
-app:layout_constraintEnd_toEndOf="parent"
-app:layout_constraintStart_toStartOf="@+id/view_end"
-app:layout_constraintTop_toBottomOf="@+id/view_top" />
