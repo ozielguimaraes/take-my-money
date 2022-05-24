@@ -4,10 +4,10 @@
     <string name="back">Voltar</string>
     <string name="coin">BTC</string>
     <string name="add">Adicionar</string>
-    <string name="value_coin">31,010.20</string>
-    <string name="value_hour">123,456.78</string>
-    <string name="value_day">123,456.78</string>
-    <string name="value_month">123,456.78</string>
+    <string name="value_coin">$ 31,010.20</string>
+    <string name="value_hour">$ 123,456.78</string>
+    <string name="value_day">$ 123,456.78</string>
+    <string name="value_month">$ 123,456.78</string>
     <string name="v_traded">volumes negociados</string>
     <string name="last_hour">última hora</string>
     <string name="last_day">último dia</string>
