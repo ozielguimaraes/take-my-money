@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:fontFamily="@font/font_alegreya"
+        android:fontFamily="@font/roboto"
         android:text="@string/take_my_money"
         android:textColor="@color/white"
         android:textSize="30sp"
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             app:itemIconTint="@color/btn_nav_item"
             app:itemTextColor="@color/btn_nav_selected_item"
-            android:background="@color/btn_nav_background"
+            android:background="@color/black_two"
             app:layout_constraintBottom_toBottomOf="@+id/Recyclerview_coins"
             app:menu="@menu/btn_nav"/>
 </androidx.constraintlayout.widget.ConstraintLayout>
