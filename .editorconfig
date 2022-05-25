@@ -1,0 +1,7 @@
+[*.{kt,kts}]
+disabled_rules = import-ordering, comment-spacing, indent
+indent_style = tab
+indent_size = 4
+tab_width = 4
+insert_final_newline = true
+max_line_length = 120
