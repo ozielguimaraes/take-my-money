@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -52,10 +53,16 @@ dependencies {
 
     // LiveData and ViewModel JetPack
     implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
-    implementation'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
 
     // Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    // Database room
+    implementation 'androidx.room:room-ktx:2.4.2'
+    kapt "androidx.room:room-compiler:2.4.2"
+    implementation 'androidx.room:room-runtime:2.4.2'
+    annotationProcessor 'androidx.room:room-compiler:2.4.2'
 
 
 }
