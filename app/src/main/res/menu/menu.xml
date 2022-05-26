@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/ic_coins"
+        android:icon="@drawable/ic_money"
+        android:title="@string/coins__"/>
+       <item
+        android:id="@+id/ic_favorites"
+        android:icon="@drawable/ic__star"
+        android:title="@string/favorites__"/>
+
+</menu>

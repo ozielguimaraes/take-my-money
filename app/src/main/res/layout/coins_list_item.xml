@@ -1,57 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/coin_view"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#1C1C1C">
-
-    <ImageView
-        android:id="@+id/imagem_coin"
-        android:layout_width="80dp"
-        android:layout_height="73dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background" />
+    android:background="@color/black"
+    android:padding="16dp">
 
     <TextView
-        android:id="@+id/text_coin"
-        android:layout_width="wrap_content"
+        android:id="@+id/txt_coin"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
         tools:text="@string/bitcoin"
         android:textColor="#F6F3F3"
-        android:textSize="24sp"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto"
         android:textStyle="bold"
-        app:layout_constraintStart_toEndOf="@+id/imagem_coin"
+        app:layout_constraintStart_toEndOf="@+id/im_coin"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
-        android:id="@+id/text_coin_model"
+        android:id="@+id/txt_coin_model"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="4dp"
         tools:text="btc"
         android:textColor="#FFFEFE"
-        android:textSize="18sp"
-        app:layout_constraintStart_toEndOf="@+id/imagem_coin"
-        app:layout_constraintTop_toBottomOf="@+id/text_coin"/>
+        android:fontFamily="@font/roboto"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@+id/im_coin"
+        app:layout_constraintTop_toBottomOf="@id/txt_coin"/>
 
     <TextView
-        android:id="@+id/text_price_coin"
+        android:id="@+id/txt_price_coin"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:textColor="#FBF9F9"
+        android:maxLength="7"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="3200000"/>
+
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginEnd="56dp"
-        tools:text="$3200000"
-        android:textColor="#FBF9F9"
+        android:text="$"
         android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_price_coin"
+        app:layout_constraintEnd_toStartOf="@+id/txt_price_coin"
+        app:layout_constraintTop_toTopOf="@+id/txt_price_coin" />
+
+    <ImageView
+        android:id="@+id/im_coin"
+        android:layout_width="80dp"
+        android:layout_height="73dp"
+        app:srcCompat="@drawable/ic_launcher_background"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
