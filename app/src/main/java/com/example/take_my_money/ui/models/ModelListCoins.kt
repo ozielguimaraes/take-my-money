@@ -1,5 +1,7 @@
 package com.example.take_my_money.ui.models
 
+import java.io.Serializable
+
 data class ModelListCoins(
     val asset_id: String?,
     val name: String?,
@@ -8,4 +10,4 @@ data class ModelListCoins(
     val volume_1mth_usd: String?,
     val price_usd: String?,
     val url: String?
-)
+) : Serializable
