@@ -53,6 +53,7 @@
         tools:listitem="@layout/coins_list_item" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
+
             android:id="@+id/btn_navigation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,6 +61,6 @@
             app:itemTextColor="@color/btn_nav_selected_item"
             android:background="@color/black_two"
             app:layout_constraintBottom_toBottomOf="@+id/Recyclerview_coins"
-            app:menu="@menu/btn_nav"/>
+            app:menu="@menu/menu"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
