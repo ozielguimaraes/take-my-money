@@ -28,52 +28,39 @@
         android:layout_marginTop="8dp"
         android:text="23/05/2022"
         android:textColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/include"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/take_my_money" />
 
-
     <include
         android:id="@+id/include"
         layout="@layout/main_toolbar"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="153dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_date" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/Recyclerview_coins"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginBottom="64dp"
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/include"
         tools:listitem="@layout/coins_list_item" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+   <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btn_navigation"
         android:layout_width="match_parent"
-        android:layout_height="55dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
         app:itemIconTint="@color/btn_nav_item"
-        app:itemTextColor="@color/btn_nav_item"
+        app:itemTextColor="@color/btn_nav_selected_item"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="@color/transparent"
-        app:layout_constraintTop_toBottomOf="@+id/Recyclerview_coins"
         app:menu="@menu/menu" />
-
-
-    <FrameLayout
-        android:id="@+id/fragment_container"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

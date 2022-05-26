@@ -25,9 +25,9 @@ class CoinAdapter() : ListAdapter<ModelListCoins, CoinAdapter.CoinViewHolder>(Di
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
         val item = getItem(position)
         item?.let {
-            holder.binding.textCoin.text = item.name
-            holder.binding.textCoinModel.text = item.asset_id
-            holder.binding.textPriceCoin.text = item.price_usd
+            holder.binding.txtCoin.text = item.name
+            holder.binding.txtCoinModel.text = item.asset_id
+            holder.binding.txtPriceCoin.text = item.price_usd
         }
     }
 }

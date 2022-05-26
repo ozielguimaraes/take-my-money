@@ -2,10 +2,8 @@ package com.example.take_my_money.ui.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.take_my_money.R
 import com.example.take_my_money.databinding.ActivityMainBinding
-import com.example.take_my_money.ui.models.ModelListCoins
 import com.example.take_my_money.ui.view.fragments.CoinsFragment
 import com.example.take_my_money.ui.view.fragments.FavoritesFragment
 
@@ -34,7 +32,7 @@ class MainActivity : AppCompatActivity() {
     private fun replaceFragment(fragment: CoinsFragment) {
         if (fragment != null) {
             val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, fragment)
+            transaction.replace(R.id.ic_coins, fragment)
             transaction.commit()
         }
     }
@@ -42,7 +40,7 @@ class MainActivity : AppCompatActivity() {
     private fun replaceFragment(fragments: FavoritesFragment) {
         if (fragments != null) {
             val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.fragment_container, fragments)
+            transaction.replace(R.id.ic_favorites, fragments)
             transaction.commit()
         }
     }
