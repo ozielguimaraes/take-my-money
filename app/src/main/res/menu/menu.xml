@@ -4,10 +4,10 @@
     <item
         android:id="@+id/ic_coins"
         android:icon="@drawable/ic_money"
-        android:title="@string/coins__"/>
+        android:title="@string/coins"/>
        <item
         android:id="@+id/ic_favorites"
         android:icon="@drawable/ic__star"
-        android:title="@string/favorites__"/>
+        android:title="@string/favorites"/>
 
 </menu>
