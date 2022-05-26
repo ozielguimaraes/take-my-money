@@ -1,13 +1,28 @@
 <resources>
-    <string name="app_name">Take-my-money</string>
+    <string name="app_name">take-my-money</string>
+
+    <string name="back">Voltar</string>
+    <string name="add">Adicionar</string>
+    <string name="v_traded">volumes negociados</string>
+    <string name="last_hour">última hora</string>
+    <string name="last_day">último dia</string>
+    <string name="last_month">último mês</string>
+
     <string name="bitcoin">Bitcoin</string>
     <string name="_3200000">3200000</string>
     <string name="coin_view">Coin view</string>
 
+<<<<<<< HEAD
     <string name="im_coin">Imagem_view_coin</string>
     <string name="txt_coin">Textview_coin</string>
     <string name="txt_coin_model">Text_coin_model</string>
     <string name="txt_price_coin">Text_price_coins</string>
+=======
+    <string name="imagem_coin">Imagem_view_coin</string>
+    <string name="text_coin">Textview_coin</string>
+    <string name="text_coin_model">Text_coin_model</string>
+    <string name="text_price_coin">Text_price_coins</string>
+>>>>>>> main
     <string name="coins">Coins</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>

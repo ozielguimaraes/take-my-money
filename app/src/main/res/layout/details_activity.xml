@@ -59,8 +59,11 @@
             app:layout_constraintEnd_toEndOf="@+id/im_view"
             app:layout_constraintStart_toStartOf="@+id/im_view"
             app:layout_constraintTop_toBottomOf="@+id/im_view"
+<<<<<<< HEAD
             tools:layout_editor_absoluteX="114dp"
             tools:layout_editor_absoluteY="165dp"
+=======
+>>>>>>> main
             tools:text="$ 31,010.20" />
 
         <TextView

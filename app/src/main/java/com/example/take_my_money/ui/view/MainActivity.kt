@@ -13,9 +13,12 @@ class MainActivity : AppCompatActivity() {
     private val favoritesFragment = FavoritesFragment()
     lateinit var binding: ActivityMainBinding
 
+    class MainActivity : AppCompatActivity()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
+
         setContentView(binding.root)
 
         replaceFragment(coinsFragment)
@@ -43,5 +46,7 @@ class MainActivity : AppCompatActivity() {
             transaction.replace(R.id.ic_favorites, fragments)
             transaction.commit()
         }
+
+        setContentView(R.layout.activity_main)
     }
 }
