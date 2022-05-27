@@ -19,13 +19,13 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        callSplashScreen()
+        splash()
     }
 
-    private fun callSplashScreen() {
-        Handler(Looper.getMainLooper()).postDelayed(2000, 2000) {
-            val intent = Intent(this, DetailsActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+    private fun splash() {
+        Handler(Looper.getMainLooper()).postDelayed(3000, 3000) {
+            val intent = Intent(this, CoinListActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
     }

@@ -4,17 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/green"
     android:padding="16dp"
+    android:background="@color/green"
     tools:context=".ui.view.SplashActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/content_description_screen_splash"
-        android:fontFamily="@font/roboto"
-        android:text="@string/name_app_splash_screen"
+        android:contentDescription="@string/content_description_splash_screen"
+        android:text="@string/name_app_splash"
         android:textColor="@color/white"
         android:textSize="48sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -27,9 +26,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:indeterminateTint="@color/black"
-        android:visibility="visible"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

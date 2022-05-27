@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.take_my_money.databinding.CoinsListItemBinding
 import com.example.take_my_money.ui.models.ModelListCoins
 
-class CoinAdapter() : ListAdapter<ModelListCoins, CoinAdapter.CoinViewHolder>(DiffCallback()) {
+class CoinAdapter : ListAdapter<ModelListCoins, CoinAdapter.CoinViewHolder>(DiffCallback()) {
 
     class CoinViewHolder(val binding: CoinsListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -27,7 +27,7 @@ class CoinAdapter() : ListAdapter<ModelListCoins, CoinAdapter.CoinViewHolder>(Di
         item?.let {
             holder.binding.txtCoin.text = item.name
             holder.binding.txtCoinModel.text = item.asset_id
-            holder.binding.txtPriceCoin.text = item.price_usd
+            holder.binding.txtPriceCoin.text = item.price_usd.toString()
         }
     }
 }

@@ -15,7 +15,7 @@ data class ModelListCoins(
 ) : Serializable {
 
     fun getPathUrlImage(): String {
-        return Constants.BASE_URL_IMAGE.plus(getCoinFileName())
+        return Constants.BASE_URL_IMG.plus(getCoinFileName())
     }
 
     fun getCoinFileName(): String {
