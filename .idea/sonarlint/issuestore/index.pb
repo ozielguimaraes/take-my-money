@@ -27,8 +27,6 @@ Qapp/src/main/java/com/example/take_my_money/ui/repository/RepositoryDataSource.
 Napp/src/main/java/com/example/take_my_money/ui/view/fragments/CoinsFragment.kt,c\d\cd97230607d2ef6095a32f9faa74029fa65e5835
 ‚
 Rapp/src/main/java/com/example/take_my_money/ui/view/fragments/FavoritesFragment.kt,b\5\b59ab430e23d972058cd14359aa0dbe25dde1763
-x
-Happ/src/main/java/com/example/take_my_money/ui/data/entity/CoinEntity.kt,a\d\ad8a88a186d68cca8c271344025d1d64cae7b471
 w
 Gapp/src/main/java/com/example/take_my_money/ui/models/ModelListCoins.kt,7\4\7407faa0aa57fed042cad9d9547a8e6028a79b83
 z
@@ -37,3 +35,9 @@ u
 Eapp/src/main/java/com/example/take_my_money/ui/view/SplashActivity.kt,b\9\b9574f51d155824f4e93f9440631cfd34340b87c
 P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+x
+Happ/src/main/java/com/example/take_my_money/ui/data/entity/CoinEntity.kt,a\d\ad8a88a186d68cca8c271344025d1d64cae7b471
+w
+Gapp/src/main/java/com/example/take_my_money/ui/view/CoinListActivity.kt,e\a\eaa6f61f87e6c021dafed9717a6e9fa8b575b88e
+v
+Fapp/src/main/java/com/example/take_my_money/ui/view/DetailsActivity.kt,3\6\367e378f171072535895f31f5188d41989a27592
