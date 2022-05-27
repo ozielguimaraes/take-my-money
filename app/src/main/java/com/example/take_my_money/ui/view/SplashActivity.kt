@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.postDelayed
 import com.example.take_my_money.databinding.ActivitySplashBinding
@@ -20,7 +19,6 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        Log.i("TAGHJ", "onResponse: 4caf2b16-a017-4e26-a348-2cea69c34cb".replace("-", "") + ".PNG")
         callSplashScreen()
     }
 

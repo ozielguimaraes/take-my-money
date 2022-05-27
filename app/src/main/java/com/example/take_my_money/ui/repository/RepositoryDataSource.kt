@@ -4,6 +4,7 @@ import com.example.take_my_money.ui.data.dao.ICoinDAO
 import com.example.take_my_money.ui.data.entity.CoinEntity
 
 class RepositoryDataSource(private val ICoinDAO: ICoinDAO) : IRepositoryDataSource {
+
     override suspend fun insertCoinI(
         coin: CoinEntity
     ): Long {

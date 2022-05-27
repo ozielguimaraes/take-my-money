@@ -16,7 +16,6 @@
             android:name=".ui.view.DetailsActivity"
             android:exported="false" />
         <activity
-
             android:name=".ui.view.SplashActivity"
             android:exported="true">
             <intent-filter>

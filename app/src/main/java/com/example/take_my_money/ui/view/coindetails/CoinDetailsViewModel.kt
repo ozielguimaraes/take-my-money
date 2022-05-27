@@ -6,9 +6,6 @@ import androidx.lifecycle.ViewModel
 import com.example.take_my_money.ui.data.entity.CoinEntity
 import com.example.take_my_money.ui.repository.IRepositoryDataSource
 import com.example.take_my_money.ui.repository.RepositoryCoinsDetails
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -21,6 +18,9 @@ class CoinDetailsViewModel(
     private val _coinDetails = MutableLiveData<List<CoinEntity>?>()
     val coinDetail: LiveData<List<CoinEntity>?> get() = _coinDetails
 
+    private val _messageError = MutableLiveData<String>()
+    val messageError: LiveData<String> get() = _messageError
+
     fun getDetailsCoin(assetId: String) {
         val call: Call<List<CoinEntity>> = repositoryCoinsDetails.getCoinsDetails(assetId = assetId)
         call.enqueue(object : Callback<List<CoinEntity>> {
@@ -28,17 +28,32 @@ class CoinDetailsViewModel(
                 val result = response.body()
                 if (result != null) {
                     _coinDetails.postValue(result)
-                    CoroutineScope(Dispatchers.IO).launch {
-                        // insertCoinDetailsDataBase(result[0])
-                    }
                 }
             }
+
             override fun onFailure(call: Call<List<CoinEntity>>, t: Throwable) {
+                _messageError.postValue(t.message)
             }
         })
     }
 
     suspend fun insertCoinDetailsDataBase(resultCoinDetails: CoinEntity) {
-        iRepositoryDataSource.insertCoinI(resultCoinDetails)
+        try {
+            val id = iRepositoryDataSource.insertCoinI(resultCoinDetails)
+            if (id > 0)
+                iRepositoryDataSource.insertCoinI(resultCoinDetails)
+        } catch (e: java.lang.Exception) {
+            _messageError.postValue(e.message)
+        }
+    }
+
+    suspend fun deleteCoinDataBase(id: Long) {
+        try {
+            if (id == id) {
+                iRepositoryDataSource.deleteCoin(id)
+            }
+        } catch (e: Exception) {
+            _messageError.postValue(e.message)
+        }
     }
 }
