@@ -7,9 +7,8 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.take_my_money.databinding.CoinsListItemBinding
 import com.example.take_my_money.ui.models.ModelListCoins
-import com.squareup.picasso.Picasso
 
-class CoinAdapter() : ListAdapter<ModelListCoins, CoinAdapter.CoinViewHolder>(DiffCallback()) {
+class CoinAdapter : ListAdapter<ModelListCoins, CoinAdapter.CoinViewHolder>(DiffCallback()) {
 
     class CoinViewHolder(val binding: CoinsListItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -26,8 +25,6 @@ class CoinAdapter() : ListAdapter<ModelListCoins, CoinAdapter.CoinViewHolder>(Di
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
         val item = getItem(position)
         item?.let {
-            Picasso.get().load(item.getImageCoin()).into(holder.binding.imagemCoin)
-
             holder.binding.txtCoin.text = item.name
             holder.binding.txtCoinModel.text = item.asset_id
             holder.binding.txtPriceCoin.text = item.price_usd
