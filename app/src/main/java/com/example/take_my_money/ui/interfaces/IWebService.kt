@@ -1,7 +1,6 @@
 package com.example.take_my_money.ui.interfaces
 
 import com.example.take_my_money.ui.data.entity.CoinEntity
-import com.example.take_my_money.ui.models.ModelListCoins
 import com.example.take_my_money.ui.utils.Constants
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -22,11 +21,6 @@ interface IWebService {
         @Path("coin") coin: String?,
         @Query("apikey") apikey: String?
     ): Call<List<CoinEntity>>
-
-    @GET(Constants.PATH_URL_IMAGE)
-    fun getImageCoins(
-        @Query("apikey") apikey: String?
-    ): Call<List<ModelListCoins>>
 
     companion object {
 
