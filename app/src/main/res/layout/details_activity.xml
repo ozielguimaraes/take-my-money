@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0075984C"
+    android:backgroundTint="#FFFFFF"
+    android:visibility="visible"
+    tools:visibility="visible">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_top"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/green"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_add_remove"
+            android:layout_width="280dp"
+            android:layout_height="56dp"
+            android:layout_marginTop="110dp"
+            android:background="@drawable/btn_add_remove"
+            android:fontFamily="@font/roboto"
+            android:text="@string/add"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/white"
+            app:barrierMargin="50dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/im_view" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/im_view"
+            android:layout_width="53dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="45dp"
+            app:layout_constraintEnd_toEndOf="@+id/tx_coin"
+            app:layout_constraintStart_toStartOf="@+id/tx_coin"
+            app:layout_constraintTop_toBottomOf="@+id/tx_coin"
+            app:srcCompat="@drawable/bg_search" />
+
+        <TextView
+            android:id="@+id/tx_value"
+            android:layout_width="184dp"
+            android:layout_height="49dp"
+            android:layout_marginTop="29dp"
+            android:fontFamily="@font/roboto"
+            android:gravity="center_horizontal"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toEndOf="@+id/im_view"
+            app:layout_constraintStart_toStartOf="@+id/im_view"
+            app:layout_constraintTop_toBottomOf="@+id/im_view"
+            tools:layout_editor_absoluteX="114dp"
+            tools:layout_editor_absoluteY="165dp"/>
+
+        <TextView
+            android:id="@+id/tx_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="#F8F5F5"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="BTC"/>
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-18dp"
+            android:background="@android:color/transparent"
+            android:drawableLeft="@drawable/ic_return"
+            android:fontFamily="@font/roboto"
+            android:text="@string/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_end"
+        android:layout_width="413dp"
+        android:layout_height="388dp"
+        android:background="@color/black_two"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/tx_value_month"
+            android:layout_width="141dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="15dp"
+            android:textColor="#F8F5F5"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tx_value_day"
+            tools:text="$ 123,456.78" />
+
+        <TextView
+            android:id="@+id/tx_last_day"
+            android:layout_width="116dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/last_day"
+            android:textColor="#F8F5F5"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tx_last_hour" />
+
+        <TextView
+            android:id="@+id/tx_last_month"
+            android:layout_width="116dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/last_month"
+            android:textColor="#F8F5F5"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tx_last_day" />
+
+        <TextView
+            android:id="@+id/tx_v_traded"
+            android:layout_width="232dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="15dp"
+            android:text="@string/v_traded"
+            android:textColor="#F8F5F5"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tx_last_hour"
+            android:layout_width="116dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="30dp"
+            android:text="@string/last_hour"
+            android:textColor="#F8F5F5"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tx_v_traded" />
+
+        <TextView
+            android:id="@+id/tx_value_day"
+            android:layout_width="141dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="15dp"
+            android:textColor="#F8F5F5"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tx_value_hour"
+            tools:text="$ 123,456.78" />
+
+        <TextView
+            android:id="@+id/tx_value_hour"
+            android:layout_width="141dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginEnd="15dp"
+            android:textColor="#F8F5F5"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tx_v_traded"
+            tools:text="$ 123,456.78" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
