@@ -27,4 +27,5 @@
     <string name="favorites_">Favorites</string>
     <string name="take_my_money">Take My Money</string>
     <string name="content_description_screen_splash">Nome do aplicativo na tela inicial : Take my money</string>
+    <string name="favorites">favorites</string>
 </resources>

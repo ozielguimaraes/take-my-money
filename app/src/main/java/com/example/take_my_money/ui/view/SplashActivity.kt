@@ -20,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        Log.i("TAGHJ", "onResponse: 4caf2b16-a017-4e26-a348-2cea69c34cb".replace("-","")+".PNG")
+        Log.i("TAGHJ", "onResponse: 4caf2b16-a017-4e26-a348-2cea69c34cb".replace("-", "") + ".PNG")
         callSplashScreen()
     }
 

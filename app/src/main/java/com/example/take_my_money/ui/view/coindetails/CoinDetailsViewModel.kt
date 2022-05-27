@@ -4,7 +4,6 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.take_my_money.ui.data.entity.CoinEntity
-import com.example.take_my_money.ui.models.ModelListCoins
 import com.example.take_my_money.ui.repository.IRepositoryDataSource
 import com.example.take_my_money.ui.repository.RepositoryCoinsDetails
 import kotlinx.coroutines.CoroutineScope
@@ -34,7 +33,6 @@ class CoinDetailsViewModel(
                     }
                 }
             }
-
             override fun onFailure(call: Call<List<CoinEntity>>, t: Throwable) {
             }
         })

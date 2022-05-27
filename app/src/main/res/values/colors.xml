@@ -12,4 +12,9 @@
     <color name="black_two">#191819</color>
     <color name="btn_nav_selected_item">#8F8E8E</color>
     <color name="btn_nav_item">#7E7D7C</color>
+    <color name="transparent">#00000000</color>
+
 </resources>
+
+
+

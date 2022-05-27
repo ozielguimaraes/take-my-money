@@ -23,7 +23,7 @@ interface IWebService {
         @Query("apikey") apikey: String?
     ): Call<List<CoinEntity>>
 
-    @GET(Constants.PATH_URL_IMAGE)
+    @GET(Constants.PATH_IMG)
     fun getImageCoins(
         @Query("apikey") apikey: String?
     ): Call<List<ModelListCoins>>
