@@ -1,5 +1,10 @@
 <resources>
     <string name="app_name">take-my-money</string>
+
+    <!--SplashScreen-->
+    <string name="name_app_splash">Take My Money</string>
+    <string name="content_description_splash_screen">Nome do aplicativo na tela inicial: Take my money</string>
+
     <string name="back">Voltar</string>
     <string name="add">Adicionar</string>
     <string name="v_traded">volumes negociados</string>
@@ -23,7 +28,6 @@
     <string name="coins">Coins</string>
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="take_my_money">Take My Money</string>
     <string name="favorites">Favorites</string>
 
 </resources>

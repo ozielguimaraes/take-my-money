@@ -7,7 +7,7 @@ import com.example.take_my_money.databinding.ActivityMainBinding
 import com.example.take_my_money.ui.view.fragments.CoinsFragment
 import com.example.take_my_money.ui.view.fragments.FavoritesFragment
 
-class MainActivity : AppCompatActivity() {
+class CoinListActivity : AppCompatActivity() {
 
     private val coinsFragment = CoinsFragment()
     private val favoritesFragment = FavoritesFragment()
