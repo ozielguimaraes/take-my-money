@@ -1,14 +1,20 @@
 package com.example.take_my_money.ui.data.entity
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 import com.example.take_my_money.ui.utils.Constants
 import java.io.Serializable
 
-@Entity(tableName = "coin")
+@Entity(
+    tableName = "coin",
+    indices = [
+        Index(value = ["name", "asset_id"], unique = true)
+    ]
+)
 data class CoinEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
+    val id: Long,
     val asset_id: String,
     val name: String,
     val volume_1hrs_usd: Double,

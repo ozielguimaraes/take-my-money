@@ -27,7 +27,7 @@ class CoinDetailsViewModel(
             override fun onResponse(call: Call<List<CoinEntity>>, response: Response<List<CoinEntity>>) {
                 val result = response.body()
                 if (result != null) {
-                    _coinDetails.postValue(result)
+                    result.let { _coinDetails.postValue(result) }
                 }
             }
 
@@ -37,21 +37,17 @@ class CoinDetailsViewModel(
         })
     }
 
-    suspend fun insertCoinDetailsDataBase(resultCoinDetails: CoinEntity) {
+    suspend fun insertCoinDetailsDataBase(resultCoinDetails: List<CoinEntity>) {
         try {
-            val id = iRepositoryDataSource.insertCoinI(resultCoinDetails)
-            if (id > 0)
-                iRepositoryDataSource.insertCoinI(resultCoinDetails)
-        } catch (e: java.lang.Exception) {
+            iRepositoryDataSource.insertCoinI(resultCoinDetails)
+        } catch (e: Exception) {
             _messageError.postValue(e.message)
         }
     }
 
     suspend fun deleteCoinDataBase(id: Long) {
         try {
-            if (id == id) {
-                iRepositoryDataSource.deleteCoin(id)
-            }
+            iRepositoryDataSource.deleteCoin(id)
         } catch (e: Exception) {
             _messageError.postValue(e.message)
         }

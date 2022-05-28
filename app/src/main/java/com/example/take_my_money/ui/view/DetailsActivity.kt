@@ -1,6 +1,7 @@
 package com.example.take_my_money.ui.view
 
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.take_my_money.databinding.DetailsActivityBinding
@@ -29,7 +30,7 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val coinIDAO: ICoinDAO =
-            CoinDataBase.getInstance(this).ICoinDAO
+            CoinDataBase.getInstance(this).iCoinDAO
         val repositoryCoinsDetails = RepositoryCoinsDetails(IWebService.retrofit)
         viewModel = ViewModelProvider(
             this,
@@ -40,7 +41,7 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun teste() {
-        viewModel.getDetailsCoin("ETH")
+        viewModel.getDetailsCoin("BTC")
         viewModel.coinDetail.observe(this) { listCoin ->
             listCoin?.let {
                 binding.txCoin.text = listCoin[0].asset_id
@@ -49,14 +50,15 @@ class DetailsActivity : AppCompatActivity() {
                 binding.txValueDay.text = NumberFormat.getInstance().format(listCoin[0].volume_1day_usd)
                 binding.txValueMonth.text = NumberFormat.getInstance().format(listCoin[0].volume_1mth_usd)
                 Picasso.get().load(listCoin[0].getPathUrlImage()).into(binding.imView)
-                insertFavorites(listCoin[0])
+                insertFavorites(listCoin)
             }
         }
         viewModel.messageError.observe(this) {
+            Toast.makeText(this, it, Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun insertFavorites(listCoin: CoinEntity) {
+    private fun insertFavorites(listCoin: List<CoinEntity>) {
         binding.btnAddRemove.setOnClickListener {
             CoroutineScope(Dispatchers.IO).launch {
                 viewModel.insertCoinDetailsDataBase(listCoin)
