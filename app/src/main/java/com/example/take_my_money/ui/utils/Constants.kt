@@ -7,7 +7,7 @@ class Constants {
         internal const val BASE_URL_IMG = "https://s3.eu-central-1.amazonaws.com/bbxt-static-icons/type-id/png_512/"
         internal const val PATH_URL_ALL_COINS = "v1/assets?"
         internal const val PATH_URL_DETAILS = "v1/assets/{coin}?"
-        internal const val PATH_URL_IMAGE = ".png"
-        internal const val API_KEY = "F9FA97BE-3EED-4AE8-A0E6-1D8347EDA7E5"
+        internal const val API_KEY = "BFF5CD2A-62B3-4975-B4D6-FA9E7171B38F"
+        internal const val KEY_INTENT = "123456"
     }
 }

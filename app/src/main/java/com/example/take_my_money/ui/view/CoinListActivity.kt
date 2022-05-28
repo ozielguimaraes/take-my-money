@@ -1,5 +1,4 @@
 package com.example.take_my_money.ui.view
-
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.take_my_money.R
@@ -30,18 +29,14 @@ class CoinListActivity : AppCompatActivity() {
     }
 
     private fun replaceFragment(fragment: CoinsFragment) {
-        if (fragment != null) {
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.ic_coins, fragment)
-            transaction.commit()
-        }
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.ic_coins, fragment)
+        transaction.commit()
     }
 
     private fun replaceFragment(fragments: FavoritesFragment) {
-        if (fragments != null) {
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.ic_favorites, fragments)
-            transaction.commit()
-        }
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.ic_favorites, fragments)
+        transaction.commit()
     }
 }

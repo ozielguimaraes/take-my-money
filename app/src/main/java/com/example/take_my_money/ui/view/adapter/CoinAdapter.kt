@@ -27,7 +27,7 @@ class CoinAdapter : ListAdapter<ModelListCoins, CoinAdapter.CoinViewHolder>(Diff
         item?.let {
             holder.binding.txtCoin.text = item.name
             holder.binding.txtCoinModel.text = item.asset_id
-            holder.binding.txtPriceCoin.text = item.price_usd
+            holder.binding.txtPriceCoin.text = item.price_usd.toString()
         }
     }
 }

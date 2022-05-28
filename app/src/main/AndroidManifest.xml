@@ -13,10 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Takemymoney">
         <activity
+            android:name=".ui.view.DetailsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.view.CoinListActivity"
             android:exported="false" />
         <activity
-
             android:name=".ui.view.SplashActivity"
             android:exported="true">
             <intent-filter>
