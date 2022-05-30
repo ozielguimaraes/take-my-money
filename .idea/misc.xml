@@ -51,3 +51,21 @@
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2215" />
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/drawable/ic_baseline_money_24.xml" value="0.2215" />
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/drawable/ic_return.xml" value="0.2215" />
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/layout/activity_screen_coin_favorite.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/layout/activity_splash.xml" value="0.1" />
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/layout/coins_list_item.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/layout/details_activity.xml" value="0.264" />
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/layout/fragment_coins.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/layout/fragment_favorites.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/layout/main_toolbar.xml" value="0.24010416666666667" />
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/menu/menu.xml" value="0.12552083333333333" />
+        <entry key="..\:/Users/wnovalim/AndroidStudioProjects/take-my-money/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2215" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK" />
+</project>

@@ -33,7 +33,11 @@ z
 Japp/src/main/java/com/example/take_my_money/ui/view/adapter/CoinAdapter.kt,d\d\dda2d76c417e7d248fc73f4708e55a2e9920e857
 u
 Eapp/src/main/java/com/example/take_my_money/ui/view/SplashActivity.kt,b\9\b9574f51d155824f4e93f9440631cfd34340b87c
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 x
 Happ/src/main/java/com/example/take_my_money/ui/data/entity/CoinEntity.kt,a\d\ad8a88a186d68cca8c271344025d1d64cae7b471
+w
+Gapp/src/main/java/com/example/take_my_money/ui/view/CoinListActivity.kt,e\a\eaa6f61f87e6c021dafed9717a6e9fa8b575b88e
 v
 Fapp/src/main/java/com/example/take_my_money/ui/view/DetailsActivity.kt,3\6\367e378f171072535895f31f5188d41989a27592
