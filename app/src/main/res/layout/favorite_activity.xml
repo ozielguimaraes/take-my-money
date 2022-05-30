@@ -22,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/text_date"
+        android:id="@+id/text_view_date_now"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -38,6 +38,6 @@
         android:layout_height="600dp"
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/date_atual"/>
+        app:layout_constraintTop_toBottomOf="@+id/text_view_date_now"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,7 @@
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_date">
+        app:layout_constraintTop_toBottomOf="@+id/text_view_date_now">
 
         <RelativeLayout
             android:layout_width="match_parent"
