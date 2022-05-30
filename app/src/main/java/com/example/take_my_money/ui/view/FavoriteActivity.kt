@@ -19,7 +19,3 @@ class FavoriteActivity : AppCompatActivity() {
         binding.textViewDateNow.text = dateTimeFormat.format(date)
     }
 }
-
-
-
-
