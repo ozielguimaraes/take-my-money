@@ -2,7 +2,6 @@ package com.example.take_my_money.ui.view
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.take_my_money.R
 import com.example.take_my_money.databinding.FavoriteActivityBinding
 import java.text.SimpleDateFormat
 import java.util.*

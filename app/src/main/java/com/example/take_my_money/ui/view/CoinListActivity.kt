@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.take_my_money.R
 import com.example.take_my_money.databinding.ActivityMainBinding
-import com.example.take_my_money.databinding.FavoriteActivityBinding
 import com.example.take_my_money.ui.view.fragments.CoinsFragment
 import com.example.take_my_money.ui.view.fragments.FavoritesFragment
 import java.text.SimpleDateFormat
