@@ -23,7 +23,7 @@
             android:id="@+id/btn_add_remove"
             android:layout_width="280dp"
             android:layout_height="56dp"
-            android:layout_marginTop="110dp"
+            android:layout_marginTop="29dp"
             android:background="@drawable/btn_add_remove"
             android:fontFamily="@font/roboto"
             android:text="@string/add"
@@ -33,7 +33,7 @@
             app:barrierMargin="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/im_view" />
+            app:layout_constraintTop_toBottomOf="@+id/tx_value" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/im_view"
@@ -43,7 +43,17 @@
             app:layout_constraintEnd_toEndOf="@+id/tx_coin"
             app:layout_constraintStart_toStartOf="@+id/tx_coin"
             app:layout_constraintTop_toBottomOf="@+id/tx_coin"
-            app:srcCompat="@drawable/bg_search" />
+            app:srcCompat="@drawable/im_coin" />
+
+        <TextView
+            android:id="@+id/cifrao1"
+            android:layout_width="24dp"
+            android:layout_height="47dp"
+            android:text="$"
+            android:textColor="@color/white"
+            android:textSize="32sp"
+            app:layout_constraintEnd_toStartOf="@+id/tx_value"
+            app:layout_constraintTop_toTopOf="@+id/tx_value" />
 
         <TextView
             android:id="@+id/tx_value"
@@ -53,6 +63,7 @@
             android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
             android:textColor="@color/white"
+            tools:text="31.234.20"
             android:textSize="32sp"
             app:layout_constraintEnd_toEndOf="@+id/im_view"
             app:layout_constraintStart_toStartOf="@+id/im_view"
@@ -85,101 +96,127 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layout_end"
-        android:layout_width="413dp"
-        android:layout_height="388dp"
-        android:background="@color/black_two"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <TextView
-            android:id="@+id/tx_value_month"
-            android:layout_width="141dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="15dp"
-            android:textColor="#F8F5F5"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tx_value_day"
-            tools:text="$ 123,456.78" />
-
-        <TextView
-            android:id="@+id/tx_last_day"
-            android:layout_width="116dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/last_day"
-            android:textColor="#F8F5F5"
-            android:textSize="20sp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_end"
+            android:layout_width="413dp"
+            android:layout_height="388dp"
+            android:layout_marginTop="365dp"
+            android:background="@color/black_two"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tx_last_hour" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tx_last_month"
-            android:layout_width="116dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/last_month"
-            android:textColor="#F8F5F5"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tx_last_day" />
+            <TextView
+                android:id="@+id/cifrao2"
+                android:layout_width="18dp"
+                android:layout_height="33dp"
+                android:text="$"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/tx_value_hour"
+                app:layout_constraintTop_toTopOf="@+id/tx_value_hour" />
 
-        <TextView
-            android:id="@+id/tx_v_traded"
-            android:layout_width="232dp"
-            android:layout_height="48dp"
-            android:layout_marginTop="15dp"
-            android:text="@string/v_traded"
-            android:textColor="#F8F5F5"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:layout_width="232dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/v_traded"
+                android:textColor="#F8F5F5"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.497"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tx_last_hour"
-            android:layout_width="116dp"
-            android:layout_height="35dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="30dp"
-            android:text="@string/last_hour"
-            android:textColor="#F8F5F5"
-            android:textSize="20sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tx_v_traded" />
+            <TextView
+                android:layout_width="116dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="160dp"
+                android:text="@string/last_day"
+                android:textColor="#F8F5F5"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tx_value_day"
-            android:layout_width="141dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="15dp"
-            android:textColor="#F8F5F5"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tx_value_hour"
-            tools:text="$ 123,456.78" />
+            <TextView
+                android:layout_width="116dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="220dp"
+                android:text="@string/last_month"
+                android:textColor="#F8F5F5"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/tx_value_hour"
-            android:layout_width="141dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginEnd="15dp"
-            android:textColor="#F8F5F5"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tx_v_traded"
-            tools:text="$ 123,456.78" />
+            <TextView
+                android:layout_width="116dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="100dp"
+                android:text="@string/last_hour"
+                android:textColor="#F8F5F5"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/cifrao3"
+                android:layout_width="18dp"
+                android:layout_height="33dp"
+                android:text="$"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/tx_value_day"
+                app:layout_constraintTop_toTopOf="@+id/tx_value_day" />
+
+            <TextView
+                android:id="@+id/cifrao4"
+                android:layout_width="18dp"
+                android:layout_height="33dp"
+                android:text="$"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toStartOf="@+id/tx_value_month"
+                app:layout_constraintTop_toTopOf="@+id/tx_value_month" />
+
+            <TextView
+                android:id="@+id/tx_value_hour"
+                android:layout_width="141dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginEnd="15dp"
+                android:textColor="#F8F5F5"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="123,456.78" />
+
+            <TextView
+                android:id="@+id/tx_value_day"
+                android:layout_width="141dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="160dp"
+                android:layout_marginEnd="15dp"
+                android:textColor="#F8F5F5"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="123,456.78" />
+
+            <TextView
+                android:id="@+id/tx_value_month"
+                android:layout_width="141dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="220dp"
+                android:layout_marginEnd="15dp"
+                android:textColor="#F8F5F5"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="123,456.78" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

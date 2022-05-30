@@ -5,6 +5,8 @@ import com.example.take_my_money.R
 import com.example.take_my_money.databinding.ActivityMainBinding
 import com.example.take_my_money.ui.view.fragments.CoinsFragment
 import com.example.take_my_money.ui.view.fragments.FavoritesFragment
+import java.text.SimpleDateFormat
+import java.util.*
 
 class CoinListActivity : AppCompatActivity() {
 
@@ -26,6 +28,9 @@ class CoinListActivity : AppCompatActivity() {
                 R.id.ic_favorites -> replaceFragment(favoritesFragment)
             }
         }
+        val date = Calendar.getInstance().time
+        val dateTimeFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        binding.textViewDateNow.text = dateTimeFormat.format(date)
     }
 
     private fun replaceFragment(fragment: CoinsFragment) {
