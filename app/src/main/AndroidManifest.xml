@@ -4,7 +4,6 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -15,11 +14,12 @@
         <activity
             android:name=".ui.view.SplashActivity"
             android:exported="false" />
+
         <activity
-            android:name=".ui.view.CoinListActivity"
+            android:name=".ui.view.FavoriteActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.DetailsActivity"
+            android:name=".ui.view.CoinListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
