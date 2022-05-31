@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
+import com.example.take_my_money.R
 import com.example.take_my_money.databinding.DetailsActivityBinding
 import com.example.take_my_money.ui.data.dao.ICoinDAO
 import com.example.take_my_money.ui.data.database.CoinDataBase
-import com.example.take_my_money.ui.data.entity.CoinEntity
 import com.example.take_my_money.ui.interfaces.IWebService
 import com.example.take_my_money.ui.repository.RepositoryCoinsDetails
 import com.example.take_my_money.ui.repository.RepositoryDataSource
@@ -41,16 +41,16 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun teste() {
-        viewModel.getDetailsCoin("BTC")
-        viewModel.coinDetail.observe(this) { listCoin ->
-            listCoin?.let {
-                binding.txCoin.text = listCoin[0].asset_id
-                binding.txValue.text = NumberFormat.getInstance().format(listCoin[0].price_usd)
-                binding.txValueHour.text = NumberFormat.getInstance().format(listCoin[0].volume_1hrs_usd)
-                binding.txValueDay.text = NumberFormat.getInstance().format(listCoin[0].volume_1day_usd)
-                binding.txValueMonth.text = NumberFormat.getInstance().format(listCoin[0].volume_1mth_usd)
-                Picasso.get().load(listCoin[0].getPathUrlImage()).into(binding.imView)
-                insertFavorites(listCoin)
+        viewModel.getDetailsApiCoin("ETH")
+        viewModel.coinDetail.observe(this) { coinDetails ->
+            coinDetails?.let {
+                binding.txCoin.text = coinDetails.name
+                binding.txValue.text = NumberFormat.getInstance().format(coinDetails.price_usd)
+                binding.txValueHour.text = NumberFormat.getInstance().format(coinDetails.volume_1hrs_usd)
+                binding.txValueDay.text = NumberFormat.getInstance().format(coinDetails.volume_1day_usd)
+                binding.txValueMonth.text = NumberFormat.getInstance().format(coinDetails.volume_1mth_usd)
+                Picasso.get().load(coinDetails.getPathUrlImage()).into(binding.imView)
+                loadDataBase()
             }
         }
         viewModel.messageError.observe(this) {
@@ -58,10 +58,31 @@ class DetailsActivity : AppCompatActivity() {
         }
     }
 
-    private fun insertFavorites(listCoin: List<CoinEntity>) {
+    private fun loadDataBase() = CoroutineScope(Dispatchers.IO).launch {
+        viewModel.allCoins()
+        insertedFavorites()
+    }
+
+    private fun insertedFavorites() {
         binding.btnAddRemove.setOnClickListener {
-            CoroutineScope(Dispatchers.IO).launch {
-                viewModel.insertCoinDetailsDataBase(listCoin)
+            if (binding.btnAddRemove.text == getString(R.string.add)) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    viewModel.insertCoinDetailsDataBase()
+                    binding.btnAddRemove.text = getString(R.string.remover)
+                    deletedFavorite()
+                }
+            }
+        }
+    }
+
+    private fun deletedFavorite() {
+        binding.btnAddRemove.setOnClickListener {
+            if (binding.btnAddRemove.text == getString(R.string.remover)) {
+                CoroutineScope(Dispatchers.IO).launch {
+                    viewModel.deleteCoin()
+                    binding.btnAddRemove.text = getString(R.string.add)
+                    insertedFavorites()
+                }
             }
         }
     }
