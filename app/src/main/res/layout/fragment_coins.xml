@@ -8,7 +8,7 @@
     tools:context=".ui.view.fragments.CoinsFragment">
 
     <TextView
-        android:id="@+id/ic_coins"
+        android:id="@+id/coinsFragments"
         android:layout_width="137dp"
         android:layout_height="50dp"
         tools:text="Coins."
