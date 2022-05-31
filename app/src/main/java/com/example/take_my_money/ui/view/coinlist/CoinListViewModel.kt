@@ -23,7 +23,7 @@ class CoinListViewModel(
             ) {
 
                 val listresult = response.body()
-                _listcoins.postValue(listresult)
+                _listcoins.postValue(listresult?.filter { it.type_is_crypto == 1 })
             }
 
             override fun onFailure(call: Call<List<ModelListCoins>>, t: Throwable) {

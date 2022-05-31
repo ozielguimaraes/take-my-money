@@ -33,13 +33,9 @@ class CoinAdapter(private val onclikcoin: Onclik) :
     @RequiresApi(Build.VERSION_CODES.N)
     override fun onBindViewHolder(holder: CoinViewHolder, position: Int) {
         val item = getItem(position)
+        holder.binding.txtCoin.text = item.name
+        holder.binding.txtCoinModel.text = item.asset_id
 
-        try {
-            holder.binding.txtCoin.text = item.name
-            holder.binding.txtCoinModel.text = item.asset_id
-        } catch (e: Exception) {
-            e.message
-        }
         try {
             Picasso.get().load(item.getPathUrlImage()).into(holder.binding.imagemCoin)
             holder.binding.txtPriceCoin.text = NumberFormat.getInstance().format(item.price_usd)

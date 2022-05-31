@@ -6,7 +6,7 @@ import java.io.Serializable
 data class ModelListCoins(
     val asset_id: String?,
     val name: String?,
-    val type_is_cryptoval: Int?,
+    val type_is_crypto: Int?,
     val volume_1hrs_usd: Double?,
     val volume_1day_usd: Double?,
     val volume_1mth_usd: Double?,
