@@ -2,7 +2,7 @@
     <string name="app_name">take-my-money</string>
 
     <!--SplashScreen-->
-    <string name="name_app_splash">Take My Money</string>
+    <string name="name_app_splash">Moeda digital</string>
     <string name="content_description_splash_screen">Nome do aplicativo na tela inicial: Take my money</string>
 
     <string name="back">Voltar</string>

@@ -56,7 +56,7 @@ class CoinDetailsViewModel(
         }
     }
 
-    suspend fun allCoins(): Array<CoinEntity> {
+    suspend fun allCoins(coinDetails: CoinEntity): Array<CoinEntity> {
         return iRepositoryDataSource.getAllCoins()
     }
 }

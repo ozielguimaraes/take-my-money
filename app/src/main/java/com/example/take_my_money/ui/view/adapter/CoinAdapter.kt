@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.take_my_money.Onclik
+import com.example.take_my_money.ui.view.adapter.Onclik
 import com.example.take_my_money.databinding.CoinsListItemBinding
 import com.example.take_my_money.ui.models.ModelListCoins
 import com.squareup.picasso.Picasso

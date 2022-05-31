@@ -15,6 +15,9 @@ interface ICoinDAO {
     @Query("SELECT * FROM coin")
     suspend fun allCoin(): Array<CoinEntity>
 
+    @Query("SELECT * FROM coin WHERE asset_id = :assetId")
+    suspend fun getByAssetId(assetId: String): CoinEntity
+
     @Query("DELETE FROM coin WHERE name = :id")
     suspend fun delete(id: String)
 }

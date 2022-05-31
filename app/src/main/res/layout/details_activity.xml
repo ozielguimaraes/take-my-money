@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -21,25 +20,24 @@
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_add_remove"
-            android:layout_width="280dp"
-            android:layout_height="56dp"
-            android:layout_marginTop="29dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:background="@drawable/btn_add_remove"
             android:fontFamily="@font/roboto"
             android:text="@string/add"
             android:textSize="24sp"
             android:textStyle="bold"
             app:backgroundTint="@color/white"
-            app:barrierMargin="50dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tx_value" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/im_view"
-            android:layout_width="53dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="45dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
+            android:layout_marginTop="32dp"
             app:layout_constraintEnd_toEndOf="@+id/tx_coin"
             app:layout_constraintStart_toStartOf="@+id/tx_coin"
             app:layout_constraintTop_toBottomOf="@+id/tx_coin"
@@ -47,8 +45,8 @@
 
         <TextView
             android:id="@+id/cifrao1"
-            android:layout_width="24dp"
-            android:layout_height="47dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:text="$"
             android:textColor="@color/white"
             android:textSize="32sp"
@@ -57,58 +55,64 @@
 
         <TextView
             android:id="@+id/tx_value"
-            android:layout_width="184dp"
-            android:layout_height="49dp"
-            android:layout_marginTop="29dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
+            android:paddingStart="16dp"
             android:textColor="@color/white"
-            tools:text="31.234.20"
             android:textSize="32sp"
             app:layout_constraintEnd_toEndOf="@+id/im_view"
             app:layout_constraintStart_toStartOf="@+id/im_view"
             app:layout_constraintTop_toBottomOf="@+id/im_view"
             tools:layout_editor_absoluteX="114dp"
-            tools:layout_editor_absoluteY="165dp"/>
+            tools:layout_editor_absoluteY="165dp"
+            tools:text="31.234.20" />
 
         <TextView
             android:id="@+id/tx_coin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/roboto"
-            android:textColor="#F8F5F5"
+            android:textColor="@color/white"
             android:textSize="24sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="BTC"/>
+            tools:text="BTC" />
 
         <Button
             android:id="@+id/btn_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="-18dp"
             android:background="@android:color/transparent"
             android:drawableLeft="@drawable/ic_return"
             android:fontFamily="@font/roboto"
+            android:padding="6dp"
             android:text="@string/back"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_end"
-            android:layout_width="413dp"
-            android:layout_height="388dp"
-            android:layout_marginTop="365dp"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="64dp"
             android:background="@color/black_two"
+            android:padding="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/btn_add_remove">
 
             <TextView
                 android:id="@+id/cifrao2"
-                android:layout_width="18dp"
-                android:layout_height="33dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
                 android:text="$"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -116,9 +120,9 @@
                 app:layout_constraintTop_toTopOf="@+id/tx_value_hour" />
 
             <TextView
-                android:layout_width="232dp"
-                android:layout_height="48dp"
-                android:layout_marginTop="20dp"
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:text="@string/v_traded"
                 android:textColor="@color/white"
                 android:textSize="24sp"
@@ -128,42 +132,42 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:layout_width="116dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="160dp"
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="@string/last_day"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
             <TextView
-                android:layout_width="116dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="220dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:text="@string/last_month"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toStartOf="@+id/textView3"
+                app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
             <TextView
-                android:layout_width="116dp"
-                android:layout_height="35dp"
-                android:layout_marginStart="15dp"
-                android:layout_marginTop="100dp"
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
                 android:text="@string/last_hour"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
             <TextView
                 android:id="@+id/cifrao3"
-                android:layout_width="18dp"
-                android:layout_height="33dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
                 android:text="$"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -172,8 +176,9 @@
 
             <TextView
                 android:id="@+id/cifrao4"
-                android:layout_width="18dp"
-                android:layout_height="33dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
                 android:text="$"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -182,38 +187,37 @@
 
             <TextView
                 android:id="@+id/tx_value_hour"
-                android:layout_width="141dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="100dp"
-                android:layout_marginEnd="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView4"
                 tools:text="123,456.78" />
 
             <TextView
                 android:id="@+id/tx_value_day"
-                android:layout_width="141dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="160dp"
-                android:layout_marginEnd="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tx_value_hour"
+                app:layout_constraintStart_toStartOf="@+id/tx_value_hour"
+                app:layout_constraintTop_toBottomOf="@+id/tx_value_hour"
                 tools:text="123,456.78" />
 
             <TextView
                 android:id="@+id/tx_value_month"
-                android:layout_width="141dp"
-                android:layout_height="35dp"
-                android:layout_marginTop="220dp"
-                android:layout_marginEnd="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
                 android:textColor="@color/white"
                 android:textSize="20sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/tx_value_day"
+                app:layout_constraintStart_toStartOf="@+id/tx_value_day"
+                app:layout_constraintTop_toBottomOf="@+id/tx_value_day"
                 tools:text="123,456.78" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

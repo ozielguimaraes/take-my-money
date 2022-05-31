@@ -1,27 +1,7 @@
 
 é
 ^app/src/main/java/com/example/take_my_money/ui/view/coindetails/CoinDetailsViewModelFactory.kt,e\a\eaa6c71d1a7f9510ddd8ab5f28cf6e612c81b992
-É
-Sapp/src/main/java/com/example/take_my_money/ui/repository/RepositoryCoinsDetails.kt,9\a\9a3fadaaf0d711571947514f8a60005803f7f36c
-s
-Capp/src/main/java/com/example/take_my_money/ui/data/dao/ICoinDAO.kt,9\5\95883e3a3f7ffa92b7def1047fd8eb86a8eae4f7
-|
-Lapp/src/main/java/com/example/take_my_money/ui/data/database/CoinDataBase.kt,9\6\96c6067e0624b9984302e9c7f647d96b229e5be8
-Å
-Qapp/src/main/java/com/example/take_my_money/ui/repository/RepositoryDataSource.kt,5\0\50ead58eb8b08a66e228fe95b820d7f04029a5e2
 ~
 Napp/src/main/java/com/example/take_my_money/ui/view/fragments/CoinsFragment.kt,c\d\cd97230607d2ef6095a32f9faa74029fa65e5835
 Ç
 Rapp/src/main/java/com/example/take_my_money/ui/view/fragments/FavoritesFragment.kt,b\5\b59ab430e23d972058cd14359aa0dbe25dde1763
-x
-Happ/src/main/java/com/example/take_my_money/ui/data/entity/CoinEntity.kt,a\d\ad8a88a186d68cca8c271344025d1d64cae7b471
-Ç
-Rapp/src/main/java/com/example/take_my_money/ui/repository/IRepositoryDataSource.kt,9\6\96867712cf74b294bd3638bde92fc6094d90657c
-v
-Fapp/src/main/java/com/example/take_my_money/ui/view/DetailsActivity.kt,3\6\367e378f171072535895f31f5188d41989a27592
-
-Oapp/src/main/java/com/example/take_my_money/ui/repository/RepositoryAllCoins.kt,b\0\b046694e4ce377412e2cb2b7246a386e5e2dd82d
-à
-Xapp/src/main/java/com/example/take_my_money/ui/view/coinlist/CoinListViewModelFactory.kt,1\f\1fa46cace317d77284f33113f8f19d09c9fadfbc
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e

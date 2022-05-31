@@ -1,16 +1,17 @@
 package com.example.take_my_money.ui.view
+
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.take_my_money.Onclik
 import com.example.take_my_money.databinding.ActivityMainBinding
 import com.example.take_my_money.ui.interfaces.IWebService
 import com.example.take_my_money.ui.models.ModelListCoins
+import com.example.take_my_money.ui.repository.IRepositoryDataSource
 import com.example.take_my_money.ui.repository.RepositoryAllCoins
 import com.example.take_my_money.ui.utils.Constants
+import com.example.take_my_money.ui.view.adapter.Onclik
 import com.example.take_my_money.ui.view.coinlist.CoinListViewModel
 import com.example.take_my_money.ui.view.coinlist.CoinListViewModelFactory
 import java.text.SimpleDateFormat
@@ -31,7 +32,7 @@ class CoinListActivity : AppCompatActivity(), Onclik {
         binding.textViewDateNow.text = dateTimeFormat.format(date)
 
         viewModel = ViewModelProvider(
-            this, CoinListViewModelFactory(RepositoryAllCoins(retrofit = IWebService.getBaseUrl()))
+            this, CoinListViewModelFactory(RepositoryAllCoins(retrofit = IWebService.getBaseUrl()), )
         )[CoinListViewModel::class.java]
         getAllCoins()
     }
@@ -50,6 +51,7 @@ class CoinListActivity : AppCompatActivity(), Onclik {
     override fun onClikCoins(coins: ModelListCoins) {
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra(Constants.KEY_INTENT, coins.asset_id)
+        intent.putExtra(Constants.KEY_IS_FAVORITE_COIN, viewModel.isFavoriteCoin(coins.asset_id))
         startActivity(intent)
     }
 }

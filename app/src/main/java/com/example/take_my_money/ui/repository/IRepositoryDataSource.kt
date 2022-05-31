@@ -11,4 +11,6 @@ interface IRepositoryDataSource {
     suspend fun deleteCoin(name: String)
 
     suspend fun getAllCoins(): Array<CoinEntity>
+
+    suspend fun getByAssetId(assetId: String): CoinEntity?
 }
