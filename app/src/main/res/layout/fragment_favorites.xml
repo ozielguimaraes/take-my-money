@@ -7,7 +7,7 @@
     tools:context=".ui.view.fragments.FavoritesFragment">
 
     <TextView
-        android:id="@+id/ic_favorites"
+        android:id="@+id/favoritesFragment"
         android:layout_width="117dp"
         android:layout_height="63dp"
         android:textSize="30sp"
