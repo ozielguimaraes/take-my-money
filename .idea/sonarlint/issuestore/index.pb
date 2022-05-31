@@ -3,8 +3,6 @@
 Napp/src/main/java/com/example/take_my_money/ui/view/fragments/CoinsFragment.kt,c\d\cd97230607d2ef6095a32f9faa74029fa65e5835
 ‚
 Rapp/src/main/java/com/example/take_my_money/ui/view/fragments/FavoritesFragment.kt,b\5\b59ab430e23d972058cd14359aa0dbe25dde1763
-z
-Japp/src/main/java/com/example/take_my_money/ui/view/adapter/CoinAdapter.kt,d\d\dda2d76c417e7d248fc73f4708e55a2e9920e857
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 <
@@ -17,8 +15,6 @@ P
  app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 u
 Eapp/src/main/java/com/example/take_my_money/ui/view/SplashActivity.kt,b\9\b9574f51d155824f4e93f9440631cfd34340b87c
-
-Qapp/src/main/java/com/example/take_my_money/ui/view/coinlist/CoinListViewModel.kt,9\e\9ebce811efa3132bf51ba1ee06db41fb3ab0008a
 ˆ
 Xapp/src/main/java/com/example/take_my_money/ui/view/coinlist/CoinListViewModelFactory.kt,1\f\1fa46cace317d77284f33113f8f19d09c9fadfbc
 w
@@ -29,19 +25,11 @@ Capp/src/main/java/com/example/take_my_money/ui/data/dao/ICoinDAO.kt,9\5\95883e
 Lapp/src/main/java/com/example/take_my_money/ui/data/database/CoinDataBase.kt,9\6\96c6067e0624b9984302e9c7f647d96b229e5be8
 x
 Happ/src/main/java/com/example/take_my_money/ui/data/entity/CoinEntity.kt,a\d\ad8a88a186d68cca8c271344025d1d64cae7b471
-w
-Gapp/src/main/java/com/example/take_my_money/ui/models/ModelListCoins.kt,7\4\7407faa0aa57fed042cad9d9547a8e6028a79b83
-‚
-Rapp/src/main/java/com/example/take_my_money/ui/repository/IRepositoryDataSource.kt,9\6\96867712cf74b294bd3638bde92fc6094d90657c
 
 Oapp/src/main/java/com/example/take_my_money/ui/repository/RepositoryAllCoins.kt,b\0\b046694e4ce377412e2cb2b7246a386e5e2dd82d
 ƒ
 Sapp/src/main/java/com/example/take_my_money/ui/repository/RepositoryCoinsDetails.kt,9\a\9a3fadaaf0d711571947514f8a60005803f7f36c
 
 Qapp/src/main/java/com/example/take_my_money/ui/repository/RepositoryDataSource.kt,5\0\50ead58eb8b08a66e228fe95b820d7f04029a5e2
-q
-Aapp/src/main/java/com/example/take_my_money/ui/utils/Constants.kt,4\c\4c7ba62886a9f32729af69e37870a1f4edeba960
-‡
-Wapp/src/main/java/com/example/take_my_money/ui/view/coindetails/CoinDetailsViewModel.kt,3\f\3fb04a0d53343a76aee39a51c37d96c014f79ce2
 v
 Fapp/src/main/java/com/example/take_my_money/ui/view/DetailsActivity.kt,3\6\367e378f171072535895f31f5188d41989a27592
