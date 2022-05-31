@@ -1,6 +1,7 @@
 package com.example.take_my_money.ui.interfaces
 
 import com.example.take_my_money.ui.data.entity.CoinEntity
+import com.example.take_my_money.ui.models.ModelListCoins
 import com.example.take_my_money.ui.utils.Constants
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -14,7 +15,7 @@ interface IWebService {
     @GET(Constants.PATH_URL_ALL_COINS)
     fun getAllCoins(
         @Query("apikey") apikey: String?
-    ): Call<List<CoinEntity>>
+    ): Call<List<ModelListCoins>>
 
     @GET(Constants.PATH_URL_DETAILS)
     fun getCoinsDetails(

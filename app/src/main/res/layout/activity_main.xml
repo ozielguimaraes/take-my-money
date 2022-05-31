@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
+    android:id="@+id/Coins_lis"
     tools:context=".ui.view.CoinListActivity">
 
     <TextView
@@ -16,6 +17,7 @@
         android:text="@string/app_name"
         android:textColor="@color/white"
         android:textSize="24sp"
+        android:textAllCaps="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -50,8 +52,8 @@
         app:layout_constraintTop_toBottomOf="@+id/include"
         tools:listitem="@layout/coins_list_item" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
 
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btn_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -59,6 +61,8 @@
         app:itemIconTint="@color/btn_nav_item"
         app:itemTextColor="@color/btn_nav_selected_item"
         app:layout_constraintBottom_toBottomOf="@+id/Recyclerview_coins"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
