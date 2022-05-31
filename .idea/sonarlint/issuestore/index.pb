@@ -17,8 +17,6 @@ x
 Happ/src/main/java/com/example/take_my_money/ui/data/entity/CoinEntity.kt,a\d\ad8a88a186d68cca8c271344025d1d64cae7b471
 ‚
 Rapp/src/main/java/com/example/take_my_money/ui/repository/IRepositoryDataSource.kt,9\6\96867712cf74b294bd3638bde92fc6094d90657c
-u
-Eapp/src/main/java/com/example/take_my_money/ui/view/SplashActivity.kt,b\9\b9574f51d155824f4e93f9440631cfd34340b87c
 v
 Fapp/src/main/java/com/example/take_my_money/ui/view/DetailsActivity.kt,3\6\367e378f171072535895f31f5188d41989a27592
 
