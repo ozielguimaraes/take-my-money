@@ -27,5 +27,3 @@ Fapp/src/main/java/com/example/take_my_money/ui/view/DetailsActivity.kt,3\6\367
 Oapp/src/main/java/com/example/take_my_money/ui/repository/RepositoryAllCoins.kt,b\0\b046694e4ce377412e2cb2b7246a386e5e2dd82d
 ˆ
 Xapp/src/main/java/com/example/take_my_money/ui/view/coinlist/CoinListViewModelFactory.kt,1\f\1fa46cace317d77284f33113f8f19d09c9fadfbc
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
