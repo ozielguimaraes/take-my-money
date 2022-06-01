@@ -19,6 +19,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="21dp"
+            app:layout_constraintBottom_toTopOf="@+id/im_view"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tx_coin"
+            app:layout_constraintTop_toBottomOf="@+id/tx_coin"
+            app:srcCompat="@drawable/ic_stat" />
+
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btn_add_remove"
             android:layout_width="280dp"
@@ -69,7 +80,8 @@
             app:layout_constraintStart_toStartOf="@+id/im_view"
             app:layout_constraintTop_toBottomOf="@+id/im_view"
             tools:layout_editor_absoluteX="114dp"
-            tools:layout_editor_absoluteY="165dp"/>
+            tools:layout_editor_absoluteY="165dp"
+            />
 
         <TextView
             android:id="@+id/tx_coin"
@@ -106,16 +118,6 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/cifrao2"
-                android:layout_width="18dp"
-                android:layout_height="33dp"
-                android:text="$"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/tx_value_hour"
-                app:layout_constraintTop_toTopOf="@+id/tx_value_hour" />
-
-            <TextView
                 android:layout_width="232dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="20dp"
@@ -128,6 +130,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textView3"
                 android:layout_width="116dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="15dp"
@@ -139,6 +142,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textView4"
                 android:layout_width="116dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="15dp"
@@ -150,6 +154,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="116dp"
                 android:layout_height="35dp"
                 android:layout_marginStart="15dp"
@@ -161,34 +166,15 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/cifrao3"
-                android:layout_width="18dp"
-                android:layout_height="33dp"
-                android:text="$"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/tx_value_day"
-                app:layout_constraintTop_toTopOf="@+id/tx_value_day" />
-
-            <TextView
-                android:id="@+id/cifrao4"
-                android:layout_width="18dp"
-                android:layout_height="33dp"
-                android:text="$"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_constraintEnd_toStartOf="@+id/tx_value_month"
-                app:layout_constraintTop_toTopOf="@+id/tx_value_month" />
-
-            <TextView
                 android:id="@+id/tx_value_hour"
                 android:layout_width="141dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="100dp"
-                android:layout_marginEnd="15dp"
+                android:drawableStart="@drawable/ic_attach_money"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="123,456.78" />
 
@@ -197,10 +183,11 @@
                 android:layout_width="141dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="160dp"
-                android:layout_marginEnd="15dp"
+                android:drawableStart="@drawable/ic_attach_money"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView3"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="123,456.78" />
 
@@ -209,10 +196,11 @@
                 android:layout_width="141dp"
                 android:layout_height="35dp"
                 android:layout_marginTop="220dp"
-                android:layout_marginEnd="15dp"
+                android:drawableStart="@drawable/ic_attach_money"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/textView4"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="123,456.78" />
 

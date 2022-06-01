@@ -29,7 +29,8 @@
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imagem_coin"
         app:layout_constraintTop_toTopOf="@id/imagem_coin"
-        tools:text="@string/bitcoin" />
+        tools:text="@string/bitcoin"
+        android:drawableEnd="@drawable/ic_stat"/>
 
     <TextView
         android:id="@+id/txt_coin_model"
@@ -52,16 +53,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:text="3200000" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="$"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/txt_price_coin"
-        app:layout_constraintEnd_toStartOf="@+id/txt_price_coin"
-        app:layout_constraintTop_toTopOf="@+id/txt_price_coin" />
+        tools:text="3200000"
+        android:drawableStart="@drawable/ic_attach_money"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
