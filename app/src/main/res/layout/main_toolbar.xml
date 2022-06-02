@@ -9,7 +9,6 @@
         android:layout_marginTop="39dp"
         android:paddingVertical="4dp"
         android:paddingHorizontal="4dp"
-        android:background="@color/black"
         android:theme="?attr/actionBarTheme"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -18,28 +17,19 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="16dp"
-            android:padding="6dp"
-            android:background="@drawable/bg_search">
+            android:layout_marginRight="16dp">
 
-            <EditText
+            <androidx.appcompat.widget.AppCompatEditText
                 android:id="@+id/edit_search"
-                android:layout_width="373dp"
-                android:layout_height="38dp"
-                android:layout_marginLeft="24dp"
-                android:paddingStart="10dp"
-                android:paddingTop="5dp"
-                android:text="Digite aqui" />
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
+                android:padding="8dp"
+                android:hint="Digite aqui"
+                android:drawableStart="@drawable/ic_search"
+                android:background="@drawable/bg_search"/>
 
-            <ImageView
-                android:id="@+id/im_search"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/ic_search"
-                app:tint="@color/white"
-                android:layout_alignParentLeft="true"
-                android:layout_marginLeft="8dp"
-                android:layout_centerVertical="true"/>
         </RelativeLayout>
 
   </androidx.appcompat.widget.Toolbar>

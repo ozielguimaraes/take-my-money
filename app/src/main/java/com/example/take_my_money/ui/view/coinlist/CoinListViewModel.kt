@@ -31,4 +31,21 @@ class CoinListViewModel(
             }
         })
     }
+    fun getFilterCoin(coinName: String) {
+        val requestApi: Call<List<ModelListCoins>> = repository.getAllCoins()
+        requestApi.enqueue(object : retrofit2.Callback<List<ModelListCoins>> {
+            override fun onResponse(
+                call: Call<List<ModelListCoins>>,
+                response: Response<List<ModelListCoins>>
+            ) {
+
+                val listresult = response.body()
+                _listcoins.postValue(listresult?.filter { it.name.equals(coinName) })
+            }
+
+            override fun onFailure(call: Call<List<ModelListCoins>>, t: Throwable) {
+                _errorMsg.postValue(t.message)
+            }
+        })
+    }
 }

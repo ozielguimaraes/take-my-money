@@ -13,4 +13,13 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <item name="searchIcon"> @color/white </item>
+        <item name="searchHintIcon"> @color/white </item>
+        <item name="searchViewStyle"> @color/white </item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:editTextColor">@color/white</item>
+        <item name="android:searchIcon">@drawable/ic_search</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
 </resources>

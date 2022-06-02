@@ -15,7 +15,7 @@ class FavoriteActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val date = Calendar.getInstance().time
-        val dateTimeFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
+        val dateTimeFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
         binding.textViewDateNow.text = dateTimeFormat.format(date)
     }
 }
