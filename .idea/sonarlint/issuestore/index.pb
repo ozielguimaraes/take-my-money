@@ -27,8 +27,6 @@ x
 Happ/src/main/java/com/example/take_my_money/ui/interfaces/IWebService.kt,e\9\e928c3507497f0508cf8d03bd3e882e0e5187316
 w
 Gapp/src/main/java/com/example/take_my_money/ui/models/ModelListCoins.kt,7\4\7407faa0aa57fed042cad9d9547a8e6028a79b83
-w
-Gapp/src/main/java/com/example/take_my_money/ui/view/CoinListActivity.kt,e\a\eaa6f61f87e6c021dafed9717a6e9fa8b575b88e
 Å
 Qapp/src/main/java/com/example/take_my_money/ui/view/coinlist/CoinListViewModel.kt,9\e\9ebce811efa3132bf51ba1ee06db41fb3ab0008a
 Å
