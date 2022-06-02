@@ -39,5 +39,3 @@ Oapp/src/main/java/com/example/take_my_money/ui/repository/RepositoryAllCoins.kt
 Rapp/src/main/java/com/example/take_my_money/ui/repository/IRepositoryDataSource.kt,9\6\96867712cf74b294bd3638bde92fc6094d90657c
 ƒ
 Sapp/src/main/java/com/example/take_my_money/ui/repository/RepositoryCoinsDetails.kt,9\a\9a3fadaaf0d711571947514f8a60005803f7f36c
-q
-Aapp/src/main/java/com/example/take_my_money/ui/utils/Constants.kt,4\c\4c7ba62886a9f32729af69e37870a1f4edeba960
