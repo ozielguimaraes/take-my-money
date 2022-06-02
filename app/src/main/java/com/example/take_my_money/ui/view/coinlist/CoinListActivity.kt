@@ -2,6 +2,7 @@ package com.example.take_my_money.ui.view.coinlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -29,11 +30,8 @@ class CoinListActivity : AppCompatActivity(), Onclik {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val date = Calendar.getInstance().time
-        val dateTimeFormat = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault())
-        binding.textViewDateNow.text = dateTimeFormat.format(date)
-
-        val coinIDAO: ICoinDAO = CoinDataBase.getInstance(this).iCoinDAO
+        val coinIDAO: ICoinDAO =
+            CoinDataBase.getInstance(this).iCoinDAO
         viewModel = ViewModelProvider(
             this,
             CoinListViewModelFactory(
@@ -41,18 +39,49 @@ class CoinListActivity : AppCompatActivity(), Onclik {
                 RepositoryDataSource(coinIDAO)
             )
         )[CoinListViewModel::class.java]
-
-        getAllCoins()
+        setupObservers()
+        viewModel.requestCoinApi()
+        setupView()
     }
 
-    private fun getAllCoins() {
+    private fun setupView() {
+        val date = Calendar.getInstance().time
+        val dateTimeFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
+        binding.textViewDateNow.text = dateTimeFormat.format(date)
         binding.RecyclerviewCoins.layoutManager = LinearLayoutManager(this)
         binding.RecyclerviewCoins.setHasFixedSize(true)
+        binding.editSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return filterCoins(query)
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                return filterCoins(query)
+            }
+        })
+    }
+
+    private fun setupObservers() {
         viewModel.listcoins.observe(this) { listCoin ->
             val adapter = CoinAdapter(this)
             adapter.submitList(listCoin)
             binding.RecyclerviewCoins.adapter = adapter
         }
+    }
+
+    private fun filterCoins(query: String?): Boolean {
+        val adapter = CoinAdapter(this@CoinListActivity)
+        if (query.isNullOrEmpty()) {
+            adapter.submitList(viewModel.listcoins.value)
+        } else {
+            adapter.submitList(
+                viewModel.listcoins.value?.filter {
+                    it.name?.contains(query) ?: false
+                }
+            )
+        }
+        binding.RecyclerviewCoins.adapter = adapter
+        return true
     }
 
     override fun onClickCoins(coin: CoinEntity) {

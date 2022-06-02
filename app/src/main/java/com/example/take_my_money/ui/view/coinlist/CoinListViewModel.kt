@@ -1,6 +1,5 @@
 package com.example.take_my_money.ui.view.coinlist
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -20,7 +19,7 @@ class CoinListViewModel(
     private val _errorMsg = MutableLiveData<String>()
     val erroMsg: LiveData<String> get() = _errorMsg
 
-    fun getAllCoins() {
+    fun requestCoinApi() {
         val requestApi: Call<List<CoinEntity>> = repository.getAllCoins()
         requestApi.enqueue(object : retrofit2.Callback<List<CoinEntity>> {
             override fun onResponse(
@@ -29,12 +28,10 @@ class CoinListViewModel(
             ) {
 
                 val listresult = response.body()
-                Log.i("TAG", "onResponse: $response")
                 _listcoins.postValue(listresult?.filter { it.type_is_crypto == 1 })
             }
 
             override fun onFailure(call: Call<List<CoinEntity>>, t: Throwable) {
-                Log.i("TAG", "onFailure: ${t.message}")
                 _errorMsg.postValue(t.message)
             }
         })
