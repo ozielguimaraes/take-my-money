@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/black"
     android:id="@+id/Coins_lis"
-    tools:context=".ui.view.CoinListActivity">
+    tools:context=".ui.view.coinlist.CoinListActivity">
 
     <TextView
         android:id="@+id/take_my_money"

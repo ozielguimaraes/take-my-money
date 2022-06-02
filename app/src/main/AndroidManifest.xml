@@ -13,13 +13,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Takemymoney">
         <activity
-            android:name=".ui.view.CoinListActivity"
+            android:name=".ui.view.coinlist.CoinListActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.DetailsActivity"
+            android:name=".ui.view.coindetails.DetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.view.FavoriteActivity"
+            android:name=".ui.view.coinsfavorite.FavoriteActivity"
             android:exported="false" />
         <activity
             android:name=".ui.view.SplashActivity"

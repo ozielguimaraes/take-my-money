@@ -13,11 +13,11 @@ class RepositoryDataSource(private val iCoinDAO: ICoinDAO) : IRepositoryDataSour
         return iCoinDAO.delete(name)
     }
 
-    override suspend fun getAllCoins(): Array<CoinEntity> {
+    override suspend fun getAllCoins(): List<CoinEntity> {
         return iCoinDAO.allCoin()
     }
 
-    override suspend fun getByAssetId(assetId: String): CoinEntity {
+    override suspend fun getByAssetId(assetId: String): CoinEntity? {
         return iCoinDAO.getByAssetId(assetId)
     }
 }

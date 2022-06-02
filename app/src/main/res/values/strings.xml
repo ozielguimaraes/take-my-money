@@ -26,5 +26,7 @@
     <string name="coins">Coins</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="favorites">Favorites</string>
+    <string name="remove_coin_database">Moeda removida com sucesso</string>
+    <string name="add_coin_database">Moeda adicionada com sucesso</string>
 
 </resources>

@@ -13,10 +13,10 @@ interface ICoinDAO {
     suspend fun insert(coin: CoinEntity): Long
 
     @Query("SELECT * FROM coin")
-    suspend fun allCoin(): Array<CoinEntity>
+    suspend fun allCoin(): List<CoinEntity>
 
     @Query("SELECT * FROM coin WHERE asset_id = :assetId")
-    suspend fun getByAssetId(assetId: String): CoinEntity
+    suspend fun getByAssetId(assetId: String): CoinEntity?
 
     @Query("DELETE FROM coin WHERE name = :id")
     suspend fun delete(id: String)

@@ -15,21 +15,22 @@ import java.io.Serializable
 data class CoinEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
-    val asset_id: String,
-    val name: String,
-    val volume_1hrs_usd: Double,
-    val volume_1day_usd: Double,
-    val volume_1mth_usd: Double,
-    val price_usd: Double,
-    val data_end: String,
-    val id_icon: String
+    val asset_id: String?,
+    val name: String?,
+    val type_is_crypto: Int?,
+    val volume_1hrs_usd: Double?,
+    val volume_1day_usd: Double?,
+    val volume_1mth_usd: Double?,
+    val price_usd: Double?,
+    val url: String?,
+    val id_icon: String?
 ) : Serializable {
 
     fun getPathUrlImage(): String {
         return Constants.BASE_URL_IMG.plus(getCoinFileName())
     }
 
-    fun getCoinFileName(): String {
-        return "${id_icon.replace("-", "")}.png"
+    private fun getCoinFileName(): String {
+        return "${id_icon?.replace("-", "")}.png"
     }
 }

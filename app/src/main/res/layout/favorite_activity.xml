@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.view.FavoriteActivity"
+    tools:context=".ui.view.coinsfavorite.FavoriteActivity"
     android:background="@color/black_two">
 
     <TextView
@@ -34,6 +34,7 @@
         app:layout_constraintTop_toBottomOf="@+id/take_my_money" />
 
     <androidx.gridlayout.widget.GridLayout
+        android:id="@+id/grid_layout_favorite"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -8,6 +8,7 @@ import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.os.postDelayed
 import com.example.take_my_money.databinding.ActivitySplashBinding
+import com.example.take_my_money.ui.view.coinlist.CoinListActivity
 
 class SplashActivity : AppCompatActivity() {
 
