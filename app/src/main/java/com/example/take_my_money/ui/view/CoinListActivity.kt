@@ -33,7 +33,6 @@ class CoinListActivity : AppCompatActivity(), Onclik {
         viewModel.getAllCoins()
         setupView()
     }
-
     private fun setupView() {
         val date = Calendar.getInstance().time
         val dateTimeFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
