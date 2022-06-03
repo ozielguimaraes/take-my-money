@@ -11,12 +11,8 @@ Napp/src/main/java/com/example/take_my_money/ui/view/fragments/CoinsFragment.kt
 Rapp/src/main/java/com/example/take_my_money/ui/view/fragments/FavoritesFragment.kt,b\5\b59ab430e23d972058cd14359aa0dbe25dde1763
 x
 Happ/src/main/java/com/example/take_my_money/ui/data/entity/CoinEntity.kt,a\d\ad8a88a186d68cca8c271344025d1d64cae7b471
-w
-Gapp/src/main/java/com/example/take_my_money/ui/view/FavoriteActivity.kt,c\8\c8f8af33386aac3e75848a0d5ac581534c4cb096
 u
 Eapp/src/main/java/com/example/take_my_money/ui/view/SplashActivity.kt,b\9\b9574f51d155824f4e93f9440631cfd34340b87c
-v
-Fapp/src/main/java/com/example/take_my_money/ui/view/DetailsActivity.kt,3\6\367e378f171072535895f31f5188d41989a27592
 ˆ
 Xapp/src/main/java/com/example/take_my_money/ui/view/coinlist/CoinListViewModelFactory.kt,1\f\1fa46cace317d77284f33113f8f19d09c9fadfbc
 @

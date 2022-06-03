@@ -1,4 +1,5 @@
 package com.example.take_my_money.ui.view
+
 import android.content.Intent
 import android.os.Bundle
 import android.widget.SearchView
@@ -6,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.take_my_money.Onclik
+import com.example.take_my_money.R
 import com.example.take_my_money.databinding.ActivityMainBinding
 import com.example.take_my_money.ui.interfaces.IWebService
 import com.example.take_my_money.ui.models.ModelListCoins
@@ -29,17 +31,19 @@ class CoinListActivity : AppCompatActivity(), Onclik {
         viewModel = ViewModelProvider(
             this, CoinListViewModelFactory(RepositoryAllCoins(retrofit = IWebService.getBaseUrl()))
         )[CoinListViewModel::class.java]
+        setupNavigationBottom()
         setupObservers()
         viewModel.getAllCoins()
         setupView()
     }
+
     private fun setupView() {
         val date = Calendar.getInstance().time
         val dateTimeFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
         binding.textViewDateNow.text = dateTimeFormat.format(date)
         binding.RecyclerviewCoins.layoutManager = LinearLayoutManager(this)
         binding.RecyclerviewCoins.setHasFixedSize(true)
-        binding.editSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        binding.editSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return filterCoins(query)
             }
@@ -62,11 +66,12 @@ class CoinListActivity : AppCompatActivity(), Onclik {
         val adapter = CoinAdapter(this@CoinListActivity)
         if (query.isNullOrEmpty()) {
             adapter.submitList(viewModel.listcoins.value)
-        }
-        else {
-            adapter.submitList(viewModel.listcoins.value?.filter {
-                it.name?.contains(query) ?: false
-            })
+        } else {
+            adapter.submitList(
+                viewModel.listcoins.value?.filter {
+                    it.name?.contains(query) ?: false
+                }
+            )
         }
         binding.RecyclerviewCoins.adapter = adapter
         return true
@@ -78,4 +83,14 @@ class CoinListActivity : AppCompatActivity(), Onclik {
         startActivity(intent)
     }
 
+    private fun setupNavigationBottom() {
+        binding.btnNavigation.setOnItemReselectedListener {
+            when (it.itemId) {
+                R.id.ic_favorites -> {
+                    startActivity((Intent(this, FavoriteActivity::class.java)))
+                    finish()
+                }
+            }
+        }
+    }
 }

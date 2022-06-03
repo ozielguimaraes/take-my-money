@@ -9,11 +9,11 @@
     tools:context=".ui.view.CoinListActivity">
 
     <LinearLayout
-        android:orientation="vertical"
-        android:gravity="center"
         android:id="@+id/linear_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="@id/Recyclerview_coins"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -55,7 +55,6 @@
             android:padding="6dp"
             android:queryBackground="@android:color/transparent"
             android:queryHint="Digite aqui"
-            android:searchIcon="@drawable/ic_search"
             android:submitBackground="@color/white"
             android:textColorHint="@color/design_default_color_background"
             android:theme="@style/SearchViewStyle" />
@@ -69,11 +68,10 @@
         android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/linear_layout"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/linear_layout"
         tools:listitem="@layout/coins_list_item" />
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/btn_navigation"

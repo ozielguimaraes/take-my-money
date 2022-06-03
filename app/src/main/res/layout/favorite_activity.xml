@@ -36,11 +36,23 @@
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/btn_navigationFav"
+        app:layout_constraintTop_toBottomOf="@+id/text_view_date_now">
+
+    </androidx.gridlayout.widget.GridLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btn_navigationFav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_two"
+        app:itemIconTint="@color/btn_nav_item"
+        app:itemTextColor="@color/btn_nav_selected_item"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_view_date_now" >
-
-    </androidx.gridlayout.widget.GridLayout>
+        app:menu="@menu/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
