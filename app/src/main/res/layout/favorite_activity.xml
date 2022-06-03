@@ -14,7 +14,7 @@
         android:layout_marginTop="15dp"
         android:fontFamily="@font/roboto"
         android:gravity="center_horizontal"
-        android:text="@string/name_app_splash"
+        android:text="@string/app_name"
         android:textColor="@color/white"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,9 +37,20 @@
         android:id="@+id/grid_layout_favorite"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/text_view_date_now" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/btn_navigationFav"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black_two"
+        app:itemIconTint="@color/btn_nav_item"
+        app:itemTextColor="@color/btn_nav_selected_item"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
