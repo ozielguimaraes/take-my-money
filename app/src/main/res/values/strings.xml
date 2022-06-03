@@ -25,5 +25,7 @@
     <string name="coins">Coins</string>
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="favorites">Favorites</string>
+    <string name="moeda_digital">Moeda Digital</string>
+    <string name="moeda_digital">Moeda Digital Splach</string>
 
 </resources>

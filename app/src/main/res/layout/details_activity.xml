@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -35,7 +34,7 @@
             android:id="@+id/btn_add_remove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="4dp"
             android:background="@drawable/btn_add_remove"
             android:fontFamily="@font/roboto"
             android:text="@string/add"
@@ -43,6 +42,7 @@
             android:textStyle="bold"
             app:backgroundTint="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tx_value" />
 
@@ -50,7 +50,7 @@
             android:id="@+id/im_view"
             android:layout_width="53dp"
             android:layout_height="49dp"
-            android:layout_marginTop="45dp"
+            android:layout_marginTop="30dp"
             app:layout_constraintEnd_toEndOf="@+id/tx_coin"
             app:layout_constraintStart_toStartOf="@+id/tx_coin"
             app:layout_constraintTop_toBottomOf="@+id/tx_coin"
@@ -70,17 +70,16 @@
             android:id="@+id/tx_value"
             android:layout_width="184dp"
             android:layout_height="49dp"
-            android:layout_marginTop="29dp"
+            android:layout_marginTop="4dp"
             android:fontFamily="@font/roboto"
             android:gravity="center_horizontal"
             android:textColor="@color/white"
-            tools:text="31.234.20"
             android:textSize="32sp"
             app:layout_constraintEnd_toEndOf="@+id/im_view"
+            app:layout_constraintHorizontal_bias="0.496"
             app:layout_constraintStart_toStartOf="@+id/im_view"
             app:layout_constraintTop_toBottomOf="@+id/im_view"
-            tools:layout_editor_absoluteX="114dp"
-            tools:layout_editor_absoluteY="165dp"/>
+            tools:text="31.234.20" />
 
         <TextView
             android:id="@+id/tx_coin"
@@ -93,7 +92,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="BTC"/>
+            tools:text="BTC" />
 
         <Button
             android:id="@+id/btn_back"
@@ -107,15 +106,27 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_end"
-            android:layout_width="413dp"
-            android:layout_height="388dp"
-            android:layout_marginTop="365dp"
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/btn_navigationDet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/black_two"
+            app:itemIconTint="@color/btn_nav_item"
+            app:itemTextColor="@color/btn_nav_selected_item"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:menu="@menu/menu" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/layout_end"
+            android:layout_width="418dp"
+            android:layout_height="363dp"
+            android:layout_marginTop="365dp"
+            android:background="@color/black_two"
+            app:layout_constraintBottom_toTopOf="@id/btn_navigationDet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
 
             <TextView
                 android:layout_width="232dp"

@@ -4,9 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/hduartol/AndroidStudioProjects/take-my-money/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
+        <entry key="..\:/Users/hduartol/AndroidStudioProjects/take-my-money/app/src/main/res/layout/activity_splash.xml" value="0.1796875" />
         <entry key="..\:/Users/hduartol/AndroidStudioProjects/take-my-money/app/src/main/res/layout/coin_list_activity.xml" value="0.1" />
         <entry key="..\:/Users/hduartol/AndroidStudioProjects/take-my-money/app/src/main/res/layout/coins_list_item.xml" value="0.14444444444444443" />
-        <entry key="..\:/Users/hduartol/AndroidStudioProjects/take-my-money/app/src/main/res/layout/details_activity.xml" value="0.14444444444444443" />
+        <entry key="..\:/Users/hduartol/AndroidStudioProjects/take-my-money/app/src/main/res/layout/details_activity.xml" value="0.2722222222222222" />
         <entry key="..\:/Users/hduartol/AndroidStudioProjects/take-my-money/app/src/main/res/layout/favorite_activity.xml" value="0.1" />
         <entry key="..\:/Users/hduartol/AndroidStudioProjects/take-my-money/app/src/main/res/layout/fragment_coins.xml" value="0.14444444444444443" />
         <entry key="..\:/Users/hduartol/AndroidStudioProjects/take-my-money/app/src/main/res/layout/fragment_favorites.xml" value="0.14444444444444443" />

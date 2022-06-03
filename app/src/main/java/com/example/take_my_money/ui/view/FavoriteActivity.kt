@@ -21,12 +21,16 @@ class FavoriteActivity : AppCompatActivity() {
         val dateTimeFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
         binding.textViewDateNow.text = dateTimeFormat.format(date)
     }
+
     private fun setupNavigationBottom() {
         binding.btnNavigationFav.setOnItemReselectedListener {
             when (it.itemId) {
                 R.id.ic_coins -> {
                     startActivity(Intent(this, CoinListActivity::class.java))
                     finish()
+                }
+                R.id.ic_favorites -> {
+                    startActivity((Intent(this, FavoriteActivity::class.java)))
                 }
             }
         }
