@@ -10,7 +10,7 @@ import com.example.take_my_money.ui.data.entity.CoinEntity
 @Database(entities = [CoinEntity::class], version = 1)
 abstract class CoinDataBase : RoomDatabase() {
 
-    abstract val ICoinDAO: ICoinDAO
+    abstract val iCoinDAO: ICoinDAO
 
     companion object {
         @Volatile

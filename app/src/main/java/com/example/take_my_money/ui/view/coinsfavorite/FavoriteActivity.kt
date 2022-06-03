@@ -1,4 +1,4 @@
-package com.example.take_my_money.ui.view
+package com.example.take_my_money.ui.view.coinsfavorite
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
