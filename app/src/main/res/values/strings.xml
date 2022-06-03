@@ -1,8 +1,7 @@
 <resources>
     <string name="app_name">take-my-money</string>
 
-    <!--SplashScreen-->
-    <string name="name_app_splash">Moeda digital</string>
+
     <string name="content_description_splash_screen">Nome do aplicativo na tela inicial: Take my money</string>
 
     <string name="back">Voltar</string>
@@ -28,6 +27,7 @@
     <string name="favorites">Favorites</string>
     <string name="remove_coin_database">Moeda removida com sucesso</string>
     <string name="add_coin_database">Moeda adicionada com sucesso</string>
-    <string name="name_lis_coin">Moeda digital</string>
+
+    <string name="name_app">Moeda digital</string>
 
 </resources>
