@@ -14,7 +14,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/content_description_splash_screen"
-        android:text="moeda_digital"
+        android:text="@string/name_app_splash"
         android:textAllCaps="true"
         android:textColor="@color/white"
         android:textSize="48sp"

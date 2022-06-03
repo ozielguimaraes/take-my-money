@@ -1,10 +1,11 @@
-package com.example.take_my_money.ui.view
+package com.example.take_my_money.ui.view.coinsfavorite
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.take_my_money.R
 import com.example.take_my_money.databinding.FavoriteActivityBinding
+import com.example.take_my_money.ui.view.coinlist.CoinListActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
