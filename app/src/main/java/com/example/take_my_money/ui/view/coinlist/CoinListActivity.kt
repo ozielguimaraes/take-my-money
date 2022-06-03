@@ -6,6 +6,7 @@ import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.take_my_money.R
 import com.example.take_my_money.databinding.ActivityMainBinding
 import com.example.take_my_money.ui.data.dao.ICoinDAO
 import com.example.take_my_money.ui.data.database.CoinDataBase
@@ -17,6 +18,7 @@ import com.example.take_my_money.ui.utils.Constants
 import com.example.take_my_money.ui.view.CoinAdapter
 import com.example.take_my_money.ui.view.adapter.Onclik
 import com.example.take_my_money.ui.view.coindetails.DetailsActivity
+import com.example.take_my_money.ui.view.coinsfavorite.FavoriteActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -39,7 +41,7 @@ class CoinListActivity : AppCompatActivity(), Onclik {
                 RepositoryDataSource(coinIDAO)
             )
         )[CoinListViewModel::class.java]
-
+        setupNavigationBottom()
         setupObservers()
         viewModel.loadDataBase()
         viewModel.requestCoinApi()
@@ -94,5 +96,16 @@ class CoinListActivity : AppCompatActivity(), Onclik {
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra(Constants.KEY_INTENT, coin)
         startActivity(intent)
+    }
+
+    private fun setupNavigationBottom() {
+        binding.btnNavigation.setOnItemReselectedListener {
+            when (it.itemId) {
+                R.id.ic_favorites -> {
+                    startActivity((Intent(this, FavoriteActivity::class.java)))
+                    finish()
+                }
+            }
+        }
     }
 }

@@ -13,6 +13,7 @@ import com.example.take_my_money.ui.data.database.CoinDataBase
 import com.example.take_my_money.ui.data.entity.CoinEntity
 import com.example.take_my_money.ui.repository.RepositoryDataSource
 import com.example.take_my_money.ui.utils.Constants
+import com.example.take_my_money.ui.view.coinlist.CoinListActivity
 import com.example.take_my_money.ui.view.coinsfavorite.FavoriteActivity
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
@@ -29,6 +30,7 @@ class DetailsActivity : AppCompatActivity() {
         binding = DetailsActivityBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        setupNavigationBottom()
 
         val coinIDAO: ICoinDAO =
             CoinDataBase.getInstance(this).iCoinDAO
@@ -113,5 +115,20 @@ class DetailsActivity : AppCompatActivity() {
         val intent = Intent(this, FavoriteActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)
+    }
+
+    private fun setupNavigationBottom() {
+        binding.btnNavigationDet.setOnItemReselectedListener {
+            when (it.itemId) {
+                R.id.ic_favorites -> {
+                    startActivity((Intent(this, FavoriteActivity::class.java)))
+                    finish()
+                }
+                R.id.ic_coins -> {
+                    startActivity(Intent(this, CoinListActivity::class.java))
+                    finish()
+                }
+            }
+        }
     }
 }

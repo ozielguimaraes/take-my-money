@@ -106,6 +106,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tx_value" />
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/btn_navigationDet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/black_two"
+            app:itemIconTint="@color/btn_nav_item"
+            app:itemTextColor="@color/btn_nav_selected_item"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/menu" />
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_end"
             android:layout_width="match_parent"

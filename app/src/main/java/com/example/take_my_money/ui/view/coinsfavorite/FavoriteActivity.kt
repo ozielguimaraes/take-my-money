@@ -5,6 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.take_my_money.R
 import com.example.take_my_money.databinding.FavoriteActivityBinding
 import com.example.take_my_money.ui.data.dao.ICoinDAO
 import com.example.take_my_money.ui.data.database.CoinDataBase
@@ -13,6 +14,7 @@ import com.example.take_my_money.ui.repository.RepositoryDataSource
 import com.example.take_my_money.ui.utils.Constants
 import com.example.take_my_money.ui.view.adapter.Onclik
 import com.example.take_my_money.ui.view.coindetails.DetailsActivity
+import com.example.take_my_money.ui.view.coinlist.CoinListActivity
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -25,6 +27,7 @@ class FavoriteActivity : AppCompatActivity(), Onclik {
         binding = FavoriteActivityBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+        setupNavigationBottom()
 
         val coinIDAO: ICoinDAO = CoinDataBase.getInstance(this).iCoinDAO
         viewModel = ViewModelProvider(
@@ -63,5 +66,19 @@ class FavoriteActivity : AppCompatActivity(), Onclik {
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         intent.putExtra(Constants.KEY_INTENT, coin)
         startActivity(intent)
+    }
+
+    private fun setupNavigationBottom() {
+        binding.btnNavigationFav.setOnItemReselectedListener {
+            when (it.itemId) {
+                R.id.ic_coins -> {
+                    startActivity(Intent(this, CoinListActivity::class.java))
+                    finish()
+                }
+                R.id.ic_favorites -> {
+                    startActivity((Intent(this, FavoriteActivity::class.java)))
+                }
+            }
+        }
     }
 }
