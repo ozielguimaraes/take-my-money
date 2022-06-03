@@ -47,13 +47,14 @@
 
         <ImageView
             android:id="@+id/imageView_star"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:visibility="invisible"
             android:layout_marginEnd="48dp"
+            android:src="@drawable/ic_star"
             app:layout_constraintBottom_toTopOf="@+id/im_view"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tx_coin"
-            app:srcCompat="@drawable/ic_stat" />
+            app:layout_constraintTop_toBottomOf="@+id/tx_coin"/>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/im_view"

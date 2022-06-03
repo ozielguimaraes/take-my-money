@@ -3,6 +3,7 @@ package com.example.take_my_money.ui.view
 import android.os.Build
 import android.support.annotation.RequiresApi
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -16,7 +17,7 @@ import java.text.NumberFormat
 class CoinAdapter(private val onclikcoin: Onclik) :
     ListAdapter<CoinEntity, CoinAdapter.CoinViewHolder>(DiffCallback()), Onclik {
 
-    override fun onClickCoins(movie: CoinEntity) {
+    override fun onClickCoins(coin: CoinEntity) {
     }
 
     class CoinViewHolder(val binding: CoinsListItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -36,6 +37,7 @@ class CoinAdapter(private val onclikcoin: Onclik) :
         val item = getItem(position)
         holder.binding.txtCoin.text = item.name
         holder.binding.txtCoinModel.text = item.asset_id
+        holder.binding.imageStar.visibility = View.INVISIBLE
 
         try {
             Picasso.get().load(item.getPathUrlImage()).into(holder.binding.imagemCoin)
