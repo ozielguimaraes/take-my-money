@@ -7,8 +7,6 @@ P
 Lapp/src/main/java/com/example/take_my_money/ui/data/database/CoinDataBase.kt,9\6\96c6067e0624b9984302e9c7f647d96b229e5be8
 x
 Happ/src/main/java/com/example/take_my_money/ui/interfaces/IWebService.kt,e\9\e928c3507497f0508cf8d03bd3e882e0e5187316
-
-Oapp/src/main/java/com/example/take_my_money/ui/repository/RepositoryAllCoins.kt,b\0\b046694e4ce377412e2cb2b7246a386e5e2dd82d
 q
 Aapp/src/main/java/com/example/take_my_money/ui/utils/Constants.kt,4\c\4c7ba62886a9f32729af69e37870a1f4edeba960
 ç
@@ -41,7 +39,5 @@ Rapp/src/main/java/com/example/take_my_money/ui/view/coindetails/DetailsActivity
 Papp/src/main/java/com/example/take_my_money/ui/view/coinlist/CoinListActivity.kt,8\8\88dbdcf03b81124fba9d66e4cf7bf09bacbaec40
 à
 Xapp/src/main/java/com/example/take_my_money/ui/view/coinlist/CoinListViewModelFactory.kt,1\f\1fa46cace317d77284f33113f8f19d09c9fadfbc
-Å
-Qapp/src/main/java/com/example/take_my_money/ui/view/coinlist/CoinListViewModel.kt,9\e\9ebce811efa3132bf51ba1ee06db41fb3ab0008a
 Ö
 Uapp/src/main/java/com/example/take_my_money/ui/view/coinsfavorite/FavoriteActivity.kt,5\9\5929af25fb672e819223c0b306281033324b07a0
