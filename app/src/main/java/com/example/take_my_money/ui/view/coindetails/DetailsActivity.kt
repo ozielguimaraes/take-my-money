@@ -2,6 +2,7 @@ package com.example.take_my_money.ui.view.coindetails
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -42,22 +43,38 @@ class DetailsActivity : AppCompatActivity() {
         getCoinListScreen()
     }
 
+    private fun addStarFavoriteOrNot() {
+        if (viewModel.returnDataBase.value == null) {
+            binding.imageViewStar.visibility = View.INVISIBLE
+        } else {
+            binding.imageViewStar.visibility = View.VISIBLE
+        }
+    }
+
     private fun getCoinListScreen() {
         val coinDetails = intent.getSerializableExtra(Constants.KEY_INTENT)
-        passDataToScreen(coinDetails as CoinEntity?)
+        val coinFavorite = intent.getSerializableExtra(Constants.KEY_INTENT)
+        if (coinDetails == null) {
+            passDataToScreen(coinDetails as CoinEntity?)
+        } else {
+            passDataToScreen(coinFavorite as CoinEntity?)
+        }
     }
 
     private fun passDataToScreen(coinDetails: CoinEntity?) {
         coinDetails?.let {
-            binding.txCoin.text = coinDetails.name
-            binding.txValue.text = NumberFormat.getInstance().format(coinDetails.price_usd)
-            binding.txValueHour.text =
-                NumberFormat.getInstance().format(coinDetails.volume_1hrs_usd)
-            binding.txValueDay.text = NumberFormat.getInstance().format(coinDetails.volume_1day_usd)
-            binding.txValueMonth.text =
-                NumberFormat.getInstance().format(coinDetails.volume_1mth_usd)
-            Picasso.get().load(coinDetails.getPathUrlImage()).into(binding.imView)
-            checkCoinDataBase(coinDetails)
+            try {
+                binding.txCoin.text = coinDetails.asset_id
+                binding.txValue.text = NumberFormat.getInstance().format(coinDetails.price_usd)
+                binding.txValueHour.text = NumberFormat.getInstance().format(coinDetails.volume_1hrs_usd)
+                binding.txValueDay.text = NumberFormat.getInstance().format(coinDetails.volume_1day_usd)
+                binding.txValueMonth.text = NumberFormat.getInstance().format(coinDetails.volume_1mth_usd)
+                Picasso.get().load(coinDetails.getPathUrlImage()).into(binding.imView)
+            } catch (e: Exception) {
+                Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
+            } finally {
+                checkCoinDataBase(coinDetails)
+            }
         }
     }
 
@@ -69,6 +86,7 @@ class DetailsActivity : AppCompatActivity() {
     private fun observers(coin: CoinEntity) {
         viewModel.returnDataBase.observe(this) {
             insertOrDeleteDataBase(coin)
+            addStarFavoriteOrNot()
         }
     }
 
@@ -78,9 +96,8 @@ class DetailsActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.IO).launch {
                     viewModel.insertCoinDataBase(coin)
                 }
-                Toast.makeText(this, getString(R.string.add_coin_database), Toast.LENGTH_LONG)
-                    .show()
-                screenFavorite()
+                Toast.makeText(this, getString(R.string.add_coin_database), Toast.LENGTH_LONG).show()
+                callingScreenFavorite()
             }
         } else {
             binding.btnAddRemove.text = getString(R.string.remover)
@@ -88,14 +105,13 @@ class DetailsActivity : AppCompatActivity() {
                 CoroutineScope(Dispatchers.IO).launch {
                     coin.name?.let { it1 -> viewModel.deleteCoinDataBase(it1) }
                 }
-                Toast.makeText(this, getString(R.string.remove_coin_database), Toast.LENGTH_LONG)
-                    .show()
-                screenFavorite()
+                Toast.makeText(this, getString(R.string.remove_coin_database), Toast.LENGTH_LONG).show()
+                callingScreenFavorite()
             }
         }
     }
 
-    private fun screenFavorite() {
+    private fun callingScreenFavorite() {
         val intent = Intent(this, FavoriteActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(intent)

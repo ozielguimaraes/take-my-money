@@ -22,14 +22,23 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:drawableEnd="@drawable/ic_stat"
         android:fontFamily="@font/roboto"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imagem_coin"
         app:layout_constraintTop_toTopOf="@id/imagem_coin"
         tools:text="@string/bitcoin" />
+
+    <ImageView
+        android:id="@+id/image_star"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_star"
+        android:layout_marginStart="12dp"
+        app:layout_constraintBottom_toBottomOf="@+id/txt_coin"
+        app:layout_constraintStart_toEndOf="@+id/txt_coin"
+        app:layout_constraintTop_toTopOf="@+id/txt_coin" />
 
     <TextView
         android:id="@+id/txt_coin_model"
@@ -38,7 +47,7 @@
         android:layout_marginStart="8dp"
         android:fontFamily="@font/roboto"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintStart_toEndOf="@+id/imagem_coin"
         app:layout_constraintTop_toBottomOf="@id/txt_coin"
         tools:text="btc" />

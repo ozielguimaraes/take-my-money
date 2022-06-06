@@ -43,6 +43,7 @@ class CoinListActivity : AppCompatActivity(), Onclik {
         )[CoinListViewModel::class.java]
         setupNavigationBottom()
         setupObservers()
+        viewModel.loadDataBase()
         viewModel.requestCoinApi()
         setupView()
     }
@@ -88,6 +89,10 @@ class CoinListActivity : AppCompatActivity(), Onclik {
     }
 
     override fun onClickCoins(coin: CoinEntity) {
+        callingScreenDetailsCoin(coin)
+    }
+
+    private fun callingScreenDetailsCoin(coin: CoinEntity) {
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra(Constants.KEY_INTENT, coin)
         startActivity(intent)

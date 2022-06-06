@@ -3,9 +3,11 @@ package com.example.take_my_money.ui.view.coinlist
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.take_my_money.ui.data.entity.CoinEntity
 import com.example.take_my_money.ui.repository.IRepositoryDataSource
 import com.example.take_my_money.ui.repository.RepositoryAllCoins
+import kotlinx.coroutines.launch
 import retrofit2.Call
 import retrofit2.Response
 
@@ -15,6 +17,9 @@ class CoinListViewModel(
 ) : ViewModel() {
     private val _listcoins = MutableLiveData<List<CoinEntity>?>()
     val listcoins: LiveData<List<CoinEntity>?> get() = _listcoins
+
+    private val _coinNullOrExist = MutableLiveData<List<CoinEntity>>()
+    val coinNullOrExist: LiveData<List<CoinEntity>> get() = _coinNullOrExist
 
     private val _errorMsg = MutableLiveData<String>()
     val erroMsg: LiveData<String> get() = _errorMsg
@@ -35,5 +40,11 @@ class CoinListViewModel(
                 _errorMsg.postValue(t.message)
             }
         })
+    }
+
+    fun loadDataBase() {
+        viewModelScope.launch {
+            _coinNullOrExist.postValue(iRepositoryDataBase.getAllCoins())
+        }
     }
 }
