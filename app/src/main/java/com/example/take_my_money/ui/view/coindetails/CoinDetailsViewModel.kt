@@ -18,9 +18,7 @@ class CoinDetailsViewModel(
     val returnDataBase: LiveData<CoinEntity?> get() = _returnDataBase
 
     suspend fun insertCoinDataBase(getAssetIdCoin: CoinEntity) {
-        CoroutineScope(Dispatchers.Main).launch {
-            getAssetIdCoin.let { iRepositoryDataSource.insertCoinI(it) }
-        }
+        getAssetIdCoin.let { iRepositoryDataSource.insertCoinI(it) }
     }
 
     suspend fun deleteCoinDataBase(getAssetIdCoin: String) {

@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.take_my_money.ui.data.entity.CoinEntity
+import com.example.take_my_money.ui.error.ErrorHandling
 import com.example.take_my_money.ui.repository.IRepositoryDataSource
 import com.example.take_my_money.ui.repository.RepositoryAllCoins
 import kotlinx.coroutines.launch
@@ -15,14 +16,14 @@ class CoinListViewModel(
     private val repository: RepositoryAllCoins,
     private val iRepositoryDataBase: IRepositoryDataSource
 ) : ViewModel() {
-    private val _listcoins = MutableLiveData<List<CoinEntity>?>()
-    val listcoins: LiveData<List<CoinEntity>?> get() = _listcoins
+    private val _listcoins = MutableLiveData<ErrorHandling<List<CoinEntity>>>()
+    val listcoins: LiveData<ErrorHandling<List<CoinEntity>>> get() = _listcoins
+
+    private val _errorMsg = MutableLiveData<String>()
+    val errorMsg: LiveData<String> get() = _errorMsg
 
     private val _coinNullOrExist = MutableLiveData<List<CoinEntity>>()
     val coinNullOrExist: LiveData<List<CoinEntity>> get() = _coinNullOrExist
-
-    private val _errorMsg = MutableLiveData<String>()
-    val erroMsg: LiveData<String> get() = _errorMsg
 
     fun requestCoinApi() {
         val requestApi: Call<List<CoinEntity>> = repository.getAllCoins()
@@ -31,13 +32,29 @@ class CoinListViewModel(
                 call: Call<List<CoinEntity>>,
                 response: Response<List<CoinEntity>>
             ) {
-
-                val listresult = response.body()
-                _listcoins.postValue(listresult?.filter { it.type_is_crypto == 1 })
+                _listcoins.value = ErrorHandling.Loading
+                try {
+                    if (response.isSuccessful) {
+                        val resultCoinApi = response.body()?.filter { it.type_is_crypto == 1 }
+                        _listcoins.value = ErrorHandling.Success(resultCoinApi)
+                    } else if (response.code() == 400) {
+                        _listcoins.value = ErrorHandling.ErrorLimitsRequest(response.code().toString())
+                    } else if (response.code() == 401) {
+                        _listcoins.value = ErrorHandling.ErrorLimitsRequest(response.code().toString())
+                    } else if (response.code() == 403) {
+                        _listcoins.value = ErrorHandling.ErrorLimitsRequest(response.code().toString())
+                    } else if (response.code() == 429) {
+                        _listcoins.value = ErrorHandling.ErrorLimitsRequest(response.code().toString())
+                    } else if (response.code() == 550) {
+                        _listcoins.value = ErrorHandling.ErrorLimitsRequest(response.code().toString())
+                    }
+                } catch (e: Exception) {
+                    e.fillInStackTrace().message
+                }
             }
 
             override fun onFailure(call: Call<List<CoinEntity>>, t: Throwable) {
-                _errorMsg.postValue(t.message)
+                _errorMsg.postValue(t.fillInStackTrace().message)
             }
         })
     }
