@@ -1,6 +1,4 @@
 
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 @
 app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 |
@@ -35,8 +33,6 @@ Wapp/src/main/java/com/example/take_my_money/ui/view/coindetails/CoinDetailsView
 ^app/src/main/java/com/example/take_my_money/ui/view/coindetails/CoinDetailsViewModelFactory.kt,e\a\eaa6c71d1a7f9510ddd8ab5f28cf6e612c81b992
 ‚
 Rapp/src/main/java/com/example/take_my_money/ui/view/coindetails/DetailsActivity.kt,7\b\7b384b3ef438b3c107279d0b7882f6aa9ac1bb8c
-€
-Papp/src/main/java/com/example/take_my_money/ui/view/coinlist/CoinListActivity.kt,8\8\88dbdcf03b81124fba9d66e4cf7bf09bacbaec40
 ˆ
 Xapp/src/main/java/com/example/take_my_money/ui/view/coinlist/CoinListViewModelFactory.kt,1\f\1fa46cace317d77284f33113f8f19d09c9fadfbc
 …

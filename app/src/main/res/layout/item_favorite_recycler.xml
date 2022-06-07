@@ -24,7 +24,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/content_description_favorite"/>
 
         <ImageView
             android:id="@+id/imageView4"
@@ -34,20 +35,8 @@
             app:layout_constraintEnd_toEndOf="@+id/textView6"
             app:layout_constraintStart_toEndOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/textView6"
-            app:srcCompat="@drawable/im_coin" />
-
-        <TextView
-            android:id="@+id/text_coin_asset"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:fontFamily="@font/roboto"
-            android:textColor="@color/white"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/textView6"
-            app:layout_constraintStart_toStartOf="@+id/textView6"
-            app:layout_constraintTop_toBottomOf="@+id/text_coin"
-            tools:text="BTC" />
+            app:srcCompat="@drawable/im_coin"
+            android:contentDescription="@string/content_description_coin_image"/>
 
         <TextView
             android:id="@+id/text_coin"
@@ -62,7 +51,22 @@
             app:layout_constraintEnd_toEndOf="@+id/textView6"
             app:layout_constraintStart_toStartOf="@+id/textView6"
             app:layout_constraintTop_toTopOf="@+id/textView6"
-            tools:text="@string/bitcoin" />
+            tools:text="@string/bitcoin"
+            android:contentDescription="@string/content_description_coin_name"/>
+
+        <TextView
+            android:id="@+id/text_coin_asset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView6"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/text_coin"
+            tools:text="BTC"
+            android:contentDescription="@string/content_description_coin_abbreviation"/>
 
         <TextView
             android:id="@+id/text_value_coin"
@@ -78,7 +82,8 @@
             app:layout_constraintEnd_toEndOf="@+id/textView6"
             app:layout_constraintStart_toStartOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/text_coin_asset"
-            tools:text="33.9999999999" />
+            tools:text="33.9999999999"
+            android:contentDescription="@string/content_description_coin_value"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

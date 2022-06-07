@@ -1,9 +1,5 @@
 <resources>
     <string name="app_name">Moeda Digital</string>
-
-    <!--SplashScreen-->
-    <string name="content_description_splash_screen">Nome do aplicativo na tela inicial: Take my money</string>
-
     <string name="back">Voltar</string>
     <string name="add">Adicionar</string>
     <string name="remover">Remover</string>
@@ -28,5 +24,26 @@
     <string name="remove_coin_database">Moeda removida com sucesso</string>
     <string name="add_coin_database">Moeda adicionada com sucesso</string>
     <string name="dollar_sign">$</string>
+
+    <!--Accessilility-->
+    <string name="content_description_application_name">Moeda Digital</string>
+    <string name="content_description_current_date">Data atual</string>
+    <string name="content_description_search_field">Campo de busca</string>
+    <string name="content_description_menu">Menu de todas as moedas e das favoritas</string>
+    <string name="content_description_coin_image">Simbolo da moeda</string>
+    <string name="content_description_coin_name">Nome da moeda</string>
+    <string name="content_description_coin_abbreviation">Abreviação da moeda</string>
+    <string name="content_description_coin_value">Valor da moeda</string>
+    <string name="content_description_return">Voltar a tela anterior</string>
+    <string name="content_description_star">Estrela que indica que esta na lista dos favoritos</string>
+    <string name="content_description_add">Botão adicionar ou remover dos favoritos</string>
+    <string name="content_description_volumes_traded">Tabela de volumes negociados</string>
+    <string name="content_description_last_hour">Ultima hora</string>
+    <string name="content_description_value_last_hour">Valor da ultima hora</string>
+    <string name="content_description_last_day">Ultimo dia</string>
+    <string name="content_description_value_last_day">Valor do ultimo dia</string>
+    <string name="content_description_last_month">Ultimo mês</string>
+    <string name="content_description_value_last_month">Valor do ultimo mês</string>
+    <string name="content_description_favorite">Moeda favoritada</string>
 
 </resources>
