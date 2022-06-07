@@ -16,6 +16,5 @@ class Constants {
         internal const val API_KEY7 = "E0FF8651-A8FD-4807-B176-79B43482373E"
 
         internal const val KEY_INTENT = "KEY_INTENT"
-        internal const val KEY_IS_FAVORITE_COIN = "KEY_IS_FAVORITE_COIN"
     }
 }
