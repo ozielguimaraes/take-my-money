@@ -20,7 +20,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="@null"/>
+        android:contentDescription="@string/content_description_application_name"/>
 
     <TextView
         android:id="@+id/text_view_date_now"
