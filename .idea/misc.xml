@@ -3,6 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/asansouz/AndroidStudioProjects/take-my-money/app/src/main/res/drawable/bg_favorite.xml" value="0.129" />
+        <entry key="..\:/Users/asansouz/AndroidStudioProjects/take-my-money/app/src/main/res/drawable/bg_search.xml" value="0.1" />
+        <entry key="..\:/Users/asansouz/AndroidStudioProjects/take-my-money/app/src/main/res/drawable/im_coin_background.xml" value="0.1" />
+        <entry key="..\:/Users/asansouz/AndroidStudioProjects/take-my-money/app/src/main/res/layout/activity_main.xml" value="0.1308876811594203" />
+        <entry key="..\:/Users/asansouz/AndroidStudioProjects/take-my-money/app/src/main/res/layout/coins_list_item.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/asansouz/AndroidStudioProjects/take-my-money/app/src/main/res/layout/details_activity.xml" value="0.22" />
+        <entry key="..\:/Users/asansouz/AndroidStudioProjects/take-my-money/app/src/main/res/layout/favorite_activity.xml" value="0.1" />
+        <entry key="..\:/Users/asansouz/AndroidStudioProjects/take-my-money/app/src/main/res/layout/item_favorite_recycler.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/asansouz/AndroidStudioProjects/take-my-money/app/src/main/res/layout/item_favorite_recycler2.xml" value="0.4466666666666667" />
+        <entry key="..\:/Users/asansouz/AndroidStudioProjects/take-my-money/app/src/main/res/menu/menu.xml" value="0.178125" />
+        <entry key="..\:/Users/asansouz/AndroidStudioProjects/take-my-money/app/src/main/res/mipmap-anydpi-v26/im_coin.xml" value="0.1" />
         <entry key="..\:/Users/hduartol/AndroidStudioProjects/take-my-money/app/src/main/res/layout/activity_main.xml" value="0.14666666666666667" />
         <entry key="..\:/Users/hduartol/AndroidStudioProjects/take-my-money/app/src/main/res/layout/activity_splash.xml" value="0.1796875" />
         <entry key="..\:/Users/hduartol/AndroidStudioProjects/take-my-money/app/src/main/res/layout/coin_list_activity.xml" value="0.1" />
@@ -17,4 +28,5 @@
       </map>
     </option>
   </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="11" project-jdk-type="JavaSDK" />
 </project>

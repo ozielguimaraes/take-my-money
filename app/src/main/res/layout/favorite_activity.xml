@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.view.coinsfavorite.FavoriteActivity"
-    android:background="@color/black_two">
+    android:background="@color/black">
 
     <TextView
         android:id="@+id/take_my_money"
@@ -49,7 +49,7 @@
         android:id="@+id/btn_navigationFav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black_two"
+        android:background="@color/black"
         app:itemIconTint="@color/btn_nav_item"
         app:itemTextColor="@color/btn_nav_selected_item"
         app:layout_constraintBottom_toBottomOf="parent"
