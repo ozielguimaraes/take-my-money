@@ -17,14 +17,15 @@ class CoinListViewModel(
     private val repository: RepositoryAllCoins,
     private val iRepositoryDataBase: IRepositoryDataSource
 ) : ViewModel() {
+
     private val _listcoins = MutableLiveData<ErrorHandling<List<CoinEntity>>>()
     val listcoins: LiveData<ErrorHandling<List<CoinEntity>>> get() = _listcoins
 
+    private val _listCoinsAdapter = MutableLiveData<List<CoinEntity>>()
+    val listCoinsAdapter: LiveData<List<CoinEntity>> get() = _listCoinsAdapter
+
     private val _errorMsg = MutableLiveData<ErrorHandling<String>>()
     val errorMsg: LiveData<ErrorHandling<String>> get() = _errorMsg
-
-    private val _coinNullOrExist = MutableLiveData<List<CoinEntity>>()
-    val coinNullOrExist: LiveData<List<CoinEntity>> get() = _coinNullOrExist
 
     fun requestCoinApi() {
         val requestApi: Call<List<CoinEntity>> = repository.getAllCoins()
@@ -39,6 +40,7 @@ class CoinListViewModel(
                         response.isSuccessful -> {
                             val resultCoinApi = response.body()?.filter { it.type_is_crypto == 1 }
                             _listcoins.value = ErrorHandling.Success(resultCoinApi)
+                            _listCoinsAdapter.value = resultCoinApi?.let { resultCoinApi }
                         }
                         response.code() == 400 -> {
                             _errorMsg.value = ErrorHandling.Error(BadRequestException(), response.code())
@@ -69,8 +71,7 @@ class CoinListViewModel(
 
     fun loadDataBase() {
         viewModelScope.launch {
-            _coinNullOrExist.postValue(iRepositoryDataBase.getAllCoins())
+            iRepositoryDataBase.getAllCoins()
         }
     }
 }
-

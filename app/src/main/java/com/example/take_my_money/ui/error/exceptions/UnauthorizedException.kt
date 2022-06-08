@@ -4,4 +4,3 @@ class UnauthorizedException : Exception() {
     override val message: String
         get() = "Your API key is wrong"
 }
-

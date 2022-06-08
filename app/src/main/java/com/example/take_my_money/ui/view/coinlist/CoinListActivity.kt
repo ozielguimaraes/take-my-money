@@ -73,6 +73,8 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
         viewModel.listcoins.observe(this) { resultCoinApi ->
             loadCoinList(resultCoinApi)
         }
+        viewModel.listCoinsAdapter.observe(this) {
+        }
     }
 
     private fun loadCoinList(resultCoinApi: ErrorHandling<List<CoinEntity>>) {
@@ -82,6 +84,7 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
                 binding.progressBar.visibility = View.VISIBLE
             }
             is ErrorHandling.Success -> {
+                binding.progressBar.visibility = View.INVISIBLE
                 adapter.submitList(resultCoinApi.listCoin)
                 binding.RecyclerviewCoins.adapter = adapter
             }
@@ -135,10 +138,10 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
     private fun filterCoins(query: String?): Boolean {
         val adapter = CoinAdapter(this@CoinListActivity, this)
         if (query.isNullOrEmpty()) {
-            adapter.submitList(viewModel.coinNullOrExist.value)
+            adapter.submitList(viewModel.listCoinsAdapter.value)
         } else {
             adapter.submitList(
-                viewModel.coinNullOrExist.value?.filter {
+                viewModel.listCoinsAdapter.value?.filter {
                     it.name?.contains(query) ?: false
                 }
             )
