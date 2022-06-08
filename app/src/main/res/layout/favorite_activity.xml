@@ -19,7 +19,8 @@
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/content_description_application_name"/>
 
     <TextView
         android:id="@+id/text_view_date_now"
@@ -31,7 +32,8 @@
         android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/take_my_money" />
+        app:layout_constraintTop_toBottomOf="@+id/take_my_money"
+        android:contentDescription="@string/content_description_current_date"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_favorite"
@@ -55,6 +57,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/menu" />
+        app:menu="@menu/menu"
+        android:contentDescription="@null"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
