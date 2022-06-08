@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.take_my_money.R
-import com.example.take_my_money.databinding.DetailsActivityBinding
+import com.example.take_my_money.databinding.ActivityDetailsCoinBinding
 import com.example.take_my_money.ui.data.dao.ICoinDAO
 import com.example.take_my_money.ui.data.database.CoinDataBase
 import com.example.take_my_money.ui.data.entity.CoinEntity
@@ -23,11 +23,11 @@ import kotlinx.coroutines.launch
 
 class DetailsActivity : AppCompatActivity() {
 
-    private lateinit var binding: DetailsActivityBinding
+    private lateinit var binding: ActivityDetailsCoinBinding
     private lateinit var viewModel: CoinDetailsViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = DetailsActivityBinding.inflate(layoutInflater)
+        binding = ActivityDetailsCoinBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
         setupNavigationBottom()
@@ -39,8 +39,13 @@ class DetailsActivity : AppCompatActivity() {
             CoinDetailsViewModelFactory(RepositoryDataSource(coinIDAO))
         )[CoinDetailsViewModel::class.java]
 
-        viewModel.loadDataBase()
+        loadDataBase()
         getCoinListScreen()
+        buttonBack()
+    }
+
+    private fun loadDataBase() {
+        viewModel.loadDataBase()
     }
 
     private fun addStarFavoriteOrNot() {
@@ -63,13 +68,17 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun passDataToScreen(coinDetails: CoinEntity?) {
         coinDetails?.let {
+            if (coinDetails.id_icon != null) {
+                Picasso.get().load(coinDetails.getPathUrlImage()).into(binding.imView)
+            } else {
+                Picasso.get().load(R.drawable.im_coin).into(binding.imView)
+            }
             try {
                 binding.txCoin.text = coinDetails.asset_id
                 binding.txValue.text = NumberFormat.getInstance().format(coinDetails.price_usd)
                 binding.txValueHour.text = NumberFormat.getInstance().format(coinDetails.volume_1hrs_usd)
                 binding.txValueDay.text = NumberFormat.getInstance().format(coinDetails.volume_1day_usd)
                 binding.txValueMonth.text = NumberFormat.getInstance().format(coinDetails.volume_1mth_usd)
-                Picasso.get().load(coinDetails.getPathUrlImage()).into(binding.imView)
             } catch (e: Exception) {
                 Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
             } finally {
@@ -130,5 +139,17 @@ class DetailsActivity : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    private fun buttonBack() {
+        binding.btnBack.setOnClickListener {
+            callingScreenListCoin()
+        }
+    }
+
+    private fun callingScreenListCoin() {
+        val intent = Intent(this, CoinListActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
     }
 }

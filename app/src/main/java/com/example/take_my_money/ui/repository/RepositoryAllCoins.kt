@@ -6,5 +6,5 @@ import com.example.take_my_money.ui.utils.Constants
 class RepositoryAllCoins(private val retrofit: IWebService) {
 
     fun getAllCoins() =
-        retrofit.getAllCoins(Constants.API_KEY1)
+        retrofit.getAllCoins(Constants.API_KEY4)
 }
