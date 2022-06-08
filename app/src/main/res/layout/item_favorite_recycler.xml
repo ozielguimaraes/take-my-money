@@ -2,24 +2,19 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="180dp"
-    android:layout_height="160dp"
-    android:layout_marginHorizontal="10dp"
-    android:layout_marginTop="10dp"
-    android:layout_marginBottom="10dp"
-    app:cardCornerRadius="10dp">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="180dp"
-        android:layout_height="match_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:background="@color/black">
 
         <TextView
             android:id="@+id/textView6"
-            android:layout_width="130dp"
-            android:layout_height="134dp"
-            android:layout_marginStart="-5dp"
-            android:layout_marginTop="12dp"
+            android:layout_width="160dp"
+            android:layout_height="140dp"
+            android:layout_marginBottom="12sp"
             android:background="@drawable/bg_favorite"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -27,9 +22,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="38dp"
-            android:layout_height="32dp"
+            android:id="@+id/image_coin_favorite4"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:translationX="-8dp"
+            android:translationY="4dp"
             app:layout_constraintBottom_toTopOf="@+id/textView6"
             app:layout_constraintEnd_toEndOf="@+id/textView6"
             app:layout_constraintStart_toEndOf="@+id/textView6"
@@ -40,7 +37,7 @@
             android:id="@+id/text_coin_asset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="6dp"
             android:fontFamily="@font/roboto"
             android:textColor="@color/white"
             android:textSize="14sp"
@@ -51,10 +48,9 @@
 
         <TextView
             android:id="@+id/text_coin"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="12dp"
             android:fontFamily="@font/roboto"
             android:textAlignment="center"
             android:textColor="@color/white"
@@ -65,16 +61,27 @@
             tools:text="@string/bitcoin" />
 
         <TextView
-            android:id="@+id/text_value_coin"
-            android:layout_width="122dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="5dp"
-            android:drawableStart="@drawable/ic_attach_money"
-            android:fontFamily="@font/roboto"
-            android:maxLength="12"
-            android:textAlignment="textStart"
+            android:layout_width="13dp"
+            android:layout_height="29dp"
+            android:text="@string/dollar_sign"
             android:textColor="@color/white"
             android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_value_coin"
+            app:layout_constraintEnd_toStartOf="@+id/text_value_coin"
+            app:layout_constraintTop_toTopOf="@+id/text_value_coin" />
+
+        <TextView
+            android:id="@+id/text_value_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12sp"
+            android:fontFamily="@font/roboto"
+            android:maxLength="10"
+            android:paddingStart="6dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView6"
             app:layout_constraintEnd_toEndOf="@+id/textView6"
             app:layout_constraintStart_toStartOf="@+id/textView6"
             app:layout_constraintTop_toBottomOf="@+id/text_coin_asset"

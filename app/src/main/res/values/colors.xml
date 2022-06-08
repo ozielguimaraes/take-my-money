@@ -9,9 +9,9 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="green">#8D9562</color>
-    <color name="btn_nav_selected_item">#8F8E8E</color>
     <color name="btn_nav_item">#7E7D7C</color>
     <color name="transparent">#00000000</color>
+    <color name="search">#0DCACACA</color>
 
 </resources>
 

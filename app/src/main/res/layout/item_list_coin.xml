@@ -10,8 +10,8 @@
 
     <ImageView
         android:id="@+id/imagem_coin"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -24,8 +24,7 @@
         android:layout_marginStart="8dp"
         android:fontFamily="@font/roboto"
         android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@+id/imagem_coin"
         app:layout_constraintTop_toTopOf="@id/imagem_coin"
         tools:text="@string/bitcoin" />
@@ -34,8 +33,8 @@
         android:id="@+id/image_star"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:src="@drawable/ic_star"
-        android:layout_marginStart="12dp"
         app:layout_constraintBottom_toBottomOf="@+id/txt_coin"
         app:layout_constraintStart_toEndOf="@+id/txt_coin"
         app:layout_constraintTop_toTopOf="@+id/txt_coin" />
@@ -56,10 +55,10 @@
         android:id="@+id/txt_price_coin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableStart="@drawable/ic_attach_money"
-        android:textColor="@color/white"
         android:fontFamily="@font/roboto"
+        android:textColor="@color/white"
         android:textSize="14sp"
+        app:drawableStartCompat="@drawable/ic_attach_money"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

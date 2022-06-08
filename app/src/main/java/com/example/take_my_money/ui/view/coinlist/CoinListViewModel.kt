@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.take_my_money.ui.data.entity.CoinEntity
 import com.example.take_my_money.ui.error.ErrorHandling
+import com.example.take_my_money.ui.error.exceptions.*
 import com.example.take_my_money.ui.repository.IRepositoryDataSource
 import com.example.take_my_money.ui.repository.RepositoryAllCoins
 import kotlinx.coroutines.launch
@@ -19,8 +20,8 @@ class CoinListViewModel(
     private val _listcoins = MutableLiveData<ErrorHandling<List<CoinEntity>>>()
     val listcoins: LiveData<ErrorHandling<List<CoinEntity>>> get() = _listcoins
 
-    private val _errorMsg = MutableLiveData<String>()
-    val errorMsg: LiveData<String> get() = _errorMsg
+    private val _errorMsg = MutableLiveData<ErrorHandling<String>>()
+    val errorMsg: LiveData<ErrorHandling<String>> get() = _errorMsg
 
     private val _coinNullOrExist = MutableLiveData<List<CoinEntity>>()
     val coinNullOrExist: LiveData<List<CoinEntity>> get() = _coinNullOrExist
@@ -34,19 +35,26 @@ class CoinListViewModel(
             ) {
                 _listcoins.value = ErrorHandling.Loading
                 try {
-                    if (response.isSuccessful) {
-                        val resultCoinApi = response.body()?.filter { it.type_is_crypto == 1 }
-                        _listcoins.value = ErrorHandling.Success(resultCoinApi)
-                    } else if (response.code() == 400) {
-                        _listcoins.value = ErrorHandling.ErrorLimitsRequest(response.code().toString())
-                    } else if (response.code() == 401) {
-                        _listcoins.value = ErrorHandling.ErrorLimitsRequest(response.code().toString())
-                    } else if (response.code() == 403) {
-                        _listcoins.value = ErrorHandling.ErrorLimitsRequest(response.code().toString())
-                    } else if (response.code() == 429) {
-                        _listcoins.value = ErrorHandling.ErrorLimitsRequest(response.code().toString())
-                    } else if (response.code() == 550) {
-                        _listcoins.value = ErrorHandling.ErrorLimitsRequest(response.code().toString())
+                    when {
+                        response.isSuccessful -> {
+                            val resultCoinApi = response.body()?.filter { it.type_is_crypto == 1 }
+                            _listcoins.value = ErrorHandling.Success(resultCoinApi)
+                        }
+                        response.code() == 400 -> {
+                            _errorMsg.value = ErrorHandling.Error(BadRequestException(), response.code())
+                        }
+                        response.code() == 401 -> {
+                            _errorMsg.value = ErrorHandling.Error(UnauthorizedException(), response.code())
+                        }
+                        response.code() == 403 -> {
+                            _errorMsg.value = ErrorHandling.Error(ForbiddenException(), response.code())
+                        }
+                        response.code() == 429 -> {
+                            _errorMsg.value = ErrorHandling.Error(LimitsRequestException(), response.code())
+                        }
+                        response.code() == 550 -> {
+                            _errorMsg.value = ErrorHandling.Error(NoDataException(), response.code())
+                        }
                     }
                 } catch (e: Exception) {
                     e.fillInStackTrace().message
@@ -54,7 +62,7 @@ class CoinListViewModel(
             }
 
             override fun onFailure(call: Call<List<CoinEntity>>, t: Throwable) {
-                _errorMsg.postValue(t.fillInStackTrace().message)
+                _errorMsg.value = ErrorHandling.Error(UseInternetException())
             }
         })
     }
@@ -65,3 +73,4 @@ class CoinListViewModel(
         }
     }
 }
+

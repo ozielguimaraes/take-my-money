@@ -3,14 +3,7 @@
 
     <!--SplashScreen-->
     <string name="content_description_splash_screen">Nome do aplicativo na tela inicial: Take my money</string>
-
-    <!--HTTP Erros-->
-    <string name="bad_request">There is something wrong with your request</string>
-    <string name="unauthorized">Your API key is wrong</string>
-    <string name="forbidden">Your API key does\'t have enough privileges to access this resource</string>
-    <string name="too_many_requests">You have exceeded your API key rate limits</string>
-    <string name="no_data">You requested specific single item that we don\'t have at this</string>
-    <string name="error_check_internet">\"Check your use of internet, please. \n\n\"</string>
+    <string name="error_check_internet">\"Check your use of internet, please. \n \"</string>
 
 
     <string name="back">Voltar</string>
@@ -37,5 +30,9 @@
     <string name="remove_coin_database">Moeda removida com sucesso</string>
     <string name="add_coin_database">Moeda adicionada com sucesso</string>
     <string name="dollar_sign">$</string>
+    <string name="try_again">Tentar novamente</string>
+    <string name="content_description_try_again">botão para tentar novamente</string>
+    <string name="content_description_sorry_ocurred_erro">Desculpe, ocorreu um erro</string>
+    <string name="sorry_ocurred_erro">Desculpe, ocorreu um erro</string>
 
 </resources>

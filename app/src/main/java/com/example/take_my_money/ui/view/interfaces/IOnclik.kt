@@ -1,7 +1,7 @@
-package com.example.take_my_money.ui.view.adapter
+package com.example.take_my_money.ui.view.interfaces
 
 import com.example.take_my_money.ui.data.entity.CoinEntity
 
-interface Onclik {
+interface IOnclik {
     fun onClickCoins(coin: CoinEntity)
 }

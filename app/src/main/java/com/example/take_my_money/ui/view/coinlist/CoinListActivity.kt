@@ -2,13 +2,14 @@ package com.example.take_my_money.ui.view.coinlist
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.take_my_money.R
-import com.example.take_my_money.databinding.ActivityMainBinding
+import com.example.take_my_money.databinding.ActivityCoinListBinding
 import com.example.take_my_money.ui.data.dao.ICoinDAO
 import com.example.take_my_money.ui.data.database.CoinDataBase
 import com.example.take_my_money.ui.data.entity.CoinEntity
@@ -17,20 +18,19 @@ import com.example.take_my_money.ui.interfaces.IWebService
 import com.example.take_my_money.ui.repository.RepositoryAllCoins
 import com.example.take_my_money.ui.repository.RepositoryDataSource
 import com.example.take_my_money.ui.utils.Constants
-import com.example.take_my_money.ui.view.CoinAdapter
-import com.example.take_my_money.ui.view.adapter.Onclik
 import com.example.take_my_money.ui.view.coindetails.DetailsActivity
 import com.example.take_my_money.ui.view.coinsfavorite.FavoriteActivity
+import com.example.take_my_money.ui.view.interfaces.IOnclik
 import java.text.SimpleDateFormat
 import java.util.*
 
-class CoinListActivity : AppCompatActivity(), Onclik {
+class CoinListActivity : AppCompatActivity(), IOnclik {
 
-    private lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityCoinListBinding
     private lateinit var viewModel: CoinListViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivityCoinListBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
@@ -43,11 +43,16 @@ class CoinListActivity : AppCompatActivity(), Onclik {
                 RepositoryDataSource(coinIDAO)
             )
         )[CoinListViewModel::class.java]
+
+        loadDataBase()
         setupNavigationBottom()
         setupObservers()
-        viewModel.loadDataBase()
-        viewModel.requestCoinApi()
+        requestApi()
         setupView()
+    }
+
+    private fun loadDataBase() {
+        viewModel.loadDataBase()
     }
 
     private fun setupNavigationBottom() {
@@ -62,44 +67,52 @@ class CoinListActivity : AppCompatActivity(), Onclik {
     }
 
     private fun setupObservers() {
-        viewModel.errorMsg.observe(this) {
-            Toast.makeText(this, getString(R.string.error_check_internet).plus(it.toString()), Toast.LENGTH_LONG).show()
+        viewModel.errorMsg.observe(this) { resultError ->
+            setupError(resultError)
         }
-        val adapter = CoinAdapter(this)
         viewModel.listcoins.observe(this) { resultCoinApi ->
-            when (resultCoinApi) {
-                is ErrorHandling.Success -> {
-                    adapter.submitList(resultCoinApi.listCoin)
-                    binding.RecyclerviewCoins.adapter = adapter
-                }
-                else -> {
-                    errorHandling(resultCoinApi)
-                }
+            loadCoinList(resultCoinApi)
+        }
+    }
+
+    private fun loadCoinList(resultCoinApi: ErrorHandling<List<CoinEntity>>) {
+        val adapter = CoinAdapter(this, this)
+        when (resultCoinApi) {
+            is ErrorHandling.Loading -> {
+                binding.progressBar.visibility = View.VISIBLE
+            }
+            is ErrorHandling.Success -> {
+                adapter.submitList(resultCoinApi.listCoin)
+                binding.RecyclerviewCoins.adapter = adapter
             }
         }
     }
 
-    private fun errorHandling(resultCoinApi: ErrorHandling<List<CoinEntity>>) {
-        when (resultCoinApi) {
-            is ErrorHandling.Loading -> {
-                // ProgressBar ou Lista mocada talvez...
-            }
-            is ErrorHandling.ErrorLimitsRequest -> {
-                Toast.makeText(this, R.string.too_many_requests, Toast.LENGTH_LONG).show()
-            }
-            is ErrorHandling.ErrorBadRequest -> {
-                Toast.makeText(this, R.string.bad_request, Toast.LENGTH_LONG).show()
-            }
-            is ErrorHandling.ErrorForbidden -> {
-                Toast.makeText(this, R.string.forbidden, Toast.LENGTH_LONG).show()
-            }
-            is ErrorHandling.ErrorNoData -> {
-                Toast.makeText(this, R.string.no_data, Toast.LENGTH_LONG).show()
-            }
-            is ErrorHandling.ErrorUnauthorized -> {
-                Toast.makeText(this, R.string.unauthorized, Toast.LENGTH_LONG).show()
+    private fun setupError(resultError: ErrorHandling<String>) {
+        when (resultError) {
+            is ErrorHandling.Error -> {
+                Toast.makeText(this, resultError.exception.message, Toast.LENGTH_LONG).show()
+                screenTryAgain()
             }
         }
+    }
+
+    private fun screenTryAgain() {
+        binding.progressBar.visibility = View.INVISIBLE
+        binding.textTryAgain.visibility = View.VISIBLE
+        binding.btnTryAgain.visibility = View.VISIBLE
+        binding.imageError.visibility = View.VISIBLE
+        binding.btnTryAgain.setOnClickListener {
+            requestApi()
+            binding.progressBar.visibility = View.VISIBLE
+            binding.textTryAgain.visibility = View.INVISIBLE
+            binding.btnTryAgain.visibility = View.INVISIBLE
+            binding.imageError.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun requestApi() {
+        viewModel.requestCoinApi()
     }
 
     private fun setupView() {
@@ -120,7 +133,7 @@ class CoinListActivity : AppCompatActivity(), Onclik {
     }
 
     private fun filterCoins(query: String?): Boolean {
-        val adapter = CoinAdapter(this@CoinListActivity)
+        val adapter = CoinAdapter(this@CoinListActivity, this)
         if (query.isNullOrEmpty()) {
             adapter.submitList(viewModel.coinNullOrExist.value)
         } else {

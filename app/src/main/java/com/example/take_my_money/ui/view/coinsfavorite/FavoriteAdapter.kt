@@ -7,10 +7,11 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.take_my_money.databinding.ItemFavoriteRecyclerBinding
 import com.example.take_my_money.ui.data.entity.CoinEntity
-import com.example.take_my_money.ui.view.adapter.Onclik
+import com.example.take_my_money.ui.view.interfaces.IOnclik
+import com.squareup.picasso.Picasso
 
-class FavoriteAdapter(private val onclick: Onclik) :
-    ListAdapter<CoinEntity, FavoriteAdapter.MyViewHolderFavorite>(DiffCallbackFavorite()), Onclik {
+class FavoriteAdapter(private val onclick: IOnclik) :
+    ListAdapter<CoinEntity, FavoriteAdapter.MyViewHolderFavorite>(DiffCallbackFavorite()), IOnclik {
 
     override fun onClickCoins(coin: CoinEntity) {
     }
@@ -32,6 +33,14 @@ class FavoriteAdapter(private val onclick: Onclik) :
         holder.binding.textCoin.text = itemCoin.name
         holder.binding.textCoinAsset.text = itemCoin.asset_id
         holder.binding.textValueCoin.text = itemCoin.price_usd.toString()
+
+        try {
+            if (itemCoin.id_icon != null) {
+                Picasso.get().load(itemCoin.getPathUrlImage()).into(holder.binding.imageCoinFavorite4)
+            }
+        } catch (e: Exception) {
+            holder.binding.imageCoinFavorite4
+        }
 
         holder.itemView.setOnClickListener { onclick.onClickCoins(itemCoin) }
     }
