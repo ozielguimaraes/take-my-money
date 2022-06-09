@@ -55,7 +55,5 @@ Uapp/src/main/java/com/example/take_my_money/ui/error/exceptions/ForbiddenExcept
 Vapp/src/main/java/com/example/take_my_money/ui/error/exceptions/BadRequestException.kt,e\5\e503520c21839aab4c4b739c11cc583043b9d53e
 q
 Aapp/src/main/java/com/example/take_my_money/ui/utils/Constants.kt,4\c\4c7ba62886a9f32729af69e37870a1f4edeba960
-Å
-Qapp/src/main/java/com/example/take_my_money/ui/view/coinlist/CoinListViewModel.kt,9\e\9ebce811efa3132bf51ba1ee06db41fb3ab0008a
 
 Oapp/src/main/java/com/example/take_my_money/ui/repository/RepositoryAllCoins.kt,b\0\b046694e4ce377412e2cb2b7246a386e5e2dd82d
