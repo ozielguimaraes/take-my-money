@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     android:background="@color/green"
-    tools:context=".ui.view.SplashActivity">
+    tools:context=".ui.presenter.SplashActivity">
 
     <TextView
         android:id="@+id/textView2"
