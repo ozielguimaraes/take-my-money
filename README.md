@@ -5,7 +5,7 @@
 ## Índice 
 
 * [Atividade individual](#Atividades-realizadas-no-projeto)
-* [Proposta do Projeto](#descrição-do-projeto)
+* [Proposta  e Descrição do Projeto](#descrição-do-projeto)
 * [Status do Projeto](#status-do-Projeto)
 * [Funcionalidades e Demonstração da Aplicação](#funcionalidades-e-demonstração-da-aplicação)
 * [Tecnologias utilizadas](#tecnologias-utilizadas)
@@ -14,7 +14,7 @@
 ## Atividades desempenhadas no projeto
 Desenvolvedor responsável pelo do back-end onde foi realizado atividades como tratamento de erros, arquitetura geral do projeto, utilização do retrofit,banco de dados, etc. Na parte de Front do aplicativo desenvolveu a tela onde as moedas ficam salvas, tela da tratativa de erro e SplashScreen, além de auxiliar em todo o processo de desenvolvimento junto com sua equipe.
 
-## Descrição do projeto
+## Proposta e Descrição do projeto
 Proposta: Criar um aplicativo que se comunique via REST API, na plataforma CoinAPI. Sendo necessário que o app liste criptomoedas e que possibilite ver detalhes do volume transacionado de cada moeda, assim como adicionar moedas como favoritas. 
 
 O DigitalCurrencies-TakeMyMoney indexa conteúdo encontrado na web automaticamente usando ajuda de APIs publicas do CoinApi. O uso do aplicativo DigitalCurrencies é totalmente responsabilidade do usuário. A distribuição das criptomoedas é da plataforma CoinApi. Qualquer violação de direitos autorais, entre em contato com o distribuidor. Em caso de dúvidas ou reclamações sobre conteúdo, funcionalidade do site, anúncios entre outros, entre em contato diretamente comigo no GitHub ou LinkdIn.
