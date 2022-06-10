@@ -117,7 +117,6 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
     }
 
     private fun requestApi() {
-        Log.i("TAG", "requestApi: 1")
         viewModel.requestApi()
     }
 
