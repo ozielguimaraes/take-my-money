@@ -2,6 +2,7 @@ package com.example.take_my_money.ui.presenter.view
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
@@ -17,7 +18,8 @@ import com.example.take_my_money.ui.data.dao.ICoinDAO
 import com.example.take_my_money.ui.data.repository.RepositoryAllCoins
 import com.example.take_my_money.ui.data.repository.RepositoryDataSource
 import com.example.take_my_money.ui.data.utils.Constants
-import com.example.take_my_money.ui.domain.ResultWrapper
+import com.example.take_my_money.ui.domain.exceptions.ResultWrapper
+import com.example.take_my_money.ui.domain.UseCase.UseCaseAllCoin
 import com.example.take_my_money.ui.presenter.adapter.CoinAdapter
 import com.example.take_my_money.ui.presenter.interfaces.IOnclik
 import com.example.take_my_money.ui.presenter.viewmodel.CoinListViewModel
@@ -39,7 +41,7 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
         viewModel = ViewModelProvider(
             this,
             CoinListViewModel.CoinListViewModelFactory(
-                RepositoryAllCoins(retrofit = IWebService.getBaseUrl()),
+                UseCaseAllCoin(RepositoryAllCoins(IWebService.getBaseUrl())),
                 RepositoryDataSource(coinIDAO)
             )
         )[CoinListViewModel::class.java]
@@ -115,15 +117,18 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
     }
 
     private fun requestApi() {
-        viewModel.requestCoinApi()
+        Log.i("TAG", "requestApi: 1")
+        viewModel.requestApi()
     }
 
     private fun setupView() {
         val date = Calendar.getInstance().time
         val dateTimeFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
         binding.textViewDateNow.text = dateTimeFormat.format(date)
+
         binding.RecyclerviewCoins.layoutManager = LinearLayoutManager(this)
         binding.RecyclerviewCoins.setHasFixedSize(true)
+
         binding.editSearch.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 return filterCoins(query)

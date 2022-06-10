@@ -21,7 +21,6 @@ interface IWebService {
                 .baseUrl(Constants.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-
             retrofit.create(IWebService::class.java)
         }
 
