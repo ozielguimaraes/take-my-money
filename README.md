@@ -43,6 +43,7 @@ O DigitalCurrencies-TakeMyMoney indexa conteúdo encontrado na web automaticamen
   
 
 - `Splash Screen`: Tela inicial com progress bar
+- `State Pattern`
 - `ViewBinding`: recurso que facilita a programação de códigos que interagem com visualizações
 - `Fontes personalizadas, ícones e cores`: Para maior exclusividade
 - `ScreenOrientation`: Manter a tela Screen fixa
