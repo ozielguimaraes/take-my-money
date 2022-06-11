@@ -1,5 +1,7 @@
 <p align="center">
-  <img src=".png" />
+  
+  <img src="https://user-images.githubusercontent.com/92765775/173189622-f24f5f50-2706-4c6c-8a4a-18062de5e1aa.png" />
+
 </p>
 
 ## Índice 
@@ -12,7 +14,7 @@
 * [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras)
 
 ## Atividades desempenhadas no projeto
-Desenvolvedor responsável pelo do back-end onde foi realizado atividades como tratamento de erros, arquitetura geral do projeto, utilização do retrofit,banco de dados, etc. Na parte de Front do aplicativo desenvolveu a tela onde as moedas ficam salvas, tela da tratativa de erro e SplashScreen, além de auxiliar em todo o processo de desenvolvimento junto com sua equipe.
+Desenvolvedor responsável pelo back-end onde foi realizado atividades como tratamento de erros, arquitetura geral do projeto, utilização do retrofit,banco de dados, etc. Na parte de Front do aplicativo desenvolveu as telas onde as moedas ficam salvas, tela da tratativa de erro e SplashScreen, além de auxiliar em todo o processo de desenvolvimento junto com sua equipe.
 
 ## Proposta e Descrição do projeto
 Proposta: Criar um aplicativo que se comunique via REST API, na plataforma CoinAPI. Sendo necessário que o app liste criptomoedas e que possibilite ver detalhes do volume transacionado de cada moeda, assim como adicionar moedas como favoritas. 
