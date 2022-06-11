@@ -73,7 +73,7 @@ O DigitalCurrencies-TakeMyMoney indexa conteúdo encontrado na web automaticamen
 - `JetPack`
 - `Picasso`
 
-## Pessoa desenvolvedora
+## Pessoas desenvolvedoras
 
 <img src="https://user-images.githubusercontent.com/92765775/167483265-381a38e3-3fb3-47e4-8f32-676d6d68201f.jpg" width=115><br> Wesley Vila Nova - Mobile Developer NTT Data
 
