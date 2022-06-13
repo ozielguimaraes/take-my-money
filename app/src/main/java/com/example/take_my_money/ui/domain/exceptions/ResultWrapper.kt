@@ -1,4 +1,4 @@
-package com.example.take_my_money.ui.domain
+package com.example.take_my_money.ui.domain.exceptions
 
 import com.example.take_my_money.ui.data.dao.CoinEntity
 
