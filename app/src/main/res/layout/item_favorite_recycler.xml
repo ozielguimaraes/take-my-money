@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/black">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="160dp"
+            android:layout_height="140dp"
+            android:layout_marginBottom="12sp"
+            android:background="@drawable/bg_favorite"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/content_description_favorite"/>
+
+        <ImageView
+            android:id="@+id/image_coin_favorite4"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:translationX="-8dp"
+            android:translationY="4dp"
+            app:layout_constraintBottom_toTopOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="@+id/textView6"
+            app:layout_constraintStart_toEndOf="@+id/textView6"
+            app:layout_constraintTop_toTopOf="@+id/textView6"
+            app:srcCompat="@drawable/im_coin"
+            android:contentDescription="@string/content_description_coin_image"/>
+
+        <TextView
+            android:id="@+id/text_coin_asset"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView6"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/text_coin"
+            tools:text="BTC"
+            android:contentDescription="@string/content_description_coin_name"/>
+
+        <TextView
+            android:id="@+id/text_coin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="@font/roboto"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintEnd_toEndOf="@+id/textView6"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toTopOf="@+id/textView6"
+            tools:text="@string/bitcoin"
+            android:contentDescription="@string/content_description_coin_abbreviation"/>
+
+        <TextView
+            android:layout_width="13dp"
+            android:layout_height="29dp"
+            android:text="@string/dollar_sign"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/text_value_coin"
+            app:layout_constraintEnd_toStartOf="@+id/text_value_coin"
+            app:layout_constraintTop_toTopOf="@+id/text_value_coin" />
+
+        <TextView
+            android:id="@+id/text_value_coin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12sp"
+            android:fontFamily="@font/roboto"
+            android:maxLength="10"
+            android:paddingStart="6dp"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:textSize="24sp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView6"
+            app:layout_constraintEnd_toEndOf="@+id/textView6"
+            app:layout_constraintStart_toStartOf="@+id/textView6"
+            app:layout_constraintTop_toBottomOf="@+id/text_coin_asset"
+            tools:text="33.9999999999"
+            android:contentDescription="@string/content_description_coin_value"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
+
+
+
+
+
