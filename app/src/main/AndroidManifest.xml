@@ -13,16 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Takemymoney">
         <activity
-            android:name=".ui.presenter.view.CoinListActivity"
+            android:name="com.example.take_my_money.presenter.view.CoinListActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.presenter.view.DetailsActivity"
+            android:name="com.example.take_my_money.presenter.view.DetailsActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.presenter.view.FavoriteActivity"
+            android:name="com.example.take_my_money.presenter.view.FavoriteActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.presenter.SplashActivity"
+            android:name="com.example.take_my_money.presenter.view.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
