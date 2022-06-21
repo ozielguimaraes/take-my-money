@@ -30,14 +30,19 @@ O DigitalCurrencies-TakeMyMoney indexa conteúdo encontrado na web automaticamen
 
 
 ## :hammer: Imagens e Funcionalidades do projeto
+![tela inicial]()
+![tela de adicionar]()
+![tela de favoritos]()
+
+![tela de remover]()
 
 <p align="center">
-<img src="https://user-images.githubusercontent.com/92765775/173158442-0f73dfa7-edf2-4480-87ca-d9f8006f397a.png" width="270" height="500">
-<img src="https://user-images.githubusercontent.com/92765775/173159114-a1ca1f9f-25a4-4bb6-aca7-170f4e33e22d.png" width="270" height="500">
-<img src="https://user-images.githubusercontent.com/92765775/173159195-bb9e2863-0e04-4d3d-a410-c315585edc38.png" width="270" height="500">
-<img src="https://user-images.githubusercontent.com/92765775/173159036-8270929d-a824-4ebf-805d-a57a8a3585ea.png" width="270" height="500">
-<img src="https://user-images.githubusercontent.com/92765775/173159205-2f903828-efe3-4706-a86e-53851005f1ee.png" width="270" height="500">
-<img src="https://user-images.githubusercontent.com/92765775/173159289-e20f2300-67c4-40f9-9273-6e8d685949bd.png" width="270" height="500">
+<img src="https://user-images.githubusercontent.com/92765775/174865837-6c12cbec-87fd-47e3-b718-f6e7bb433b44.png" width="270" height="600">
+<img src="https://user-images.githubusercontent.com/92765775/174866000-d7706942-967b-4a90-a7cb-7f7f142e9266.png" width="270" height="600">
+<img src="https://user-images.githubusercontent.com/92765775/174866016-3ec38b48-0a62-4e8e-a642-fea3e4267b98.png" width="270" height="600">
+<img src="https://user-images.githubusercontent.com/92765775/174866210-ca76c344-68dd-4cef-9b39-321ad18270db.png" width="270" height="600">
+<img src="https://user-images.githubusercontent.com/92765775/174866038-f56cf288-3069-4675-9c34-d6922ca1d681.png" width="270" height="600">
+<img src="https://user-images.githubusercontent.com/92765775/173159289-e20f2300-67c4-40f9-9273-6e8d685949bd.png" width="270" height="600">
   
   </p>
   
