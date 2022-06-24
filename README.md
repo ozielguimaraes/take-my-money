@@ -14,7 +14,7 @@
 * [Pessoas Desenvolvedoras do Projeto](#pessoas-desenvolvedoras)
 
 ## Atividades desempenhadas no projeto
-Desenvolvedor responsável pelo back-end onde foi realizado atividades como tratamento de erros,teste unitários, arquitetura geral do projeto, utilização do retrofit,banco de dados, etc. Na parte de Front do aplicativo desenvolveu as telas onde as moedas ficam salvas, tela da tratativa de erro e SplashScreen, além de auxiliar em todo o processo de desenvolvimento junto com sua equipe.
+Desenvolvedor responsável pelo back-end onde foi realizado atividades como tratamento de erros, teste unitários, arquitetura geral do projeto, utilização do retrofit,banco de dados, etc. Na parte de Front do aplicativo desenvolveu as telas onde as moedas ficam salvas, tela da tratativa de erro e SplashScreen, além de auxiliar em todo o processo de desenvolvimento junto com sua equipe.
 
 ## Proposta e Descrição do projeto
 Proposta: Criar um aplicativo que se comunique via REST API, na plataforma CoinAPI. Sendo necessário que o app liste criptomoedas e que possibilite ver detalhes do volume transacionado de cada moeda, assim como adicionar moedas como favoritas. 
