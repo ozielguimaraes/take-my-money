@@ -3,9 +3,9 @@ package com.example.take_my_money.presenter.viewmodel
 import androidx.lifecycle.*
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.repository.RepositoryDataSource
-import com.example.take_my_money.domain.UseCase.UseCaseAllCoin
-import com.example.take_my_money.domain.UseCase.UseCaseDataSource
 import com.example.take_my_money.domain.exceptions.*
+import com.example.take_my_money.domain.usecase.UseCaseAllCoin
+import com.example.take_my_money.domain.usecase.UseCaseDataSource
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
@@ -14,20 +14,21 @@ class CoinListViewModel(
     private val useCaseDataBase: UseCaseDataSource
 ) : ViewModel() {
 
-    private val _listcoins = MutableLiveData<ResultWrapper<List<CoinEntity>>>()
-    val listcoins: LiveData<ResultWrapper<List<CoinEntity>>> get() = _listcoins
+    private val _listCoins = MutableLiveData<ResultWrapper<List<CoinEntity>>>()
+    val listCoins: LiveData<ResultWrapper<List<CoinEntity>>> get() = _listCoins
 
-    private val _listCoinsAdapter = MutableLiveData<List<CoinEntity>>()
-    val listCoinsAdapter: LiveData<List<CoinEntity>> get() = _listCoinsAdapter
+    private val _listCoinsMutableLiveData = MutableLiveData<List<CoinEntity>>()
+    val listCoinsLiveData: LiveData<List<CoinEntity>> get() = _listCoinsMutableLiveData
 
     private val _errorMsg = MutableLiveData<ResultWrapper<String>>()
     val errorMsg: LiveData<ResultWrapper<String>> get() = _errorMsg
 
     fun requestApiListCoin() {
+        _listCoins.value = ResultWrapper.Loading
         try {
             viewModelScope.launch {
-                _listcoins.postValue(ResultWrapper.Success(useCaseAllCoin.getListCoin()))
-                _listCoinsAdapter.postValue(useCaseAllCoin.getListCoin())
+                _listCoins.postValue(ResultWrapper.Success(useCaseAllCoin.getListCoin()))
+                _listCoinsMutableLiveData.postValue(useCaseAllCoin.getListCoin())
             }
         } catch (http: HttpException) {
             when {
