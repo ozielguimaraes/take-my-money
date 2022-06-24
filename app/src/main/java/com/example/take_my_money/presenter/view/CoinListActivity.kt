@@ -17,8 +17,8 @@ import com.example.take_my_money.data.repository.RepositoryAllCoins
 import com.example.take_my_money.data.repository.RepositoryDataSource
 import com.example.take_my_money.data.utils.Constants
 import com.example.take_my_money.databinding.ActivityCoinListBinding
-import com.example.take_my_money.domain.UseCase.UseCaseAllCoin
 import com.example.take_my_money.domain.exceptions.ResultWrapper
+import com.example.take_my_money.domain.usecase.UseCaseAllCoin
 import com.example.take_my_money.presenter.adapter.CoinAdapter
 import com.example.take_my_money.presenter.interfaces.IOnclik
 import com.example.take_my_money.presenter.viewmodel.CoinListViewModel
@@ -72,10 +72,10 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
         viewModel.errorMsg.observe(this) { resultError ->
             setupError(resultError)
         }
-        viewModel.listcoins.observe(this) { resultCoinApi ->
+        viewModel.listCoins.observe(this) { resultCoinApi ->
             loadCoinList(resultCoinApi)
         }
-        viewModel.listCoinsAdapter.observe(this) {
+        viewModel.listCoinsLiveData.observe(this) {
         }
     }
 
@@ -142,10 +142,10 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
     private fun filterCoins(query: String?): Boolean {
         val adapter = CoinAdapter(this@CoinListActivity, this)
         if (query.isNullOrEmpty()) {
-            adapter.submitList(viewModel.listCoinsAdapter.value)
+            adapter.submitList(viewModel.listCoinsLiveData.value)
         } else {
             adapter.submitList(
-                viewModel.listCoinsAdapter.value?.filter {
+                viewModel.listCoinsLiveData.value?.filter {
                     it.name?.contains(query) ?: false
                 }
             )
