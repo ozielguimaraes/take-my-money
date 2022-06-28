@@ -45,8 +45,7 @@ class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context
         val item = getItem(position)
 
         holder.itemView.contentDescription =
-            "Moeda digital $position" + "${item.id_icon}, ${item.name}, ${item.price_usd}" +
-            "${item.volume_1day_usd} , ${item.volume_1hrs_usd}, ${item.volume_1mth_usd}"
+            """Moeda digital $position${item.id_icon}, ${item.name}, ${item.price_usd}${item.volume_1day_usd} , ${item.volume_1hrs_usd}, ${item.volume_1mth_usd}"""
 
         holder.binding.txtCoin.text = item.name
         holder.binding.txtCoinModel.text = item.asset_id
