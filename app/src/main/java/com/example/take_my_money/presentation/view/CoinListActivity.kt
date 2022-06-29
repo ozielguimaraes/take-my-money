@@ -1,4 +1,4 @@
-package com.example.take_my_money.presenter.view
+package com.example.take_my_money.presentation.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -19,9 +19,9 @@ import com.example.take_my_money.data.utils.Constants
 import com.example.take_my_money.databinding.ActivityCoinListBinding
 import com.example.take_my_money.domain.exceptions.ResultWrapper
 import com.example.take_my_money.domain.usecase.UseCaseAllCoin
-import com.example.take_my_money.presenter.adapter.CoinAdapter
-import com.example.take_my_money.presenter.interfaces.IOnclik
-import com.example.take_my_money.presenter.viewmodel.CoinListViewModel
+import com.example.take_my_money.presentation.adapter.CoinAdapter
+import com.example.take_my_money.presentation.interfaces.IOnclik
+import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 

@@ -1,4 +1,4 @@
-package com.example.take_my_money.domain.presenter.viewmodel
+package com.example.take_my_money.domain.presentation.viewmodel
 
 import androidx.annotation.VisibleForTesting
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
@@ -8,7 +8,7 @@ import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.domain.data.dao.FakeListCointEntity
 import com.example.take_my_money.domain.usecase.UseCaseAllCoin
 import com.example.take_my_money.domain.usecase.UseCaseDataSource
-import com.example.take_my_money.presenter.viewmodel.CoinListViewModel
+import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk

@@ -1,4 +1,4 @@
-package com.example.take_my_money.presenter.adapter
+package com.example.take_my_money.presentation.adapter
 
 import android.content.Context
 import android.os.Build
@@ -9,12 +9,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.take_my_money.databinding.ItemListCoinBinding
 import com.example.take_my_money.data.dao.CoinDataBase
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.dao.ICoinDAO
 import com.example.take_my_money.data.repository.RepositoryDataSource
-import com.example.take_my_money.presenter.interfaces.IOnclik
+import com.example.take_my_money.databinding.ItemListCoinBinding
+import com.example.take_my_money.presentation.interfaces.IOnclik
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 import kotlinx.coroutines.CoroutineScope
@@ -43,6 +43,9 @@ class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context
         val iCoinDAO: ICoinDAO = CoinDataBase.getInstance(context).iCoinDAO
         val dao = RepositoryDataSource(iCoinDAO)
         val item = getItem(position)
+
+        holder.itemView.contentDescription =
+            """Moeda digital $position${item.id_icon}, ${item.name}, ${item.price_usd}${item.volume_1day_usd} , ${item.volume_1hrs_usd}, ${item.volume_1mth_usd}"""
 
         holder.binding.txtCoin.text = item.name
         holder.binding.txtCoinModel.text = item.asset_id

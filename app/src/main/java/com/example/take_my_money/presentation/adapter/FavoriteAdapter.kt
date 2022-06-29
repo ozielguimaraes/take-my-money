@@ -1,13 +1,13 @@
-package com.example.take_my_money.presenter.adapter
+package com.example.take_my_money.presentation.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.take_my_money.databinding.ItemFavoriteRecyclerBinding
 import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.presenter.interfaces.IOnclik
+import com.example.take_my_money.databinding.ItemFavoriteRecyclerBinding
+import com.example.take_my_money.presentation.interfaces.IOnclik
 import com.squareup.picasso.Picasso
 
 class FavoriteAdapter(private val onclick: IOnclik) :
@@ -29,6 +29,9 @@ class FavoriteAdapter(private val onclick: IOnclik) :
 
     override fun onBindViewHolder(holder: MyViewHolderFavorite, position: Int) {
         val itemCoin = getItem(position)
+
+        holder.itemView.contentDescription =
+            """Moeda Digital ${position}${itemCoin.name}, ${itemCoin.asset_id}, ${itemCoin.price_usd}"""
 
         holder.binding.textCoin.text = itemCoin.name
         holder.binding.textCoinAsset.text = itemCoin.asset_id
