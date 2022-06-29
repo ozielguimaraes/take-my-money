@@ -1,4 +1,4 @@
-package com.example.take_my_money.presenter.view
+package com.example.take_my_money.presentation.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -12,9 +12,9 @@ import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.dao.ICoinDAO
 import com.example.take_my_money.data.repository.RepositoryDataSource
 import com.example.take_my_money.data.utils.Constants
-import com.example.take_my_money.presenter.adapter.FavoriteAdapter
-import com.example.take_my_money.presenter.interfaces.IOnclik
-import com.example.take_my_money.presenter.viewmodel.FavoriteViewModel
+import com.example.take_my_money.presentation.adapter.FavoriteAdapter
+import com.example.take_my_money.presentation.interfaces.IOnclik
+import com.example.take_my_money.presentation.viewmodel.FavoriteViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 

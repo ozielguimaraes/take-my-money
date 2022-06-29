@@ -1,4 +1,4 @@
-package com.example.take_my_money.presenter.adapter
+package com.example.take_my_money.presentation.adapter
 
 import android.content.Context
 import android.os.Build
@@ -14,7 +14,7 @@ import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.dao.ICoinDAO
 import com.example.take_my_money.data.repository.RepositoryDataSource
 import com.example.take_my_money.databinding.ItemListCoinBinding
-import com.example.take_my_money.presenter.interfaces.IOnclik
+import com.example.take_my_money.presentation.interfaces.IOnclik
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 import kotlinx.coroutines.CoroutineScope

@@ -1,4 +1,4 @@
-package com.example.take_my_money.presenter.view
+package com.example.take_my_money.presentation.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -13,7 +13,7 @@ import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.dao.ICoinDAO
 import com.example.take_my_money.data.repository.RepositoryDataSource
 import com.example.take_my_money.data.utils.Constants
-import com.example.take_my_money.presenter.viewmodel.CoinDetailsViewModel
+import com.example.take_my_money.presentation.viewmodel.CoinDetailsViewModel
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 import kotlinx.coroutines.CoroutineScope
