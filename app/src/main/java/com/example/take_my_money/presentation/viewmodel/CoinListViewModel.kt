@@ -1,11 +1,12 @@
 package com.example.take_my_money.presentation.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.*
-import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.repository.RepositoryDataSource
+import com.example.take_my_money.domain.entities.CoinDomainEntities
 import com.example.take_my_money.domain.exceptions.*
-import com.example.take_my_money.domain.usecase.UseCaseAllCoin
-import com.example.take_my_money.domain.usecase.UseCaseDataSource
+import com.example.take_my_money.domain.usecases.UseCaseAllCoin
+import com.example.take_my_money.domain.usecases.UseCaseDataSource
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
@@ -14,11 +15,11 @@ class CoinListViewModel(
     private val useCaseDataBase: UseCaseDataSource
 ) : ViewModel() {
 
-    private val _listCoins = MutableLiveData<ResultWrapper<List<CoinEntity>>>()
-    val listCoins: LiveData<ResultWrapper<List<CoinEntity>>> get() = _listCoins
+    private val _listCoins = MutableLiveData<ResultWrapper<List<CoinDomainEntities>>>()
+    val listCoins: LiveData<ResultWrapper<List<CoinDomainEntities>>> get() = _listCoins
 
-    private val _listCoinsMutableLiveData = MutableLiveData<List<CoinEntity>>()
-    val listCoinsLiveData: LiveData<List<CoinEntity>> get() = _listCoinsMutableLiveData
+    private val _listCoinsMutableLiveData = MutableLiveData<List<CoinDomainEntities>>()
+    val listCoinsLiveData: LiveData<List<CoinDomainEntities>> get() = _listCoinsMutableLiveData
 
     private val _errorMsg = MutableLiveData<ResultWrapper<String>>()
     val errorMsg: LiveData<ResultWrapper<String>> get() = _errorMsg
@@ -27,8 +28,8 @@ class CoinListViewModel(
         _listCoins.value = ResultWrapper.Loading
         try {
             viewModelScope.launch {
-                _listCoins.postValue(ResultWrapper.Success(useCaseAllCoin.getListCoin()))
                 _listCoinsMutableLiveData.postValue(useCaseAllCoin.getListCoin())
+                Log.i("TAG", "requestApiListCoin: ${useCaseAllCoin.getListCoin()}")
             }
         } catch (http: HttpException) {
             when {

@@ -6,8 +6,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.domain.data.dao.FakeListCointEntity
-import com.example.take_my_money.domain.usecase.UseCaseAllCoin
-import com.example.take_my_money.domain.usecase.UseCaseDataSource
+import com.example.take_my_money.domain.usecases.UseCaseAllCoin
+import com.example.take_my_money.domain.usecases.UseCaseDataSource
 import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
 import io.mockk.coEvery
 import io.mockk.coVerify

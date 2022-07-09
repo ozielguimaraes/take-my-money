@@ -6,14 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.take_my_money.R
-import com.example.take_my_money.databinding.ActivityFavoriteCoinBinding
 import com.example.take_my_money.data.dao.CoinDataBase
-import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.dao.ICoinDAO
 import com.example.take_my_money.data.repository.RepositoryDataSource
-import com.example.take_my_money.data.utils.Constants
-import com.example.take_my_money.presentation.adapter.FavoriteAdapter
+import com.example.take_my_money.databinding.ActivityFavoriteCoinBinding
+import com.example.take_my_money.domain.entities.CoinDomainEntities
+import com.example.take_my_money.presentation.adapters.FavoriteAdapter
 import com.example.take_my_money.presentation.interfaces.IOnclik
+import com.example.take_my_money.presentation.utils.Constants
 import com.example.take_my_money.presentation.viewmodel.FavoriteViewModel
 import java.text.SimpleDateFormat
 import java.util.*
@@ -71,16 +71,16 @@ class FavoriteActivity : AppCompatActivity(), IOnclik {
     private fun setupObservers() {
         viewModel.loadDataBase.observe(this) { coinsDataBase ->
             val adapter = FavoriteAdapter(this)
-            adapter.submitList(coinsDataBase)
+            /* adapter.submitList(coinsDataBase)*/
             binding.recyclerFavorite.adapter = adapter
         }
     }
 
-    override fun onClickCoins(coin: CoinEntity) {
+    override fun onClickCoins(coin: CoinDomainEntities) {
         callNewScreen(coin)
     }
 
-    private fun callNewScreen(coin: CoinEntity) {
+    private fun callNewScreen(coin: CoinDomainEntities) {
         val intent = Intent(this, DetailsActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         intent.putExtra(Constants.KEY_INTENT, coin)

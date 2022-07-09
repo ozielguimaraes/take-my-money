@@ -1,4 +1,4 @@
-package com.example.take_my_money.domain.usecase
+package com.example.take_my_money.domain.usecases
 
 import com.example.take_my_money.data.dao.CoinEntity
 
