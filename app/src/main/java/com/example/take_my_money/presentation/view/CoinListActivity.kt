@@ -1,4 +1,4 @@
-package com.example.take_my_money.presenter.view
+package com.example.take_my_money.presentation.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,13 +15,14 @@ import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.dao.ICoinDAO
 import com.example.take_my_money.data.repository.RepositoryAllCoins
 import com.example.take_my_money.data.repository.RepositoryDataSource
-import com.example.take_my_money.data.utils.Constants
+import com.example.take_my_money.presentation.utils.Constants
 import com.example.take_my_money.databinding.ActivityCoinListBinding
+import com.example.take_my_money.domain.entities.CoinDomainEntities
 import com.example.take_my_money.domain.exceptions.ResultWrapper
-import com.example.take_my_money.domain.usecase.UseCaseAllCoin
-import com.example.take_my_money.presenter.adapter.CoinAdapter
-import com.example.take_my_money.presenter.interfaces.IOnclik
-import com.example.take_my_money.presenter.viewmodel.CoinListViewModel
+import com.example.take_my_money.domain.usecases.UseCaseAllCoin
+import com.example.take_my_money.presentation.adapters.CoinAdapter
+import com.example.take_my_money.presentation.interfaces.IOnclik
+import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -73,7 +74,6 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
             setupError(resultError)
         }
         viewModel.listCoins.observe(this) { resultCoinApi ->
-            loadCoinList(resultCoinApi)
         }
         viewModel.listCoinsLiveData.observe(this) {
         }
@@ -87,7 +87,7 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
             }
             is ResultWrapper.Success -> {
                 binding.progressBar.visibility = View.INVISIBLE
-                adapter.submitList(resultCoinApi.listCoin)
+                /*adapter.submitList(resultCoinApi.listCoin)*/
                 binding.RecyclerviewCoins.adapter = adapter
             }
         }
@@ -154,11 +154,11 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
         return true
     }
 
-    override fun onClickCoins(coin: CoinEntity) {
+    override fun onClickCoins(coin: CoinDomainEntities) {
         callingScreenDetailsCoin(coin)
     }
 
-    private fun callingScreenDetailsCoin(coin: CoinEntity) {
+    private fun callingScreenDetailsCoin(coin: CoinDomainEntities) {
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra(Constants.KEY_INTENT, coin)
         startActivity(intent)

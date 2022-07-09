@@ -1,4 +1,4 @@
-package com.example.take_my_money.presenter.view
+package com.example.take_my_money.presentation.view
 
 import android.annotation.SuppressLint
 import android.content.Intent

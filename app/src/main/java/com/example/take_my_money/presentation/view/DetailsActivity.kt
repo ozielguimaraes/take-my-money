@@ -1,4 +1,4 @@
-package com.example.take_my_money.presenter.view
+package com.example.take_my_money.presentation.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -7,13 +7,13 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.take_my_money.R
-import com.example.take_my_money.databinding.ActivityDetailsCoinBinding
 import com.example.take_my_money.data.dao.CoinDataBase
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.dao.ICoinDAO
 import com.example.take_my_money.data.repository.RepositoryDataSource
-import com.example.take_my_money.data.utils.Constants
-import com.example.take_my_money.presenter.viewmodel.CoinDetailsViewModel
+import com.example.take_my_money.databinding.ActivityDetailsCoinBinding
+import com.example.take_my_money.presentation.utils.Constants
+import com.example.take_my_money.presentation.viewmodel.CoinDetailsViewModel
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 import kotlinx.coroutines.CoroutineScope
@@ -68,7 +68,7 @@ class DetailsActivity : AppCompatActivity() {
     private fun passDataToScreen(coinDetails: CoinEntity?) {
         coinDetails?.let {
             if (coinDetails.id_icon != null) {
-                Picasso.get().load(coinDetails.getPathUrlImage()).into(binding.imView)
+              /*  Picasso.get().load(coinDetails.getPathUrlImage()).into(binding.imView)*/
             } else {
                 Picasso.get().load(R.drawable.im_coin).into(binding.imView)
             }

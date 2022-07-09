@@ -1,8 +1,8 @@
-package com.example.take_my_money.presenter.viewmodel
+package com.example.take_my_money.presentation.viewmodel
 
 import androidx.lifecycle.*
 import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.domain.usecase.UseCaseDataSource
+import com.example.take_my_money.domain.usecases.UseCaseDataSource
 import com.example.take_my_money.data.repository.RepositoryDataSource
 import kotlinx.coroutines.launch
 
