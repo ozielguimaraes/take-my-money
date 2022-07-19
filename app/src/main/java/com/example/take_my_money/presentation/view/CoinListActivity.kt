@@ -6,46 +6,31 @@ import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.take_my_money.R
-import com.example.take_my_money.data.api.IWebService
 import com.example.take_my_money.data.dao.CoinDataBase
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.dao.ICoinDAO
-import com.example.take_my_money.data.repository.RepositoryAllCoins
-import com.example.take_my_money.data.repository.RepositoryDataSource
-import com.example.take_my_money.presentation.utils.Constants
 import com.example.take_my_money.databinding.ActivityCoinListBinding
 import com.example.take_my_money.domain.entities.CoinDomainEntities
 import com.example.take_my_money.domain.exceptions.ResultWrapper
-import com.example.take_my_money.domain.usecases.UseCaseAllCoin
 import com.example.take_my_money.presentation.adapters.CoinAdapter
 import com.example.take_my_money.presentation.interfaces.IOnclik
+import com.example.take_my_money.presentation.utils.Constants
 import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
 import java.text.SimpleDateFormat
 import java.util.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CoinListActivity : AppCompatActivity(), IOnclik {
 
     private lateinit var binding: ActivityCoinListBinding
-    private lateinit var viewModel: CoinListViewModel
+    private val viewModel: CoinListViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityCoinListBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        val coinIDAO: ICoinDAO =
-            CoinDataBase.getInstance(this).iCoinDAO
-
-        viewModel = ViewModelProvider(
-            this,
-            CoinListViewModel.CoinListViewModelFactory(
-                UseCaseAllCoin(RepositoryAllCoins(IWebService.getBaseUrl())),
-                RepositoryDataSource(coinIDAO)
-            )
-        )[CoinListViewModel::class.java]
 
         loadDataBase()
         setupNavigationBottom()

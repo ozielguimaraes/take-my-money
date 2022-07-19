@@ -28,14 +28,6 @@ class FavoriteActivity : AppCompatActivity(), IOnclik {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val coinIDAO: ICoinDAO = CoinDataBase.getInstance(this).iCoinDAO
-        viewModel = ViewModelProvider(
-            this,
-            FavoriteViewModel.FavoriteViewModelFactory(
-                RepositoryDataSource(coinIDAO)
-            )
-        )[FavoriteViewModel::class.java]
-
         loadDataBase()
         setupNavigationBottom()
         setupView()

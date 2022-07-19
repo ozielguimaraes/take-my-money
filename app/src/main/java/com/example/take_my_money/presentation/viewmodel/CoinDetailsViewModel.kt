@@ -2,7 +2,7 @@ package com.example.take_my_money.presentation.viewmodel
 
 import androidx.lifecycle.*
 import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.domain.usecases.UseCaseDataSource
+import com.example.take_my_money.domain.abstracts.UseCaseDataSource
 import com.example.take_my_money.data.repository.RepositoryDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -33,19 +33,6 @@ class CoinDetailsViewModel(
         CoroutineScope(Dispatchers.IO).launch {
             val returnCoinDataBase = useCaseDataSource.getByAssetId(assetId)
             _returnDataBase.postValue(returnCoinDataBase)
-        }
-    }
-
-    class CoinDetailsViewModelFactory(
-        private val repositoryDataSource: RepositoryDataSource,
-    ) : ViewModelProvider.Factory {
-
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return if (modelClass.isAssignableFrom(CoinDetailsViewModel::class.java)) {
-                CoinDetailsViewModel(this.repositoryDataSource) as T
-            } else {
-                throw IllegalArgumentException("ViewModel not found")
-            }
         }
     }
 }

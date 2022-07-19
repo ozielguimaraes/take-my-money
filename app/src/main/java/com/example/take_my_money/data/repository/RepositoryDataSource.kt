@@ -2,7 +2,7 @@ package com.example.take_my_money.data.repository
 
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.dao.ICoinDAO
-import com.example.take_my_money.domain.usecases.UseCaseDataSource
+import com.example.take_my_money.domain.abstracts.UseCaseDataSource
 
 class RepositoryDataSource(private val iCoinDAO: ICoinDAO) : UseCaseDataSource {
 

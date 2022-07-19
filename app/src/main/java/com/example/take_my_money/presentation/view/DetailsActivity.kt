@@ -31,13 +31,6 @@ class DetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupNavigationBottom()
 
-        val coinIDAO: ICoinDAO =
-            CoinDataBase.getInstance(this).iCoinDAO
-        viewModel = ViewModelProvider(
-            this,
-            CoinDetailsViewModel.CoinDetailsViewModelFactory(RepositoryDataSource(coinIDAO))
-        )[CoinDetailsViewModel::class.java]
-
         loadDataBase()
         getCoinListScreen()
         buttonBack()

@@ -1,12 +1,14 @@
 package com.example.take_my_money.presentation.viewmodel
 
 import android.util.Log
-import androidx.lifecycle.*
-import com.example.take_my_money.data.repository.RepositoryDataSource
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.take_my_money.domain.entities.CoinDomainEntities
 import com.example.take_my_money.domain.exceptions.*
 import com.example.take_my_money.domain.usecases.UseCaseAllCoin
-import com.example.take_my_money.domain.usecases.UseCaseDataSource
+import com.example.take_my_money.domain.abstracts.UseCaseDataSource
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
@@ -28,6 +30,7 @@ class CoinListViewModel(
         _listCoins.value = ResultWrapper.Loading
         try {
             viewModelScope.launch {
+                val result = useCaseAllCoin.getListCoin()
                 _listCoinsMutableLiveData.postValue(useCaseAllCoin.getListCoin())
                 Log.i("TAG", "requestApiListCoin: ${useCaseAllCoin.getListCoin()}")
             }
@@ -55,19 +58,6 @@ class CoinListViewModel(
     fun loadDataBase() {
         viewModelScope.launch {
             useCaseDataBase.getAllCoins()
-        }
-    }
-
-    class CoinListViewModelFactory(
-        private val useCaseAllCoin: UseCaseAllCoin,
-        private val iRepository: RepositoryDataSource
-    ) : ViewModelProvider.Factory {
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return if (modelClass.isAssignableFrom(CoinListViewModel::class.java)) {
-                CoinListViewModel(this.useCaseAllCoin, this.iRepository) as T
-            } else {
-                throw IllegalArgumentException("ViewModel not foun")
-            }
         }
     }
 }
