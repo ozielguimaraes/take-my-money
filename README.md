@@ -72,7 +72,7 @@ O DigitalCurrencies-TakeMyMoney indexa conteúdo encontrado na web automaticamen
 ## Tecnologias utilizadas
 
 - `Kotlin`
-- `Injeção com Koin`
+- `Koin`
 - `Retrofit2`
 - `Picasso`
 - `Kotlin`
