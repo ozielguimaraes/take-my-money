@@ -2,7 +2,7 @@ package com.example.take_my_money.presentation.viewmodel
 
 import androidx.lifecycle.*
 import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.domain.usecases.UseCaseDataSource
+import com.example.take_my_money.domain.abstracts.UseCaseDataSource
 import com.example.take_my_money.data.repository.RepositoryDataSource
 import kotlinx.coroutines.launch
 
@@ -14,19 +14,6 @@ class FavoriteViewModel(private val useCaseDataSource: UseCaseDataSource) : View
     fun loadDataBase() {
         viewModelScope.launch {
             _loadDataBase.postValue(useCaseDataSource.getAllCoins())
-        }
-    }
-
-    class FavoriteViewModelFactory(
-        private val repositoryDataSource: RepositoryDataSource
-    ) : ViewModelProvider.Factory {
-
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return if (modelClass.isAssignableFrom(FavoriteViewModel::class.java)) {
-                FavoriteViewModel(this.repositoryDataSource) as T
-            } else {
-                throw IllegalArgumentException("ViewModel not found")
-            }
         }
     }
 }

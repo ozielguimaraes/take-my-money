@@ -7,7 +7,7 @@ import androidx.lifecycle.Observer
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.domain.data.dao.FakeListCointEntity
 import com.example.take_my_money.domain.usecases.UseCaseAllCoin
-import com.example.take_my_money.domain.usecases.UseCaseDataSource
+import com.example.take_my_money.domain.abstracts.UseCaseDataSource
 import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -89,7 +89,7 @@ class CoinListViewModelTest {
         val valueOfLiveData = viewModel.listCoinsLiveData.getOrAwaitValue()
 
         // Then
-        Assert.assertEquals(FakeListCointEntity().listAllCoins(), valueOfLiveData)
+        Assert.assertEquals(valueOfLiveData, FakeListCointEntity().listAllCoins())
     }
 
     private fun initViewModel(): CoinListViewModel {
