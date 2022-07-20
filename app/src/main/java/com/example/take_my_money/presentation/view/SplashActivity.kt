@@ -25,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
 
     private fun splashScreen() {
         Handler(Looper.getMainLooper()).postDelayed(3000, 3000) {
-            val intent = Intent(this, FavoriteActivity::class.java)
+            val intent = Intent(this, CoinListActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
