@@ -9,7 +9,6 @@ import com.example.take_my_money.domain.abstracts.UseCaseDataSource
 import com.example.take_my_money.domain.data.dao.FakeListCointEntity
 import com.example.take_my_money.domain.usecases.UseCaseAllCoin
 import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
-import com.example.take_my_money.ui.view.coinlist.CoinListViewModel
 import io.mockk.coEvery
 import io.mockk.coVerify
 import io.mockk.mockk
@@ -77,23 +76,24 @@ class CoinListViewModelTest {
         }
 
     @Test
-    fun `when view model fetches data from useCaseAllCoin checked the value of live data`() = runBlocking {
-        // Given
-        val viewModel = initViewModel()
-        coEvery { useCaseAllCoinTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
-        // When
-        viewModel.requestApiListCoin()
-        delay(2000)
-        val valueOfLiveData = viewModel.listCoinsLiveData.value
+    fun `when view model fetches data from useCaseAllCoin checked the value of live data`() =
+        runBlocking {
+            // Given
+            val viewModel = initViewModel()
+            coEvery { useCaseAllCoinTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
+            // When
+            viewModel.requestApiListCoin()
+            delay(2000)
+            val valueOfLiveData = viewModel.listCoinsLiveData.value
 
-        // Then
-        Assert.assertEquals(valueOfLiveData, FakeListCointEntity().listAllCoins())
-        Assert.assertEquals(1, valueOfLiveData?.size)
-    }
+            // Then
+            Assert.assertEquals(valueOfLiveData, FakeListCointEntity().listAllCoins())
+            Assert.assertEquals(1, valueOfLiveData?.size)
+        }
 
     private fun initViewModel(): CoinListViewModel {
         val viewModel = CoinListViewModel(useCaseAllCoinTest, useCaseDataSourceTest)
-        viewModel.listCoinsAdapter.observeForever { observerLiveDataTest }
+        viewModel.listCoinsLiveData.observeForever { observerLiveDataTest }
         return viewModel
     }
 }

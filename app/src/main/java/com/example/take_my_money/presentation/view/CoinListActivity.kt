@@ -1,4 +1,4 @@
-package com.example.take_my_money.presenter.view
+package com.example.take_my_money.presentation.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,50 +6,33 @@ import android.view.View
 import android.widget.SearchView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.take_my_money.R
-import com.example.take_my_money.data.api.IWebService
-import com.example.take_my_money.data.dao.CoinDataBase
-import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.data.dao.ICoinDAO
-import com.example.take_my_money.data.repository.RepositoryAllCoins
-import com.example.take_my_money.data.repository.RepositoryDataSource
-import com.example.take_my_money.data.utils.Constants
 import com.example.take_my_money.databinding.ActivityCoinListBinding
-import com.example.take_my_money.domain.UseCase.UseCaseAllCoin
+import com.example.take_my_money.domain.entities.CoinDomainEntities
 import com.example.take_my_money.domain.exceptions.ResultWrapper
-import com.example.take_my_money.presenter.adapter.CoinAdapter
-import com.example.take_my_money.presenter.interfaces.IOnclik
-import com.example.take_my_money.presenter.viewmodel.CoinListViewModel
+import com.example.take_my_money.presentation.adapters.CoinAdapter
+import com.example.take_my_money.presentation.interfaces.IOnClickCoinList
+import com.example.take_my_money.presentation.utils.Constants
+import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
 import java.text.SimpleDateFormat
 import java.util.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CoinListActivity : AppCompatActivity(), IOnclik {
+class CoinListActivity : AppCompatActivity(), IOnClickCoinList {
 
     private lateinit var binding: ActivityCoinListBinding
-    private lateinit var viewModel: CoinListViewModel
+    private val viewModel: CoinListViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityCoinListBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val coinIDAO: ICoinDAO =
-            CoinDataBase.getInstance(this).iCoinDAO
-
-        viewModel = ViewModelProvider(
-            this,
-            CoinListViewModel.CoinListViewModelFactory(
-                UseCaseAllCoin(RepositoryAllCoins(IWebService.getBaseUrl())),
-                RepositoryDataSource(coinIDAO)
-            )
-        )[CoinListViewModel::class.java]
-
         loadDataBase()
         setupNavigationBottom()
-        setupObservers()
         requestApi()
+        setupObservers()
         setupView()
     }
 
@@ -68,29 +51,40 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
         }
     }
 
+    private fun requestApi() {
+        viewModel.requestApiListCoin()
+    }
+
     private fun setupObservers() {
         viewModel.errorMsg.observe(this) { resultError ->
             setupError(resultError)
         }
-        viewModel.listcoins.observe(this) { resultCoinApi ->
-            loadCoinList(resultCoinApi)
+        viewModel.listCoinsLiveData.observe(this) {
+            setupAdapter(it)
         }
-        viewModel.listCoinsAdapter.observe(this) {
+
+        viewModel.listCoinsResultWrapper.observe(this) {
+            loadCoinList(it)
         }
     }
 
-    private fun loadCoinList(resultCoinApi: ResultWrapper<List<CoinEntity>>) {
-        val adapter = CoinAdapter(this, this)
+    private fun loadCoinList(resultCoinApi: ResultWrapper<List<CoinDomainEntities>>) {
         when (resultCoinApi) {
             is ResultWrapper.Loading -> {
                 binding.progressBar.visibility = View.VISIBLE
             }
             is ResultWrapper.Success -> {
                 binding.progressBar.visibility = View.INVISIBLE
-                adapter.submitList(resultCoinApi.listCoin)
-                binding.RecyclerviewCoins.adapter = adapter
             }
         }
+    }
+
+    private fun setupAdapter(list: List<CoinDomainEntities>?) {
+        val adapter = CoinAdapter(this, this)
+        binding.RecyclerviewCoins.layoutManager = LinearLayoutManager(this)
+        binding.RecyclerviewCoins.setHasFixedSize(true)
+        adapter.submitList(list)
+        binding.RecyclerviewCoins.adapter = adapter
     }
 
     private fun setupError(resultError: ResultWrapper<String>) {
@@ -116,10 +110,6 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
         }
     }
 
-    private fun requestApi() {
-        viewModel.requestApiListCoin()
-    }
-
     private fun setupView() {
         val date = Calendar.getInstance().time
         val dateTimeFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault())
@@ -142,10 +132,10 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
     private fun filterCoins(query: String?): Boolean {
         val adapter = CoinAdapter(this@CoinListActivity, this)
         if (query.isNullOrEmpty()) {
-            adapter.submitList(viewModel.listCoinsAdapter.value)
+            adapter.submitList(viewModel.listCoinsLiveData.value)
         } else {
             adapter.submitList(
-                viewModel.listCoinsAdapter.value?.filter {
+                viewModel.listCoinsLiveData.value?.filter {
                     it.name?.contains(query) ?: false
                 }
             )
@@ -154,11 +144,11 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
         return true
     }
 
-    override fun onClickCoins(coin: CoinEntity) {
+    override fun onClickCoins(coin: CoinDomainEntities) {
         callingScreenDetailsCoin(coin)
     }
 
-    private fun callingScreenDetailsCoin(coin: CoinEntity) {
+    private fun callingScreenDetailsCoin(coin: CoinDomainEntities) {
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra(Constants.KEY_INTENT, coin)
         startActivity(intent)

@@ -1,30 +1,31 @@
-package com.example.take_my_money.presenter.adapter
+package com.example.take_my_money.presentation.adapters
 
 import android.content.Context
 import android.os.Build
 import android.support.annotation.RequiresApi
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.take_my_money.databinding.ItemListCoinBinding
 import com.example.take_my_money.data.dao.CoinDataBase
-import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.dao.ICoinDAO
 import com.example.take_my_money.data.repository.RepositoryDataSource
-import com.example.take_my_money.presenter.interfaces.IOnclik
+import com.example.take_my_money.databinding.ItemListCoinBinding
+import com.example.take_my_money.domain.entities.CoinDomainEntities
+import com.example.take_my_money.presentation.interfaces.IOnClickCoinList
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context) :
-    ListAdapter<CoinEntity, CoinAdapter.CoinViewHolder>(DiffCallback()), IOnclik {
+class CoinAdapter(private val onclickCoin: IOnClickCoinList, private val context: Context) :
+    ListAdapter<CoinDomainEntities, CoinAdapter.CoinViewHolder>(DiffCallback()), IOnClickCoinList {
 
-    override fun onClickCoins(coin: CoinEntity) {}
+    override fun onClickCoins(coin: CoinDomainEntities) {}
 
     class CoinViewHolder(val binding: ItemListCoinBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -33,7 +34,8 @@ class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context
             binding = ItemListCoinBinding.inflate(
                 LayoutInflater
                     .from(parent.context),
-                parent, false
+                parent,
+                false
             )
         )
     }
@@ -43,6 +45,9 @@ class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context
         val iCoinDAO: ICoinDAO = CoinDataBase.getInstance(context).iCoinDAO
         val dao = RepositoryDataSource(iCoinDAO)
         val item = getItem(position)
+
+        holder.itemView.contentDescription =
+            """Moeda digital $position${item.id_icon}, ${item.name}, ${item.price_usd}${item.volume_1day_usd} , ${item.volume_1hrs_usd}, ${item.volume_1mth_usd}"""
 
         holder.binding.txtCoin.text = item.name
         holder.binding.txtCoinModel.text = item.asset_id
@@ -58,7 +63,7 @@ class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context
                 }
             }
         } catch (e: Exception) {
-            e.message
+            Log.i("TAG", "onBindViewHolder: ${e.cause}")
         }
         try {
             holder.binding.txtPriceCoin.text = NumberFormat.getInstance().format(item.price_usd)
@@ -70,17 +75,18 @@ class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<CoinEntity>() {
+    class DiffCallback : DiffUtil.ItemCallback<CoinDomainEntities>() {
+
         override fun areItemsTheSame(
-            oldItem: CoinEntity,
-            newItem: CoinEntity
+            oldItem: CoinDomainEntities,
+            newItem: CoinDomainEntities
         ): Boolean {
             return oldItem.name == newItem.name
         }
 
         override fun areContentsTheSame(
-            oldItem: CoinEntity,
-            newItem: CoinEntity
+            oldItem: CoinDomainEntities,
+            newItem: CoinDomainEntities
         ): Boolean {
             return oldItem.asset_id == newItem.asset_id
         }

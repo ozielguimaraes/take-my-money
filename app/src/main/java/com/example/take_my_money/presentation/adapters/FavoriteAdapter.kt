@@ -1,28 +1,31 @@
-package com.example.take_my_money.presenter.adapter
+package com.example.take_my_money.presentation.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.take_my_money.databinding.ItemFavoriteRecyclerBinding
 import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.presenter.interfaces.IOnclik
+import com.example.take_my_money.databinding.ItemFavoriteRecyclerBinding
+import com.example.take_my_money.presentation.interfaces.IOnClickFavorite
 import com.squareup.picasso.Picasso
 
-class FavoriteAdapter(private val onclick: IOnclik) :
-    ListAdapter<CoinEntity, FavoriteAdapter.MyViewHolderFavorite>(DiffCallbackFavorite()), IOnclik {
+class FavoriteAdapter(private val onclick: IOnClickFavorite) :
+    ListAdapter<CoinEntity, FavoriteAdapter.MyViewHolderFavorite>(DiffCallbackFavorite()),
+    IOnClickFavorite {
 
-    override fun onClickCoins(coin: CoinEntity) {
+    override fun onClickFavorite(coinFavorite: CoinEntity) {
     }
 
-    class MyViewHolderFavorite(val binding: ItemFavoriteRecyclerBinding) : RecyclerView.ViewHolder(binding.root)
+    class MyViewHolderFavorite(val binding: ItemFavoriteRecyclerBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolderFavorite {
         return MyViewHolderFavorite(
             ItemFavoriteRecyclerBinding.inflate(
                 LayoutInflater.from(parent.context),
-                parent, false
+                parent,
+                false
             )
         )
     }
@@ -30,27 +33,36 @@ class FavoriteAdapter(private val onclick: IOnclik) :
     override fun onBindViewHolder(holder: MyViewHolderFavorite, position: Int) {
         val itemCoin = getItem(position)
 
+        holder.itemView.contentDescription =
+            """Moeda Digital ${position}${itemCoin.name}, ${itemCoin.asset_id}, ${itemCoin.price_usd}"""
+
         holder.binding.textCoin.text = itemCoin.name
         holder.binding.textCoinAsset.text = itemCoin.asset_id
         holder.binding.textValueCoin.text = itemCoin.price_usd.toString()
 
         try {
             if (itemCoin.id_icon != null) {
-                Picasso.get().load(itemCoin.getPathUrlImage()).into(holder.binding.imageCoinFavorite4)
+                Picasso.get().load(itemCoin.getPathUrlImage())
+                    .into(holder.binding.imageCoinFavorite4)
             }
         } catch (e: Exception) {
             holder.binding.imageCoinFavorite4
         }
-
-        holder.itemView.setOnClickListener { onclick.onClickCoins(itemCoin) }
+        holder.itemView.setOnClickListener { onclick.onClickFavorite(itemCoin) }
     }
 
     class DiffCallbackFavorite : DiffUtil.ItemCallback<CoinEntity>() {
-        override fun areItemsTheSame(oldItem: CoinEntity, newItem: CoinEntity): Boolean {
+        override fun areItemsTheSame(
+            oldItem: CoinEntity,
+            newItem: CoinEntity
+        ): Boolean {
             return oldItem.id == newItem.id
         }
 
-        override fun areContentsTheSame(oldItem: CoinEntity, newItem: CoinEntity): Boolean {
+        override fun areContentsTheSame(
+            oldItem: CoinEntity,
+            newItem: CoinEntity
+        ): Boolean {
             return oldItem.asset_id == newItem.asset_id
         }
     }

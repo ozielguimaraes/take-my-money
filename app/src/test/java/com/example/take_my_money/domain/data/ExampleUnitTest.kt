@@ -1,4 +1,4 @@
-package com.example.take_my_money
+package com.example.take_my_money.domain.data
 
 import org.junit.Test
 
