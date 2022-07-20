@@ -11,7 +11,8 @@ import org.koin.dsl.module
 fun loadPresentationModule(): Module {
     return presentationModule
 }
-val presentationModule = module {
+
+private val presentationModule = module {
 
     viewModel {
         CoinListViewModel(

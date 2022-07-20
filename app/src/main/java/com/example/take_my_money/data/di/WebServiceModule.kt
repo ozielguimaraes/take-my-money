@@ -12,7 +12,7 @@ fun loadWebService(): Module {
     return webServiceModule
 }
 
-val webServiceModule = module {
+private val webServiceModule = module {
     single {
         IWebService.getBaseUrl()
     }

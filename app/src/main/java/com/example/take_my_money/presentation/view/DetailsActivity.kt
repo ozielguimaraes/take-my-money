@@ -5,13 +5,10 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import com.example.take_my_money.R
-import com.example.take_my_money.data.dao.CoinDataBase
 import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.data.dao.ICoinDAO
-import com.example.take_my_money.data.repository.RepositoryDataSource
 import com.example.take_my_money.databinding.ActivityDetailsCoinBinding
+import com.example.take_my_money.domain.entities.CoinDomainEntities
 import com.example.take_my_money.presentation.utils.Constants
 import com.example.take_my_money.presentation.viewmodel.CoinDetailsViewModel
 import com.squareup.picasso.Picasso
@@ -19,11 +16,12 @@ import java.text.NumberFormat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class DetailsActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailsCoinBinding
-    private lateinit var viewModel: CoinDetailsViewModel
+    private val viewModel: CoinDetailsViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityDetailsCoinBinding.inflate(layoutInflater)
@@ -40,28 +38,20 @@ class DetailsActivity : AppCompatActivity() {
         viewModel.loadDataBase()
     }
 
-    private fun addStarFavoriteOrNot() {
-        if (viewModel.returnDataBase.value == null) {
-            binding.imageViewStar.visibility = View.INVISIBLE
-        } else {
-            binding.imageViewStar.visibility = View.VISIBLE
-        }
-    }
-
     private fun getCoinListScreen() {
         val coinDetails = intent.getSerializableExtra(Constants.KEY_INTENT)
         val coinFavorite = intent.getSerializableExtra(Constants.KEY_INTENT)
         if (coinDetails == null) {
-            passDataToScreen(coinDetails as CoinEntity?)
+            passDataToScreen(coinDetails)
         } else {
-            passDataToScreen(coinFavorite as CoinEntity?)
+            passDataToScreen(coinFavorite as CoinDomainEntities?)
         }
     }
 
-    private fun passDataToScreen(coinDetails: CoinEntity?) {
+    private fun passDataToScreen(coinDetails: CoinDomainEntities?) {
         coinDetails?.let {
             if (coinDetails.id_icon != null) {
-              /*  Picasso.get().load(coinDetails.getPathUrlImage()).into(binding.imView)*/
+                Picasso.get().load(coinDetails.getPathUrlImage()).into(binding.imView)
             } else {
                 Picasso.get().load(R.drawable.im_coin).into(binding.imView)
             }
@@ -74,7 +64,7 @@ class DetailsActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
             } finally {
-                checkCoinDataBase(coinDetails)
+                checkCoinDataBase(viewModel.castListCoinDetails(coinDetails))
             }
         }
     }
@@ -109,6 +99,14 @@ class DetailsActivity : AppCompatActivity() {
                 Toast.makeText(this, getString(R.string.remove_coin_database), Toast.LENGTH_LONG).show()
                 callingScreenFavorite()
             }
+        }
+    }
+
+    private fun addStarFavoriteOrNot() {
+        if (viewModel.returnDataBase.value == null) {
+            binding.imageViewStar.visibility = View.INVISIBLE
+        } else {
+            binding.imageViewStar.visibility = View.VISIBLE
         }
     }
 

@@ -3,6 +3,8 @@ package com.example.take_my_money.data.dao
 import androidx.room.Entity
 import androidx.room.Index
 import androidx.room.PrimaryKey
+import com.example.take_my_money.presentation.utils.Constants
+import java.io.Serializable
 
 @Entity(
     tableName = "coin",
@@ -22,4 +24,13 @@ data class CoinEntity(
     val price_usd: Double?,
     val url: String?,
     val id_icon: String?
-)
+) : Serializable {
+
+    fun getPathUrlImage(): String {
+        return Constants.BASE_URL_IMG.plus(getCoinFileName())
+    }
+
+    private fun getCoinFileName(): String {
+        return "${id_icon?.replace("-", "")}.png"
+    }
+}

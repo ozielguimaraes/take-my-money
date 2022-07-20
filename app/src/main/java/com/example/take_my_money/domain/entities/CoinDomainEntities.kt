@@ -1,7 +1,6 @@
 package com.example.take_my_money.domain.entities
 
 import com.example.take_my_money.presentation.utils.Constants
-import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class CoinDomainEntities(
@@ -15,7 +14,7 @@ data class CoinDomainEntities(
     val price_usd: Double?,
     val url: String?,
     val id_icon: String?
-): Serializable {
+) : Serializable {
 
     fun getPathUrlImage(): String {
         return Constants.BASE_URL_IMG.plus(getCoinFileName())
