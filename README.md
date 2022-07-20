@@ -30,11 +30,6 @@ O DigitalCurrencies-TakeMyMoney indexa conteúdo encontrado na web automaticamen
 
 
 ## :hammer: Imagens e Funcionalidades do projeto
-![tela inicial]()
-![tela de adicionar]()
-![tela de favoritos]()
-
-![tela de remover]()
 
 <p align="center">
 <img src="https://user-images.githubusercontent.com/92765775/174865837-6c12cbec-87fd-47e3-b718-f6e7bb433b44.png" width="270" height="600">
