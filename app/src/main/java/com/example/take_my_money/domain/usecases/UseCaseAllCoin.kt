@@ -13,8 +13,7 @@ class UseCaseAllCoin(private val iCoinAllRepository: ICoinAllRepository) {
         val resultCoin = iCoinAllRepository.getAllCoinsRepository()
         resultCoin?.let {
             return resultCoin.filter { it.type_is_crypto == 1 }
-        } ?: run {
-            return null
         }
+        return null
     }
 }

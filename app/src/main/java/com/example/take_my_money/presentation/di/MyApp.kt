@@ -20,6 +20,10 @@ class MyApp : Application() {
             androidLogger()
             androidContext(this@MyApp)
         }
-        loadKoinModules(loadPresentationModule() + loadRepositoryModule() + loadWebService())
+        loadKoinModules(
+            loadPresentationModule() +
+                loadRepositoryModule() +
+                loadWebService()
+        )
     }
 }

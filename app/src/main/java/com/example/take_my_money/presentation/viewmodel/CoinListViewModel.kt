@@ -1,14 +1,13 @@
 package com.example.take_my_money.presentation.viewmodel
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.take_my_money.domain.abstracts.UseCaseDataSource
 import com.example.take_my_money.domain.entities.CoinDomainEntities
 import com.example.take_my_money.domain.exceptions.*
 import com.example.take_my_money.domain.usecases.UseCaseAllCoin
-import com.example.take_my_money.domain.abstracts.UseCaseDataSource
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
@@ -17,8 +16,8 @@ class CoinListViewModel(
     private val useCaseDataBase: UseCaseDataSource
 ) : ViewModel() {
 
-    private val _listCoins = MutableLiveData<ResultWrapper<List<CoinDomainEntities>>>()
-    val listCoins: LiveData<ResultWrapper<List<CoinDomainEntities>>> get() = _listCoins
+    private val _listCoinsResultWrapper = MutableLiveData<ResultWrapper<List<CoinDomainEntities>>>()
+    val listCoinsResultWrapper: LiveData<ResultWrapper<List<CoinDomainEntities>>> get() = _listCoinsResultWrapper
 
     private val _listCoinsMutableLiveData = MutableLiveData<List<CoinDomainEntities>>()
     val listCoinsLiveData: LiveData<List<CoinDomainEntities>> get() = _listCoinsMutableLiveData
@@ -27,12 +26,13 @@ class CoinListViewModel(
     val errorMsg: LiveData<ResultWrapper<String>> get() = _errorMsg
 
     fun requestApiListCoin() {
-        _listCoins.value = ResultWrapper.Loading
+        _listCoinsResultWrapper.value = ResultWrapper.Loading
         try {
             viewModelScope.launch {
-                val result = useCaseAllCoin.getListCoin()
+                _listCoinsResultWrapper.postValue(
+                    useCaseAllCoin.getListCoin()?.let { ResultWrapper.Success(it) }
+                )
                 _listCoinsMutableLiveData.postValue(useCaseAllCoin.getListCoin())
-                Log.i("TAG", "requestApiListCoin: ${useCaseAllCoin.getListCoin()}")
             }
         } catch (http: HttpException) {
             when {

@@ -8,21 +8,18 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.take_my_money.R
-import com.example.take_my_money.data.dao.CoinDataBase
-import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.data.dao.ICoinDAO
 import com.example.take_my_money.databinding.ActivityCoinListBinding
 import com.example.take_my_money.domain.entities.CoinDomainEntities
 import com.example.take_my_money.domain.exceptions.ResultWrapper
 import com.example.take_my_money.presentation.adapters.CoinAdapter
-import com.example.take_my_money.presentation.interfaces.IOnclik
+import com.example.take_my_money.presentation.interfaces.IOnClickCoinList
 import com.example.take_my_money.presentation.utils.Constants
 import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class CoinListActivity : AppCompatActivity(), IOnclik {
+class CoinListActivity : AppCompatActivity(), IOnClickCoinList {
 
     private lateinit var binding: ActivityCoinListBinding
     private val viewModel: CoinListViewModel by viewModel()
@@ -34,8 +31,8 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
 
         loadDataBase()
         setupNavigationBottom()
-        setupObservers()
         requestApi()
+        setupObservers()
         setupView()
     }
 
@@ -54,28 +51,40 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
         }
     }
 
+    private fun requestApi() {
+        viewModel.requestApiListCoin()
+    }
+
     private fun setupObservers() {
         viewModel.errorMsg.observe(this) { resultError ->
             setupError(resultError)
         }
-        viewModel.listCoins.observe(this) { resultCoinApi ->
-        }
         viewModel.listCoinsLiveData.observe(this) {
+            setupAdapter(it)
+        }
+
+        viewModel.listCoinsResultWrapper.observe(this) {
+            loadCoinList(it)
         }
     }
 
-    private fun loadCoinList(resultCoinApi: ResultWrapper<List<CoinEntity>>) {
-        val adapter = CoinAdapter(this, this)
+    private fun loadCoinList(resultCoinApi: ResultWrapper<List<CoinDomainEntities>>) {
         when (resultCoinApi) {
             is ResultWrapper.Loading -> {
                 binding.progressBar.visibility = View.VISIBLE
             }
             is ResultWrapper.Success -> {
                 binding.progressBar.visibility = View.INVISIBLE
-                /*adapter.submitList(resultCoinApi.listCoin)*/
-                binding.RecyclerviewCoins.adapter = adapter
             }
         }
+    }
+
+    private fun setupAdapter(list: List<CoinDomainEntities>?) {
+        val adapter = CoinAdapter(this, this)
+        binding.RecyclerviewCoins.layoutManager = LinearLayoutManager(this)
+        binding.RecyclerviewCoins.setHasFixedSize(true)
+        adapter.submitList(list)
+        binding.RecyclerviewCoins.adapter = adapter
     }
 
     private fun setupError(resultError: ResultWrapper<String>) {
@@ -99,10 +108,6 @@ class CoinListActivity : AppCompatActivity(), IOnclik {
             binding.btnTryAgain.visibility = View.INVISIBLE
             binding.imageError.visibility = View.INVISIBLE
         }
-    }
-
-    private fun requestApi() {
-        viewModel.requestApiListCoin()
     }
 
     private fun setupView() {

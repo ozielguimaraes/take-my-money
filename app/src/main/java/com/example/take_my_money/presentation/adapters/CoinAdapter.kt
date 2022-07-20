@@ -3,6 +3,7 @@ package com.example.take_my_money.presentation.adapters
 import android.content.Context
 import android.os.Build
 import android.support.annotation.RequiresApi
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,15 +15,15 @@ import com.example.take_my_money.data.dao.ICoinDAO
 import com.example.take_my_money.data.repository.RepositoryDataSource
 import com.example.take_my_money.databinding.ItemListCoinBinding
 import com.example.take_my_money.domain.entities.CoinDomainEntities
-import com.example.take_my_money.presentation.interfaces.IOnclik
+import com.example.take_my_money.presentation.interfaces.IOnClickCoinList
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context) :
-    ListAdapter<CoinDomainEntities, CoinAdapter.CoinViewHolder>(DiffCallback()), IOnclik {
+class CoinAdapter(private val onclickCoin: IOnClickCoinList, private val context: Context) :
+    ListAdapter<CoinDomainEntities, CoinAdapter.CoinViewHolder>(DiffCallback()), IOnClickCoinList {
 
     override fun onClickCoins(coin: CoinDomainEntities) {}
 
@@ -62,7 +63,7 @@ class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context
                 }
             }
         } catch (e: Exception) {
-            e.message
+            Log.i("TAG", "onBindViewHolder: ${e.cause}")
         }
         try {
             holder.binding.txtPriceCoin.text = NumberFormat.getInstance().format(item.price_usd)

@@ -5,16 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.databinding.ItemFavoriteRecyclerBinding
-import com.example.take_my_money.domain.entities.CoinDomainEntities
-import com.example.take_my_money.presentation.interfaces.IOnclik
+import com.example.take_my_money.presentation.interfaces.IOnClickFavorite
 import com.squareup.picasso.Picasso
 
-class FavoriteAdapter(private val onclick: IOnclik) :
-    ListAdapter<CoinDomainEntities, FavoriteAdapter.MyViewHolderFavorite>(DiffCallbackFavorite()),
-    IOnclik {
+class FavoriteAdapter(private val onclick: IOnClickFavorite) :
+    ListAdapter<CoinEntity, FavoriteAdapter.MyViewHolderFavorite>(DiffCallbackFavorite()),
+    IOnClickFavorite {
 
-    override fun onClickCoins(coin: CoinDomainEntities) {
+    override fun onClickFavorite(coinFavorite: CoinEntity) {
     }
 
     class MyViewHolderFavorite(val binding: ItemFavoriteRecyclerBinding) :
@@ -48,20 +48,20 @@ class FavoriteAdapter(private val onclick: IOnclik) :
         } catch (e: Exception) {
             holder.binding.imageCoinFavorite4
         }
-        holder.itemView.setOnClickListener { onclick.onClickCoins(itemCoin) }
+        holder.itemView.setOnClickListener { onclick.onClickFavorite(itemCoin) }
     }
 
-    class DiffCallbackFavorite : DiffUtil.ItemCallback<CoinDomainEntities>() {
+    class DiffCallbackFavorite : DiffUtil.ItemCallback<CoinEntity>() {
         override fun areItemsTheSame(
-            oldItem: CoinDomainEntities,
-            newItem: CoinDomainEntities
+            oldItem: CoinEntity,
+            newItem: CoinEntity
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: CoinDomainEntities,
-            newItem: CoinDomainEntities
+            oldItem: CoinEntity,
+            newItem: CoinEntity
         ): Boolean {
             return oldItem.asset_id == newItem.asset_id
         }
