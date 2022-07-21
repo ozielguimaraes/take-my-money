@@ -14,7 +14,7 @@ import com.example.take_my_money.data.dao.CoinDataBase
 import com.example.take_my_money.data.dao.ICoinDAO
 import com.example.take_my_money.data.repository.RepositoryDataSource
 import com.example.take_my_money.databinding.ItemListCoinBinding
-import com.example.take_my_money.domain.entities.CoinDomainEntities
+import com.example.take_my_money.domain.entities.Coin
 import com.example.take_my_money.presentation.interfaces.IOnClickCoinList
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
@@ -23,9 +23,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CoinAdapter(private val onclickCoin: IOnClickCoinList, private val context: Context) :
-    ListAdapter<CoinDomainEntities, CoinAdapter.CoinViewHolder>(DiffCallback()), IOnClickCoinList {
+    ListAdapter<Coin, CoinAdapter.CoinViewHolder>(DiffCallback()), IOnClickCoinList {
 
-    override fun onClickCoins(coin: CoinDomainEntities) {}
+    override fun onClickCoins(coin: Coin) {}
 
     class CoinViewHolder(val binding: ItemListCoinBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -75,18 +75,18 @@ class CoinAdapter(private val onclickCoin: IOnClickCoinList, private val context
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<CoinDomainEntities>() {
+    class DiffCallback : DiffUtil.ItemCallback<Coin>() {
 
         override fun areItemsTheSame(
-            oldItem: CoinDomainEntities,
-            newItem: CoinDomainEntities
+            oldItem: Coin,
+            newItem: Coin
         ): Boolean {
             return oldItem.name == newItem.name
         }
 
         override fun areContentsTheSame(
-            oldItem: CoinDomainEntities,
-            newItem: CoinDomainEntities
+            oldItem: Coin,
+            newItem: Coin
         ): Boolean {
             return oldItem.asset_id == newItem.asset_id
         }
