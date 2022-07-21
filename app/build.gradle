@@ -43,11 +43,11 @@ dependencies {
   implementation 'androidx.appcompat:appcompat:1.4.2'
   implementation 'com.google.android.material:material:1.6.1'
   implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-  implementation 'androidx.navigation:navigation-fragment:2.4.2'
+  implementation 'androidx.navigation:navigation-fragment:2.5.0'
 
   // Test
   testImplementation 'junit:junit:4.13.2'
-  testImplementation 'io.mockk:mockk:1.10.6'
+  testImplementation 'io.mockk:mockk:1.12.3'
   testImplementation 'androidx.arch.core:core-testing:2.1.0'
   testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.3'
 
@@ -55,16 +55,16 @@ dependencies {
   androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
   //Kotlin
-  implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
-  implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
+  implementation 'androidx.navigation:navigation-fragment-ktx:2.5.0'
+  implementation 'androidx.navigation:navigation-ui-ktx:2.5.0'
 
   // Dependencies retrofit2
   implementation 'com.squareup.retrofit2:retrofit:2.9.0'
   implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
   // LiveData and ViewModel JetPack
-  implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
-  implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1'
+  implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.5.0'
+  implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.0'
 
   // Picasso
   implementation 'com.squareup.picasso:picasso:2.71828'
@@ -74,4 +74,9 @@ dependencies {
   kapt "androidx.room:room-compiler:2.4.2"
   implementation 'androidx.room:room-runtime:2.4.2'
   annotationProcessor 'androidx.room:room-compiler:2.4.2'
+
+  // DI - Koin
+  implementation "io.insert-koin:koin-androidx-scope:2.1.6"
+  implementation "io.insert-koin:koin-androidx-viewmodel:2.1.6"
+  implementation "io.insert-koin:koin-androidx-fragment:2.1.6"
 }

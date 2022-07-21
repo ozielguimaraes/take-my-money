@@ -1,4 +1,4 @@
-package com.example.take_my_money.data.utils
+package com.example.take_my_money.presentation.utils
 
 class Constants {
 

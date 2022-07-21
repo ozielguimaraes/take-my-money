@@ -1,19 +1,9 @@
-package com.example.take_my_money.data.dao
+package com.example.take_my_money.domain.entities
 
-import androidx.room.Entity
-import androidx.room.Index
-import androidx.room.PrimaryKey
 import com.example.take_my_money.presentation.utils.Constants
 import java.io.Serializable
 
-@Entity(
-    tableName = "coin",
-    indices = [
-        Index(value = ["name", "asset_id"], unique = true)
-    ]
-)
-data class CoinEntity(
-    @PrimaryKey(autoGenerate = true)
+data class Coin(
     val id: Long,
     val asset_id: String?,
     val name: String?,
