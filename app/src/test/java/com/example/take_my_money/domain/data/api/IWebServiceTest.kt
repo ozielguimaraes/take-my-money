@@ -15,7 +15,7 @@ class IWebServiceTest {
     @OptIn(DelicateCoroutinesApi::class)
     private val mainThread = newSingleThreadContext("UI thread")
 
-    private val apiKeyMock = "BFF5CD2A-62B3-4975-B4D6-FA9E7171B38F"
+    private val apiKeyTest = "BFF5CD2A-62B3-4975-B4D6-FA9E7171B38F"
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -35,7 +35,7 @@ class IWebServiceTest {
     fun `when call api the return should be different of null`() = runBlocking {
         Assert.assertNotEquals(
             null,
-            IWebService.getBaseUrl().getAllCoins(apiKeyMock)
+            IWebService.getBaseUrl().getAllCoins(apiKeyTest)
         ) // Test do retorno da URL, Code, Protocolo, etc.
     }
 
@@ -43,15 +43,23 @@ class IWebServiceTest {
     fun `When call api to return o code of response equals 200`() = runBlocking {
         Assert.assertEquals(
             200,
-            IWebService.getBaseUrl().getAllCoins(apiKeyMock).code()
+            IWebService.getBaseUrl().getAllCoins(apiKeyTest).code()
         ) // Test o código de resposta da api
+    }
+
+    @Test
+    fun `When call api to return o code of response to apikey invalided`() = runBlocking {
+        Assert.assertEquals(
+            401,
+            IWebService.getBaseUrl().getAllCoins("apiKeyTest").code()
+        ) // Test o código de resposta para apikey inválida
     }
 
     @Test
     fun `When call api to return o size of list`() = runBlocking {
         Assert.assertNotEquals(
             0,
-            IWebService.getBaseUrl().getAllCoins(apiKeyMock).body()?.size
+            IWebService.getBaseUrl().getAllCoins(apiKeyTest).body()?.size
         ) // Test o tamanho da lista de respostas
     }
 
@@ -59,7 +67,7 @@ class IWebServiceTest {
     fun `When call api to return code of protocol`() = runBlocking {
         Assert.assertEquals(
             "h2",
-            IWebService.getBaseUrl().getAllCoins(apiKeyMock).raw().protocol().toString()
+            IWebService.getBaseUrl().getAllCoins(apiKeyTest).raw().protocol().toString()
         ) // Test o retorno de protocolo da api
     }
 
@@ -67,7 +75,7 @@ class IWebServiceTest {
     fun `When call api to return the time of response`() = runBlocking {
         Assert.assertNotEquals(
             0,
-            IWebService.getBaseUrl().getAllCoins(apiKeyMock).raw().receivedResponseAtMillis()
+            IWebService.getBaseUrl().getAllCoins(apiKeyTest).raw().receivedResponseAtMillis()
         ) // Test o tempo de resposta em milliseconds
     }
 }
