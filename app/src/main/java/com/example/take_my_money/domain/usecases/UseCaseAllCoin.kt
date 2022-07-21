@@ -5,9 +5,7 @@ import com.example.take_my_money.domain.entities.Coin
 
 class UseCaseAllCoin(private val iCoinAllRepository: ICoinAllRepository) {
 
-    suspend fun getListCoin(): List<Coin>? {
-        return getListCoins()
-    }
+    suspend fun getListCoin(): List<Coin>? = getListCoins()
 
     private suspend fun getListCoins(): List<Coin>? {
         val resultCoin = iCoinAllRepository.getAllCoinsRepository()
