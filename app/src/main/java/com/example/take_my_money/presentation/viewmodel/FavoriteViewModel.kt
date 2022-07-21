@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.domain.abstracts.UseCaseDataSource
-import com.example.take_my_money.domain.entities.CoinDomainEntities
+import com.example.take_my_money.domain.entities.Coin
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(private val useCaseDataSource: UseCaseDataSource) : ViewModel() {
@@ -25,8 +25,8 @@ class FavoriteViewModel(private val useCaseDataSource: UseCaseDataSource) : View
         }
     }
 
-    fun castListCoinFavorite(coinFavorite: CoinEntity): CoinDomainEntities {
-        return CoinDomainEntities(
+    fun castCoinEntityToCoin(coinFavorite: CoinEntity): Coin {
+        return Coin(
             id = coinFavorite.id,
             asset_id = coinFavorite.asset_id,
             name = coinFavorite.name,

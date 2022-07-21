@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.domain.abstracts.UseCaseDataSource
-import com.example.take_my_money.domain.entities.CoinDomainEntities
+import com.example.take_my_money.domain.entities.Coin
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,7 +39,7 @@ class CoinDetailsViewModel(
         }
     }
 
-    fun castListCoinDetails(coinDetails: CoinDomainEntities): CoinEntity {
+    fun castCoinToCoinEntity(coinDetails: Coin): CoinEntity {
         return CoinEntity(
             id = coinDetails.id,
             asset_id = coinDetails.asset_id,

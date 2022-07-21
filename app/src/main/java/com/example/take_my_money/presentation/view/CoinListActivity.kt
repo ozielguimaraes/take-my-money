@@ -9,7 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.take_my_money.R
 import com.example.take_my_money.databinding.ActivityCoinListBinding
-import com.example.take_my_money.domain.entities.CoinDomainEntities
+import com.example.take_my_money.domain.entities.Coin
 import com.example.take_my_money.domain.exceptions.ResultWrapper
 import com.example.take_my_money.presentation.adapters.CoinAdapter
 import com.example.take_my_money.presentation.interfaces.IOnClickCoinList
@@ -68,7 +68,7 @@ class CoinListActivity : AppCompatActivity(), IOnClickCoinList {
         }
     }
 
-    private fun loadCoinList(resultCoinApi: ResultWrapper<List<CoinDomainEntities>>) {
+    private fun loadCoinList(resultCoinApi: ResultWrapper<List<Coin>>) {
         when (resultCoinApi) {
             is ResultWrapper.Loading -> {
                 binding.progressBar.visibility = View.VISIBLE
@@ -79,7 +79,7 @@ class CoinListActivity : AppCompatActivity(), IOnClickCoinList {
         }
     }
 
-    private fun setupAdapter(list: List<CoinDomainEntities>?) {
+    private fun setupAdapter(list: List<Coin>?) {
         val adapter = CoinAdapter(this, this)
         binding.RecyclerviewCoins.layoutManager = LinearLayoutManager(this)
         binding.RecyclerviewCoins.setHasFixedSize(true)
@@ -144,11 +144,11 @@ class CoinListActivity : AppCompatActivity(), IOnClickCoinList {
         return true
     }
 
-    override fun onClickCoins(coin: CoinDomainEntities) {
+    override fun onClickCoins(coin: Coin) {
         callingScreenDetailsCoin(coin)
     }
 
-    private fun callingScreenDetailsCoin(coin: CoinDomainEntities) {
+    private fun callingScreenDetailsCoin(coin: Coin) {
         val intent = Intent(this, DetailsActivity::class.java)
         intent.putExtra(Constants.KEY_INTENT, coin)
         startActivity(intent)
