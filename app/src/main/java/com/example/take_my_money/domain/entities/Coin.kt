@@ -3,7 +3,7 @@ package com.example.take_my_money.domain.entities
 import com.example.take_my_money.presentation.utils.Constants
 import java.io.Serializable
 
-data class CoinDomainEntities(
+data class Coin(
     val id: Long,
     val asset_id: String?,
     val name: String?,

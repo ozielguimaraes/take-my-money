@@ -7,7 +7,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.example.take_my_money.R
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.databinding.ActivityFavoriteCoinBinding
-import com.example.take_my_money.domain.entities.CoinDomainEntities
+import com.example.take_my_money.domain.entities.Coin
 import com.example.take_my_money.presentation.adapters.FavoriteAdapter
 import com.example.take_my_money.presentation.interfaces.IOnClickFavorite
 import com.example.take_my_money.presentation.utils.Constants
@@ -66,7 +66,7 @@ class FavoriteActivity : AppCompatActivity(), IOnClickFavorite {
         }
     }
 
-    private fun callNewScreen(coin: CoinDomainEntities) {
+    private fun callNewScreen(coin: Coin) {
         val intent = Intent(this, DetailsActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         intent.putExtra(Constants.KEY_INTENT, coin)
@@ -74,6 +74,6 @@ class FavoriteActivity : AppCompatActivity(), IOnClickFavorite {
     }
 
     override fun onClickFavorite(coinFavorite: CoinEntity) {
-        callNewScreen(viewModel.castListCoinFavorite(coinFavorite))
+        callNewScreen(viewModel.castCoinEntityToCoin(coinFavorite))
     }
 }

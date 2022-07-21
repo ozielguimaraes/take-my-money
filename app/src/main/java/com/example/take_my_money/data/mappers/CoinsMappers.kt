@@ -1,15 +1,15 @@
 package com.example.take_my_money.data.mappers
 
 import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.domain.entities.CoinDomainEntities
+import com.example.take_my_money.domain.entities.Coin
 
 object CoinsMappers {
-    fun fromRemoteToDomain(coinList: List<CoinEntity>): List<CoinDomainEntities> {
+    fun fromRemoteToDomain(coinList: List<CoinEntity>): List<Coin> {
         return coinList.map { fromRemoteToDomain(it) }
     }
 
-    fun fromRemoteToDomain(coin: CoinEntity): CoinDomainEntities =
-        CoinDomainEntities(
+    fun fromRemoteToDomain(coin: CoinEntity): Coin =
+        Coin(
             coin.id,
             coin.asset_id,
             coin.name,

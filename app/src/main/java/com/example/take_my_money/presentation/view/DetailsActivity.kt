@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.take_my_money.R
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.databinding.ActivityDetailsCoinBinding
-import com.example.take_my_money.domain.entities.CoinDomainEntities
+import com.example.take_my_money.domain.entities.Coin
 import com.example.take_my_money.presentation.utils.Constants
 import com.example.take_my_money.presentation.viewmodel.CoinDetailsViewModel
 import com.squareup.picasso.Picasso
@@ -44,11 +44,11 @@ class DetailsActivity : AppCompatActivity() {
         if (coinDetails == null) {
             passDataToScreen(coinDetails)
         } else {
-            passDataToScreen(coinFavorite as CoinDomainEntities?)
+            passDataToScreen(coinFavorite as Coin?)
         }
     }
 
-    private fun passDataToScreen(coinDetails: CoinDomainEntities?) {
+    private fun passDataToScreen(coinDetails: Coin?) {
         coinDetails?.let {
             if (coinDetails.id_icon != null) {
                 Picasso.get().load(coinDetails.getPathUrlImage()).into(binding.imView)
@@ -64,7 +64,7 @@ class DetailsActivity : AppCompatActivity() {
             } catch (e: Exception) {
                 Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
             } finally {
-                checkCoinDataBase(viewModel.castListCoinDetails(coinDetails))
+                checkCoinDataBase(viewModel.castCoinToCoinEntity(coinDetails))
             }
         }
     }
