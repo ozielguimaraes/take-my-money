@@ -2,31 +2,25 @@ package com.example.take_my_money.domain.data.api
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.take_my_money.data.api.IWebService
-import kotlinx.coroutines.*
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.setMain
+import com.example.take_my_money.domain.RuleTest
+import kotlinx.coroutines.runBlocking
 import org.junit.*
 
-@OptIn(ExperimentalCoroutinesApi::class)
 class IWebServiceTest {
 
-    @OptIn(DelicateCoroutinesApi::class)
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
-
-    private val mainThread = newSingleThreadContext("Ui thread")
 
     private val apiKeyTest = "BFF5CD2A-62B3-4975-B4D6-FA9E7171B38F"
 
     @Before
     fun setUp() {
-        Dispatchers.setMain(mainThread)
+        RuleTest().initBefore()
     }
 
     @After
     fun tearDown() {
-        Dispatchers.resetMain() // reset the main dispatcher to the original Main dispatcher
-        /*mainThread.close()*/
+        RuleTest().initTearDown()
     }
 
     @Test
