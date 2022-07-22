@@ -1,9 +1,13 @@
 package com.example.take_my_money.presentation.viewmodel
 
-import androidx.lifecycle.*
+import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.domain.usecase.UseCaseDataSource
-import com.example.take_my_money.data.repository.RepositoryDataSource
+import com.example.take_my_money.domain.abstracts.UseCaseDataSource
+import com.example.take_my_money.domain.entities.Coin
 import kotlinx.coroutines.launch
 
 class FavoriteViewModel(private val useCaseDataSource: UseCaseDataSource) : ViewModel() {
@@ -12,21 +16,27 @@ class FavoriteViewModel(private val useCaseDataSource: UseCaseDataSource) : View
     val loadDataBase: LiveData<List<CoinEntity>> get() = _loadDataBase
 
     fun loadDataBase() {
-        viewModelScope.launch {
-            _loadDataBase.postValue(useCaseDataSource.getAllCoins())
+        try {
+            viewModelScope.launch {
+                _loadDataBase.postValue(useCaseDataSource.getAllCoins())
+            }
+        } catch (e: Exception) {
+            Log.i("TAG", "loadDataBase: ${e.cause}")
         }
     }
 
-    class FavoriteViewModelFactory(
-        private val repositoryDataSource: RepositoryDataSource
-    ) : ViewModelProvider.Factory {
-
-        override fun <T : ViewModel> create(modelClass: Class<T>): T {
-            return if (modelClass.isAssignableFrom(FavoriteViewModel::class.java)) {
-                FavoriteViewModel(this.repositoryDataSource) as T
-            } else {
-                throw IllegalArgumentException("ViewModel not found")
-            }
-        }
+    fun castCoinEntityToCoin(coinFavorite: CoinEntity): Coin {
+        return Coin(
+            id = coinFavorite.id,
+            asset_id = coinFavorite.asset_id,
+            name = coinFavorite.name,
+            type_is_crypto = coinFavorite.type_is_crypto,
+            volume_1hrs_usd = coinFavorite.volume_1hrs_usd,
+            volume_1mth_usd = coinFavorite.volume_1mth_usd,
+            volume_1day_usd = coinFavorite.volume_1day_usd,
+            price_usd = coinFavorite.price_usd,
+            url = coinFavorite.url,
+            id_icon = coinFavorite.id_icon
+        )
     }
 }
