@@ -3,38 +3,28 @@ package com.example.take_my_money.presentation.view
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import com.example.take_my_money.R
-import com.example.take_my_money.databinding.ActivityFavoriteCoinBinding
-import com.example.take_my_money.data.dao.CoinDataBase
 import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.data.dao.ICoinDAO
-import com.example.take_my_money.data.repository.RepositoryDataSource
-import com.example.take_my_money.data.utils.Constants
-import com.example.take_my_money.presentation.adapter.FavoriteAdapter
-import com.example.take_my_money.presentation.interfaces.IOnclik
+import com.example.take_my_money.databinding.ActivityFavoriteCoinBinding
+import com.example.take_my_money.domain.entities.Coin
+import com.example.take_my_money.presentation.adapters.FavoriteAdapter
+import com.example.take_my_money.presentation.interfaces.IOnClickFavorite
+import com.example.take_my_money.presentation.utils.Constants
 import com.example.take_my_money.presentation.viewmodel.FavoriteViewModel
 import java.text.SimpleDateFormat
 import java.util.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FavoriteActivity : AppCompatActivity(), IOnclik {
+class FavoriteActivity : AppCompatActivity(), IOnClickFavorite {
 
     private lateinit var binding: ActivityFavoriteCoinBinding
-    private lateinit var viewModel: FavoriteViewModel
+    private val viewModel: FavoriteViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         binding = ActivityFavoriteCoinBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-
-        val coinIDAO: ICoinDAO = CoinDataBase.getInstance(this).iCoinDAO
-        viewModel = ViewModelProvider(
-            this,
-            FavoriteViewModel.FavoriteViewModelFactory(
-                RepositoryDataSource(coinIDAO)
-            )
-        )[FavoriteViewModel::class.java]
 
         loadDataBase()
         setupNavigationBottom()
@@ -76,14 +66,14 @@ class FavoriteActivity : AppCompatActivity(), IOnclik {
         }
     }
 
-    override fun onClickCoins(coin: CoinEntity) {
-        callNewScreen(coin)
-    }
-
-    private fun callNewScreen(coin: CoinEntity) {
+    private fun callNewScreen(coin: Coin) {
         val intent = Intent(this, DetailsActivity::class.java)
         intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
         intent.putExtra(Constants.KEY_INTENT, coin)
         startActivity(intent)
+    }
+
+    override fun onClickFavorite(coinFavorite: CoinEntity) {
+        callNewScreen(viewModel.castCoinEntityToCoin(coinFavorite))
     }
 }

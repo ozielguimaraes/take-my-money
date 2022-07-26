@@ -1,8 +1,9 @@
-package com.example.take_my_money.presentation.adapter
+package com.example.take_my_money.presentation.adapters
 
 import android.content.Context
 import android.os.Build
 import android.support.annotation.RequiresApi
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,21 +11,21 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.take_my_money.data.dao.CoinDataBase
-import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.dao.ICoinDAO
 import com.example.take_my_money.data.repository.RepositoryDataSource
 import com.example.take_my_money.databinding.ItemListCoinBinding
-import com.example.take_my_money.presentation.interfaces.IOnclik
+import com.example.take_my_money.domain.entities.Coin
+import com.example.take_my_money.presentation.interfaces.IOnClickCoinList
 import com.squareup.picasso.Picasso
 import java.text.NumberFormat
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context) :
-    ListAdapter<CoinEntity, CoinAdapter.CoinViewHolder>(DiffCallback()), IOnclik {
+class CoinAdapter(private val onclickCoin: IOnClickCoinList, private val context: Context) :
+    ListAdapter<Coin, CoinAdapter.CoinViewHolder>(DiffCallback()), IOnClickCoinList {
 
-    override fun onClickCoins(coin: CoinEntity) {}
+    override fun onClickCoins(coin: Coin) {}
 
     class CoinViewHolder(val binding: ItemListCoinBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -33,7 +34,8 @@ class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context
             binding = ItemListCoinBinding.inflate(
                 LayoutInflater
                     .from(parent.context),
-                parent, false
+                parent,
+                false
             )
         )
     }
@@ -61,7 +63,7 @@ class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context
                 }
             }
         } catch (e: Exception) {
-            e.message
+            Log.i("TAG", "onBindViewHolder: ${e.cause}")
         }
         try {
             holder.binding.txtPriceCoin.text = NumberFormat.getInstance().format(item.price_usd)
@@ -73,17 +75,18 @@ class CoinAdapter(private val onclickCoin: IOnclik, private val context: Context
         }
     }
 
-    class DiffCallback : DiffUtil.ItemCallback<CoinEntity>() {
+    class DiffCallback : DiffUtil.ItemCallback<Coin>() {
+
         override fun areItemsTheSame(
-            oldItem: CoinEntity,
-            newItem: CoinEntity
+            oldItem: Coin,
+            newItem: Coin
         ): Boolean {
             return oldItem.name == newItem.name
         }
 
         override fun areContentsTheSame(
-            oldItem: CoinEntity,
-            newItem: CoinEntity
+            oldItem: Coin,
+            newItem: Coin
         ): Boolean {
             return oldItem.asset_id == newItem.asset_id
         }
