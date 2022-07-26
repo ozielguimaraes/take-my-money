@@ -1,6 +1,6 @@
 package com.example.take_my_money.presentation.di
 
-import com.example.take_my_money.domain.usecases.UseCaseAllCoin
+import com.example.take_my_money.domain.usecases.AllCoinUseCase
 import com.example.take_my_money.presentation.viewmodel.CoinDetailsViewModel
 import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
 import com.example.take_my_money.presentation.viewmodel.FavoriteViewModel
@@ -16,7 +16,7 @@ private val presentationModule = module {
 
     viewModel {
         CoinListViewModel(
-            UseCaseAllCoin(get()),
+            AllCoinUseCase(get()),
             get()
         )
     }

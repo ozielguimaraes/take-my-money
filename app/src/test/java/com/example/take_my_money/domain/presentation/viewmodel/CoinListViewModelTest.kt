@@ -6,11 +6,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.domain.RuleTest
-import com.example.take_my_money.domain.abstracts.UseCaseDataSource
+import com.example.take_my_money.domain.abstracts.IDataSourceAbstract
 import com.example.take_my_money.domain.data.dao.FakeListCointEntity
 import com.example.take_my_money.domain.entities.Coin
 import com.example.take_my_money.domain.exceptions.ResultWrapper
-import com.example.take_my_money.domain.usecases.UseCaseAllCoin
+import com.example.take_my_money.domain.usecases.AllCoinUseCase
 import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -30,8 +30,8 @@ class CoinListViewModelTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val useCaseAllCoinTest = mockk<UseCaseAllCoin>()
-    private val useCaseDataSourceTest = mockk<UseCaseDataSource>()
+    private val allCoinUseCaseTest = mockk<AllCoinUseCase>()
+    private val iDataSourceAbstractTest = mockk<IDataSourceAbstract>()
 
     private val observerLiveDataTest: Observer<List<CoinEntity>> = mockk(relaxed = true)
     private val listCoinsResultWrapper = mockk<Observer<ResultWrapper<List<Coin>>>>(relaxed = true)
@@ -50,13 +50,13 @@ class CoinListViewModelTest {
     fun `when view model call requestApiListCoin checked functions of requestApi`() = runBlocking {
         // Given
         val viewModel = initViewModel()
-        coEvery { useCaseAllCoinTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
+        coEvery { allCoinUseCaseTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
 
         // When
         viewModel.requestApiListCoin()
 
         // Then
-        coVerify { useCaseAllCoinTest.getListCoin() }
+        coVerify { allCoinUseCaseTest.getListCoin() }
     }
 
     @Test
@@ -64,13 +64,13 @@ class CoinListViewModelTest {
         runBlocking {
             // Given
             val viewModel = initViewModel()
-            coEvery { useCaseAllCoinTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
+            coEvery { allCoinUseCaseTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
 
             // When
             viewModel.loadDataBase()
 
             // Then
-            coVerify { useCaseDataSourceTest.getAllCoins() }
+            coVerify { iDataSourceAbstractTest.getAllCoins() }
         }
 
     @Test
@@ -78,7 +78,7 @@ class CoinListViewModelTest {
         runBlocking {
             // Given
             val viewModel = initViewModel()
-            coEvery { useCaseAllCoinTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
+            coEvery { allCoinUseCaseTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
             // When
             viewModel.requestApiListCoin()
             delay(2000)
@@ -90,7 +90,7 @@ class CoinListViewModelTest {
         }
 
     private fun initViewModel(): CoinListViewModel {
-        val viewModel = CoinListViewModel(useCaseAllCoinTest, useCaseDataSourceTest)
+        val viewModel = CoinListViewModel(allCoinUseCaseTest, iDataSourceAbstractTest)
         viewModel.listCoinsLiveData.observeForever { observerLiveDataTest }
         viewModel.listCoinsResultWrapper.observeForever(listCoinsResultWrapper)
         return viewModel

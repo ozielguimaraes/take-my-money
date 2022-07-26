@@ -3,7 +3,7 @@ package com.example.take_my_money.data.di
 import com.example.take_my_money.data.api.IWebService
 import com.example.take_my_money.data.dao.CoinDataBase
 import com.example.take_my_money.data.repository.RepositoryDataSource
-import com.example.take_my_money.domain.abstracts.UseCaseDataSource
+import com.example.take_my_money.domain.abstracts.IDataSourceAbstract
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -21,7 +21,7 @@ private val webServiceModule = module {
         CoinDataBase.getInstance(androidContext()).iCoinDAO
     }
 
-    single<UseCaseDataSource> {
+    single<IDataSourceAbstract> {
         RepositoryDataSource(get())
     }
 }

@@ -4,16 +4,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.take_my_money.domain.abstracts.UseCaseDataSource
+import com.example.take_my_money.domain.abstracts.IDataSourceAbstract
 import com.example.take_my_money.domain.entities.Coin
 import com.example.take_my_money.domain.exceptions.*
-import com.example.take_my_money.domain.usecases.UseCaseAllCoin
+import com.example.take_my_money.domain.interactor.IAllCoinUseCase
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 class CoinListViewModel(
-    private val useCaseAllCoin: UseCaseAllCoin,
-    private val useCaseDataBase: UseCaseDataSource
+    private val iAllCoinUseCase: IAllCoinUseCase,
+    private val iDataSourceAbstract: IDataSourceAbstract
 ) : ViewModel() {
 
     private val _listCoinsResultWrapper = MutableLiveData<ResultWrapper<List<Coin>>>()
@@ -30,9 +30,9 @@ class CoinListViewModel(
         try {
             viewModelScope.launch {
                 _listCoinsResultWrapper.postValue(
-                    useCaseAllCoin.getListCoin()?.let { ResultWrapper.Success(it) }
+                    iAllCoinUseCase.getListCoins()?.let { ResultWrapper.Success(it) }
                 )
-                _listCoinsMutableLiveData.postValue(useCaseAllCoin.getListCoin())
+                _listCoinsMutableLiveData.postValue(iAllCoinUseCase.getListCoins())
             }
         } catch (http: HttpException) {
             when {
@@ -57,7 +57,7 @@ class CoinListViewModel(
 
     fun loadDataBase() {
         viewModelScope.launch {
-            useCaseDataBase.getAllCoins()
+            iDataSourceAbstract.getAllCoins()
         }
     }
 }

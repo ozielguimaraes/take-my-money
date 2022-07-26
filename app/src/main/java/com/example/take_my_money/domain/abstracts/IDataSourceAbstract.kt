@@ -2,7 +2,7 @@ package com.example.take_my_money.domain.abstracts
 
 import com.example.take_my_money.data.dao.CoinEntity
 
-interface UseCaseDataSource {
+interface IDataSourceAbstract {
 
     suspend fun insertCoinI(coin: CoinEntity): Long
 

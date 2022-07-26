@@ -2,9 +2,9 @@ package com.example.take_my_money.data.repository
 
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.data.dao.ICoinDAO
-import com.example.take_my_money.domain.abstracts.UseCaseDataSource
+import com.example.take_my_money.domain.abstracts.IDataSourceAbstract
 
-class RepositoryDataSource(private val iCoinDAO: ICoinDAO) : UseCaseDataSource {
+class RepositoryDataSource(private val iCoinDAO: ICoinDAO) : IDataSourceAbstract {
 
     override suspend fun insertCoinI(coin: CoinEntity): Long {
         return iCoinDAO.insert(coin = coin)

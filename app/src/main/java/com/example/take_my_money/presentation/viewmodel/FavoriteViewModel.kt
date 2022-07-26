@@ -6,11 +6,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.domain.abstracts.UseCaseDataSource
+import com.example.take_my_money.domain.abstracts.IDataSourceAbstract
 import com.example.take_my_money.domain.entities.Coin
 import kotlinx.coroutines.launch
 
-class FavoriteViewModel(private val useCaseDataSource: UseCaseDataSource) : ViewModel() {
+class FavoriteViewModel(private val iDataSourceAbstract: IDataSourceAbstract) : ViewModel() {
 
     private val _loadDataBase = MutableLiveData<List<CoinEntity>>()
     val loadDataBase: LiveData<List<CoinEntity>> get() = _loadDataBase
@@ -18,7 +18,7 @@ class FavoriteViewModel(private val useCaseDataSource: UseCaseDataSource) : View
     fun loadDataBase() {
         try {
             viewModelScope.launch {
-                _loadDataBase.postValue(useCaseDataSource.getAllCoins())
+                _loadDataBase.postValue(iDataSourceAbstract.getAllCoins())
             }
         } catch (e: Exception) {
             Log.i("TAG", "loadDataBase: ${e.cause}")

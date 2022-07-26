@@ -5,36 +5,36 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.take_my_money.data.dao.CoinEntity
-import com.example.take_my_money.domain.abstracts.UseCaseDataSource
+import com.example.take_my_money.domain.abstracts.IDataSourceAbstract
 import com.example.take_my_money.domain.entities.Coin
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CoinDetailsViewModel(
-    private val useCaseDataSource: UseCaseDataSource
+    private val iDataSourceAbstract: IDataSourceAbstract
 ) : ViewModel() {
 
     private val _returnDataBase = MutableLiveData<CoinEntity?>()
     val returnDataBase: LiveData<CoinEntity?> get() = _returnDataBase
 
     suspend fun insertCoinDataBase(getAssetIdCoin: CoinEntity) {
-        getAssetIdCoin.let { useCaseDataSource.insertCoinI(it) }
+        getAssetIdCoin.let { iDataSourceAbstract.insertCoinI(it) }
     }
 
     suspend fun deleteCoinDataBase(getAssetIdCoin: String) {
-        useCaseDataSource.deleteCoin(getAssetIdCoin)
+        iDataSourceAbstract.deleteCoin(getAssetIdCoin)
     }
 
     fun loadDataBase() {
         viewModelScope.launch {
-            useCaseDataSource.getAllCoins()
+            iDataSourceAbstract.getAllCoins()
         }
     }
 
     fun getByAssetId(assetId: String) {
         CoroutineScope(Dispatchers.IO).launch {
-            val returnCoinDataBase = useCaseDataSource.getByAssetId(assetId)
+            val returnCoinDataBase = iDataSourceAbstract.getByAssetId(assetId)
             _returnDataBase.postValue(returnCoinDataBase)
         }
     }
