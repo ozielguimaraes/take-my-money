@@ -5,8 +5,11 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Observer
 import com.example.take_my_money.data.dao.CoinEntity
+import com.example.take_my_money.domain.RuleTest
 import com.example.take_my_money.domain.abstracts.UseCaseDataSource
 import com.example.take_my_money.domain.data.dao.FakeListCointEntity
+import com.example.take_my_money.domain.entities.Coin
+import com.example.take_my_money.domain.exceptions.ResultWrapper
 import com.example.take_my_money.domain.usecases.UseCaseAllCoin
 import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
 import io.mockk.coEvery
@@ -15,9 +18,8 @@ import io.mockk.mockk
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
-import kotlinx.coroutines.*
-import kotlinx.coroutines.test.resetMain
-import kotlinx.coroutines.test.setMain
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 import org.junit.*
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
@@ -25,41 +27,37 @@ import org.mockito.junit.MockitoJUnitRunner
 @RunWith(MockitoJUnitRunner::class)
 class CoinListViewModelTest {
 
-    @OptIn(DelicateCoroutinesApi::class)
-    private val mainThread = newSingleThreadContext("UI thread")
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     private val useCaseAllCoinTest = mockk<UseCaseAllCoin>()
     private val useCaseDataSourceTest = mockk<UseCaseDataSource>()
 
     private val observerLiveDataTest: Observer<List<CoinEntity>> = mockk(relaxed = true)
-
-    @get:Rule
-    val instantTaskExecutorRule = InstantTaskExecutorRule()
+    private val listCoinsResultWrapper = mockk<Observer<ResultWrapper<List<Coin>>>>(relaxed = true)
 
     @Before
     fun setUp() {
-        Dispatchers.setMain(mainThread)
+        RuleTest().initBefore()
     }
 
     @After
     fun tearDown() {
-        Dispatchers.resetMain() // reset the main dispatcher to the original Main dispatcher
-        mainThread.close()
+        RuleTest().initTearDown()
     }
 
     @Test
-    fun `when view model call requestApiListCoin checked functions of requestApi`() =
-        runBlocking {
-            // Given
-            val viewModel = initViewModel()
-            coEvery { useCaseAllCoinTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
+    fun `when view model call requestApiListCoin checked functions of requestApi`() = runBlocking {
+        // Given
+        val viewModel = initViewModel()
+        coEvery { useCaseAllCoinTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
 
-            // When
-            viewModel.requestApiListCoin()
+        // When
+        viewModel.requestApiListCoin()
 
-            // Then
-            coVerify { useCaseAllCoinTest.getListCoin() }
-        }
+        // Then
+        coVerify { useCaseAllCoinTest.getListCoin() }
+    }
 
     @Test
     fun `when view model call requestApiListCoin checked functions of loadDataBase`() =
@@ -94,6 +92,7 @@ class CoinListViewModelTest {
     private fun initViewModel(): CoinListViewModel {
         val viewModel = CoinListViewModel(useCaseAllCoinTest, useCaseDataSourceTest)
         viewModel.listCoinsLiveData.observeForever { observerLiveDataTest }
+        viewModel.listCoinsResultWrapper.observeForever(listCoinsResultWrapper)
         return viewModel
     }
 }
