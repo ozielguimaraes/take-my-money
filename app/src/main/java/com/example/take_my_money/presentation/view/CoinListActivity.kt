@@ -136,7 +136,7 @@ class CoinListActivity : AppCompatActivity(), IOnClickCoinList {
         } else {
             adapter.submitList(
                 viewModel.listCoinsLiveData.value?.filter {
-                    it.name?.contains(query) ?: false
+                    it.nameCurrency?.contains(query) ?: false
                 }
             )
         }

@@ -11,14 +11,14 @@ object CoinsMappers {
     fun fromRemoteToDomain(coin: CoinEntity): Coin =
         Coin(
             coin.id,
-            coin.asset_id,
-            coin.name,
-            coin.type_is_crypto,
-            coin.volume_1hrs_usd,
-            coin.volume_1day_usd,
-            coin.volume_1mth_usd,
-            coin.price_usd,
+            coin.currencyAbbreviation,
+            coin.nameCurrency,
+            coin.typeOfCurrency,
+            coin.valueNegotiated1hrs,
+            coin.valueNegotiated1day,
+            coin.valueNegotiated1mth,
+            coin.priceUsd,
             coin.url,
-            coin.id_icon
+            coin.keyCoin
         )
 }

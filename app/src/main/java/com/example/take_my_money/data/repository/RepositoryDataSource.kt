@@ -18,7 +18,7 @@ class RepositoryDataSource(private val iCoinDAO: ICoinDAO) : IDataSourceAbstract
         return iCoinDAO.allCoin()
     }
 
-    override suspend fun getByAssetId(assetId: String): CoinEntity? {
-        return iCoinDAO.getByAssetId(assetId)
+    override suspend fun getByAssetId(currencyAbbreviation: String): CoinEntity? {
+        return iCoinDAO.getByAssetId(currencyAbbreviation)
     }
 }

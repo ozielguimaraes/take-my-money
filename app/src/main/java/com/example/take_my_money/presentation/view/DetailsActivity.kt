@@ -50,17 +50,17 @@ class DetailsActivity : AppCompatActivity() {
 
     private fun passDataToScreen(coinDetails: Coin?) {
         coinDetails?.let {
-            if (coinDetails.id_icon != null) {
+            if (coinDetails.keyCoin != null) {
                 Picasso.get().load(coinDetails.getPathUrlImage()).into(binding.imView)
             } else {
                 Picasso.get().load(R.drawable.im_coin).into(binding.imView)
             }
             try {
-                binding.txCoin.text = coinDetails.asset_id
-                binding.txValue.text = NumberFormat.getInstance().format(coinDetails.price_usd)
-                binding.txValueHour.text = NumberFormat.getInstance().format(coinDetails.volume_1hrs_usd)
-                binding.txValueDay.text = NumberFormat.getInstance().format(coinDetails.volume_1day_usd)
-                binding.txValueMonth.text = NumberFormat.getInstance().format(coinDetails.volume_1mth_usd)
+                binding.txCoin.text = coinDetails.currencyAbbreviation
+                binding.txValue.text = NumberFormat.getInstance().format(coinDetails.priceUsd)
+                binding.txValueHour.text = NumberFormat.getInstance().format(coinDetails.valueNegotiated1hrs)
+                binding.txValueDay.text = NumberFormat.getInstance().format(coinDetails.valueNegotiated1day)
+                binding.txValueMonth.text = NumberFormat.getInstance().format(coinDetails.valueNegotiated1mth)
             } catch (e: Exception) {
                 Toast.makeText(this, e.message, Toast.LENGTH_LONG).show()
             } finally {
@@ -70,7 +70,7 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun checkCoinDataBase(coin: CoinEntity) {
-        viewModel.getByAssetId(coin.asset_id.toString())
+        viewModel.getByAssetId(coin.currencyAbbreviation.toString())
         observers(coin)
     }
 
@@ -94,7 +94,7 @@ class DetailsActivity : AppCompatActivity() {
             binding.btnAddRemove.text = getString(R.string.remover)
             binding.btnAddRemove.setOnClickListener {
                 CoroutineScope(Dispatchers.IO).launch {
-                    coin.name?.let { it1 -> viewModel.deleteCoinDataBase(it1) }
+                    coin.nameCurrency?.let { it1 -> viewModel.deleteCoinDataBase(it1) }
                 }
                 Toast.makeText(this, getString(R.string.remove_coin_database), Toast.LENGTH_LONG).show()
                 callingScreenFavorite()

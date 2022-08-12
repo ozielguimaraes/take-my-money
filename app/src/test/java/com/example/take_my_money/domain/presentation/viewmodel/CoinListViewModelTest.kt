@@ -1,4 +1,4 @@
-package com.example.take_my_money.domain.presentation.viewmodel
+package com.example.take_my_money.domain.presentation.viewmodel // ktlint-disable package-name
 
 import androidx.annotation.VisibleForTesting
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
@@ -7,10 +7,10 @@ import androidx.lifecycle.Observer
 import com.example.take_my_money.data.dao.CoinEntity
 import com.example.take_my_money.domain.RuleTest
 import com.example.take_my_money.domain.abstracts.IDataSourceAbstract
-import com.example.take_my_money.domain.data.dao.FakeListCointEntity
+import com.example.take_my_money.domain.data.dao.FakeListCoinEntity
 import com.example.take_my_money.domain.entities.Coin
 import com.example.take_my_money.domain.exceptions.ResultWrapper
-import com.example.take_my_money.domain.usecases.AllCoinUseCase
+import com.example.take_my_money.domain.interactor.IAllCoinUseCase
 import com.example.take_my_money.presentation.viewmodel.CoinListViewModel
 import io.mockk.coEvery
 import io.mockk.coVerify
@@ -20,7 +20,7 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.TimeoutException
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.runBlocking
-import org.junit.*
+import org.junit.* // ktlint-disable no-wildcard-imports
 import org.junit.runner.RunWith
 import org.mockito.junit.MockitoJUnitRunner
 
@@ -30,7 +30,7 @@ class CoinListViewModelTest {
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    private val allCoinUseCaseTest = mockk<AllCoinUseCase>()
+    private val iAllCoinUseCase = mockk<IAllCoinUseCase>()
     private val iDataSourceAbstractTest = mockk<IDataSourceAbstract>()
 
     private val observerLiveDataTest: Observer<List<CoinEntity>> = mockk(relaxed = true)
@@ -50,13 +50,13 @@ class CoinListViewModelTest {
     fun `when view model call requestApiListCoin checked functions of requestApi`() = runBlocking {
         // Given
         val viewModel = initViewModel()
-        coEvery { allCoinUseCaseTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
+        coEvery { iAllCoinUseCase.getListCoins() } returns FakeListCoinEntity().listAllCoins()
 
         // When
         viewModel.requestApiListCoin()
 
         // Then
-        coVerify { allCoinUseCaseTest.getListCoin() }
+        coVerify(exactly = 2) { iAllCoinUseCase.getListCoins() }
     }
 
     @Test
@@ -64,7 +64,7 @@ class CoinListViewModelTest {
         runBlocking {
             // Given
             val viewModel = initViewModel()
-            coEvery { allCoinUseCaseTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
+            coEvery { iAllCoinUseCase.getListCoins() } returns FakeListCoinEntity().listAllCoins()
 
             // When
             viewModel.loadDataBase()
@@ -78,19 +78,19 @@ class CoinListViewModelTest {
         runBlocking {
             // Given
             val viewModel = initViewModel()
-            coEvery { allCoinUseCaseTest.getListCoin() } returns FakeListCointEntity().listAllCoins()
+            coEvery { iAllCoinUseCase.getListCoins() } returns FakeListCoinEntity().listAllCoins()
             // When
             viewModel.requestApiListCoin()
             delay(2000)
             val valueOfLiveData = viewModel.listCoinsLiveData.value
 
             // Then
-            Assert.assertEquals(valueOfLiveData, FakeListCointEntity().listAllCoins())
+            Assert.assertEquals(valueOfLiveData, FakeListCoinEntity().listAllCoins())
             Assert.assertEquals(1, valueOfLiveData?.size)
         }
 
     private fun initViewModel(): CoinListViewModel {
-        val viewModel = CoinListViewModel(allCoinUseCaseTest, iDataSourceAbstractTest)
+        val viewModel = CoinListViewModel(iAllCoinUseCase, iDataSourceAbstractTest)
         viewModel.listCoinsLiveData.observeForever { observerLiveDataTest }
         viewModel.listCoinsResultWrapper.observeForever(listCoinsResultWrapper)
         return viewModel

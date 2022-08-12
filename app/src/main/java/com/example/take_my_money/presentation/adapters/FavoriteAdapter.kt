@@ -15,6 +15,7 @@ class FavoriteAdapter(private val onclick: IOnClickFavorite) :
     IOnClickFavorite {
 
     override fun onClickFavorite(coinFavorite: CoinEntity) {
+        TODO()
     }
 
     class MyViewHolderFavorite(val binding: ItemFavoriteRecyclerBinding) :
@@ -34,14 +35,14 @@ class FavoriteAdapter(private val onclick: IOnClickFavorite) :
         val itemCoin = getItem(position)
 
         holder.itemView.contentDescription =
-            """Moeda Digital ${position}${itemCoin.name}, ${itemCoin.asset_id}, ${itemCoin.price_usd}"""
+            """Moeda Digital ${position}${itemCoin.nameCurrency}, ${itemCoin.currencyAbbreviation}, ${itemCoin.priceUsd}"""
 
-        holder.binding.textCoin.text = itemCoin.name
-        holder.binding.textCoinAsset.text = itemCoin.asset_id
-        holder.binding.textValueCoin.text = itemCoin.price_usd.toString()
+        holder.binding.textCoin.text = itemCoin.nameCurrency
+        holder.binding.textCoinAsset.text = itemCoin.currencyAbbreviation
+        holder.binding.textValueCoin.text = itemCoin.priceUsd.toString()
 
         try {
-            if (itemCoin.id_icon != null) {
+            if (itemCoin.keyCoin != null) {
                 Picasso.get().load(itemCoin.getPathUrlImage())
                     .into(holder.binding.imageCoinFavorite4)
             }
@@ -63,7 +64,7 @@ class FavoriteAdapter(private val onclick: IOnClickFavorite) :
             oldItem: CoinEntity,
             newItem: CoinEntity
         ): Boolean {
-            return oldItem.asset_id == newItem.asset_id
+            return oldItem.currencyAbbreviation == newItem.currencyAbbreviation
         }
     }
 }

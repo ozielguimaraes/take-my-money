@@ -10,5 +10,5 @@ interface IDataSourceAbstract {
 
     suspend fun getAllCoins(): List<CoinEntity>
 
-    suspend fun getByAssetId(assetId: String): CoinEntity?
+    suspend fun getByAssetId(currencyAbbreviation: String): CoinEntity?
 }

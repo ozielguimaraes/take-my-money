@@ -59,7 +59,7 @@ class IWebServiceTestWithMock {
             .setBody(MockResponseFileReader("success_response.json").content)
         mockWebServer.enqueue(response)
         // When
-        val actualResponse = IWebService.getBaseUrl().getAllCoins(Constants.API_KEY1)
+        val actualResponse = IWebService.getBaseUrl().getAllCoins(Constants.API_KEY)
         // Then
         assertEquals(
             response.status.contains("200"),
@@ -76,7 +76,7 @@ class IWebServiceTestWithMock {
         mockWebServer.enqueue(response)
 
         // When
-        val actualResponse = IWebService.getBaseUrl().getAllCoins(Constants.API_KEY1)
+        val actualResponse = IWebService.getBaseUrl().getAllCoins(Constants.API_KEY)
 
         // Then
         assertEquals(

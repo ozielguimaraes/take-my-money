@@ -9,7 +9,7 @@ import com.example.take_my_money.presentation.utils.Constants
 class RepositoryAllCoins(private val retrofit: IWebService) : ICoinAllAbstract {
 
     override suspend fun getAllCoinsRepository(): List<Coin>? {
-        val response = retrofit.getAllCoins(Constants.API_KEY4)
+        val response = retrofit.getAllCoins(Constants.API_KEY)
         response.body()?.let {
             return CoinsMappers.fromRemoteToDomain(it)
         } ?: run {

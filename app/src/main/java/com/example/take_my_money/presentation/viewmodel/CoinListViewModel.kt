@@ -12,8 +12,8 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 
 class CoinListViewModel(
-    private val iAllCoinUseCase: IAllCoinUseCase,
-    private val iDataSourceAbstract: IDataSourceAbstract
+    private val allCoinUseCase: IAllCoinUseCase,
+    private val dataSourceAbstract: IDataSourceAbstract
 ) : ViewModel() {
 
     private val _listCoinsResultWrapper = MutableLiveData<ResultWrapper<List<Coin>>>()
@@ -30,9 +30,9 @@ class CoinListViewModel(
         try {
             viewModelScope.launch {
                 _listCoinsResultWrapper.postValue(
-                    iAllCoinUseCase.getListCoins()?.let { ResultWrapper.Success(it) }
+                    allCoinUseCase.getListCoins()?.let { ResultWrapper.Success(it) }
                 )
-                _listCoinsMutableLiveData.postValue(iAllCoinUseCase.getListCoins())
+                _listCoinsMutableLiveData.postValue(allCoinUseCase.getListCoins())
             }
         } catch (http: HttpException) {
             when {
@@ -57,7 +57,7 @@ class CoinListViewModel(
 
     fun loadDataBase() {
         viewModelScope.launch {
-            iDataSourceAbstract.getAllCoins()
+            dataSourceAbstract.getAllCoins()
         }
     }
 }

@@ -28,15 +28,15 @@ class FavoriteViewModel(private val iDataSourceAbstract: IDataSourceAbstract) : 
     fun castCoinEntityToCoin(coinFavorite: CoinEntity): Coin {
         return Coin(
             id = coinFavorite.id,
-            asset_id = coinFavorite.asset_id,
-            name = coinFavorite.name,
-            type_is_crypto = coinFavorite.type_is_crypto,
-            volume_1hrs_usd = coinFavorite.volume_1hrs_usd,
-            volume_1mth_usd = coinFavorite.volume_1mth_usd,
-            volume_1day_usd = coinFavorite.volume_1day_usd,
-            price_usd = coinFavorite.price_usd,
+            currencyAbbreviation = coinFavorite.asset_id,
+            nameCurrency = coinFavorite.name,
+            typeOfCurrency = coinFavorite.type_is_crypto,
+            valueNegotiated1hrs = coinFavorite.volume_1hrs_usd,
+            valueNegotiated1mth = coinFavorite.volume_1mth_usd,
+            valueNegotiated1day = coinFavorite.volume_1day_usd,
+            priceUsd = coinFavorite.price_usd,
             url = coinFavorite.url,
-            id_icon = coinFavorite.id_icon
+            keyCoin = coinFavorite.id_icon
         )
     }
 }
