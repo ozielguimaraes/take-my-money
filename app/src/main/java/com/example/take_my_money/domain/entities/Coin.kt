@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 import java.io.Serializable
 
 data class Coin(
-    val id: Long = 0,
+    val id: Long,
 
     @SerializedName("asset_id")
     val currencyAbbreviation: String? = "",
@@ -20,18 +20,18 @@ data class Coin(
     val valueNegotiated1hrs: Double? = 0.0,
 
     @SerializedName("volume_1day_usd")
-    val valueNegotiated1day: Double?,
+    val valueNegotiated1day: Double? = 0.0,
 
     @SerializedName("volume_1mth_usd")
-    val valueNegotiated1mth: Double?,
+    val valueNegotiated1mth: Double? = 0.0,
 
     @SerializedName("price_usd")
-    val priceUsd: Double?,
+    val priceUsd: Double? = 0.0,
 
-    val url: String?,
+    val url: String? = "",
 
     @SerializedName("id_icon")
-    val keyCoin: String?
+    val keyCoin: String? = ""
 ) : Serializable {
 
     fun getPathUrlImage(): String {

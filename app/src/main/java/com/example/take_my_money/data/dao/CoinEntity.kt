@@ -10,7 +10,7 @@ import java.io.Serializable
 @Entity(
     tableName = "coin",
     indices = [
-        Index(value = ["name", "asset_id"], unique = true)
+        Index(value = ["nameCurrency", "currencyAbbreviation"], unique = true)
     ]
 )
 data class CoinEntity(
@@ -29,18 +29,18 @@ data class CoinEntity(
     val valueNegotiated1hrs: Double? = 0.0,
 
     @SerializedName("volume_1day_usd")
-    val valueNegotiated1day: Double?,
+    val valueNegotiated1day: Double? = 0.0,
 
     @SerializedName("volume_1mth_usd")
-    val valueNegotiated1mth: Double?,
+    val valueNegotiated1mth: Double? = 0.0,
 
     @SerializedName("price_usd")
-    val priceUsd: Double?,
+    val priceUsd: Double? = 0.0,
 
-    val url: String?,
+    val url: String? = "",
 
     @SerializedName("id_icon")
-    val keyCoin: String?
+    val keyCoin: String? = ""
 ) : Serializable {
 
     fun getPathUrlImage(): String {
