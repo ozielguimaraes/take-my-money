@@ -25,7 +25,9 @@ import kotlinx.coroutines.launch
 class CoinAdapter(private val onclickCoin: IOnClickCoinList, private val context: Context) :
     ListAdapter<Coin, CoinAdapter.CoinViewHolder>(DiffCallback()), IOnClickCoinList {
 
-    override fun onClickCoins(coin: Coin) {}
+    override fun onClickCoins(coin: Coin) {
+        TODO()
+    }
 
     class CoinViewHolder(val binding: ItemListCoinBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -47,16 +49,21 @@ class CoinAdapter(private val onclickCoin: IOnClickCoinList, private val context
         val item = getItem(position)
 
         holder.itemView.contentDescription =
-            """Moeda digital $position${item.id_icon}, ${item.name}, ${item.price_usd}${item.volume_1day_usd} , ${item.volume_1hrs_usd}, ${item.volume_1mth_usd}"""
+            """Moeda digital $position${item.keyCoin},
+                | ${item.nameCurrency},
+                |  ${item.priceUsd}${item.valueNegotiated1day} ,
+                |  ${item.valueNegotiated1hrs},
+                |   ${item.valueNegotiated1mth}
+            """.trimMargin()
 
-        holder.binding.txtCoin.text = item.name
-        holder.binding.txtCoinModel.text = item.asset_id
+        holder.binding.txtCoin.text = item.nameCurrency
+        holder.binding.txtCoinModel.text = item.currencyAbbreviation
         holder.itemView.setOnClickListener {
             onclickCoin.onClickCoins(item)
         }
         try {
             CoroutineScope(Dispatchers.Main).launch {
-                if (dao.getByAssetId(item.asset_id.toString()) != null) {
+                if (dao.getByAssetId(item.currencyAbbreviation.toString()) != null) {
                     holder.binding.imageStar.visibility = View.VISIBLE
                 } else {
                     holder.binding.imageStar.visibility = View.INVISIBLE
@@ -66,8 +73,8 @@ class CoinAdapter(private val onclickCoin: IOnClickCoinList, private val context
             Log.i("TAG", "onBindViewHolder: ${e.cause}")
         }
         try {
-            holder.binding.txtPriceCoin.text = NumberFormat.getInstance().format(item.price_usd)
-            if (item.id_icon != null) {
+            holder.binding.txtPriceCoin.text = NumberFormat.getInstance().format(item.priceUsd)
+            if (item.keyCoin != null) {
                 Picasso.get().load(item.getPathUrlImage()).into(holder.binding.imagemCoin)
             }
         } catch (e: Exception) {
@@ -81,14 +88,14 @@ class CoinAdapter(private val onclickCoin: IOnClickCoinList, private val context
             oldItem: Coin,
             newItem: Coin
         ): Boolean {
-            return oldItem.name == newItem.name
+            return oldItem.nameCurrency == newItem.nameCurrency
         }
 
         override fun areContentsTheSame(
             oldItem: Coin,
             newItem: Coin
         ): Boolean {
-            return oldItem.asset_id == newItem.asset_id
+            return oldItem.currencyAbbreviation == newItem.currencyAbbreviation
         }
     }
 }
